@@ -14,3 +14,56 @@ a {
 * {
   box-sizing: border-box;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  .categoryCards{
+  @apply flex flex-col items-center mt-10 cursor-pointer
+  }
+  .pagination {
+    @apply flex flex-row justify-center space-x-4 mt-6 mb-3
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul.pagination li {
+  display: inline-block;
+  width: 30px;
+  
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+}
+
+ul.pagination li a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+ul.pagination li.active a {
+  color: white;
+}
+ul.pagination li.active {
+  background-color: #3f51b5;
+  border-radius: 20%;
+}
+
+
+.page-selection {
+  width: 48px;
+  height: 30px;
+  color: #FFFF;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
