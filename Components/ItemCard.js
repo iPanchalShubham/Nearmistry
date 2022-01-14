@@ -12,7 +12,7 @@ function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber ,sel
           width="160px"
           height="210px"
           className="rounded-md"
-          placeholder="empty"
+          placeholder="blur"
           blurDataURL="LF7d,x_3xuRj~q_3xuRj_3?bt7Rj"
         />
       </div>
