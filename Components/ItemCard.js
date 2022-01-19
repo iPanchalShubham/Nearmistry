@@ -1,19 +1,25 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { DotsHorizontalIcon } from "@heroicons/react/outline";
 import { PhoneIcon } from "@heroicons/react/solid";
-function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber ,selectedFile}) {
-  return (
+import Modal from "./modal";
+
+
+function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,selectedFile}) {
+  const [showModal,setShowModal] = useState();
+  return (<div>
+    <Modal showModal={showModal} click={()=> setShowModal(!showModal)} selectedFile={selectedFile}/>
     <div className="flex shadow-md m-4 rounded-md bg-white min-w-[] max-w-[370px] max-h-[225px]">
       <div className="relative h-60 w-40 m-2">
         <Image
           src={img}
           layout="responsive"
-          width="160px"
-          height="210px"
+          width={160}
+          height={210}
           className="rounded-md"
           placeholder="blur"
           blurDataURL="LF7d,x_3xuRj~q_3xuRj_3?bt7Rj"
+          onClick={() => setShowModal(!showModal)}
         />
       </div>
       <div className="block mx-auto">
@@ -46,6 +52,7 @@ function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber ,sel
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
