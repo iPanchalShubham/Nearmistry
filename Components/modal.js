@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
-export default function Modal({click,showModal,selectedFile}) {
+export default function Modal({click,showModal,selectedFile,img}) {
   return  <>
         {showModal ? (
           <>
             <div
-              className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+              className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none scale-110 transition duration-1000"
               
             >
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
@@ -19,7 +19,7 @@ export default function Modal({click,showModal,selectedFile}) {
                   </div>
                   {/*body*/}
                   <div className="relative p-6 flex-auto rounded-sm">
-                    <Image src={selectedFile} width="250" height="400"/>
+                    <Image src={selectedFile||img} width="250" height="380"/>
                   </div>
                   {/*footer*/}
                   <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">

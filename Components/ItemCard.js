@@ -8,7 +8,7 @@ import Modal from "./modal";
 function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,selectedFile}) {
   const [showModal,setShowModal] = useState();
   return (<div>
-    <Modal showModal={showModal} click={()=> setShowModal(!showModal)} selectedFile={selectedFile}/>
+    <Modal showModal={showModal} click={()=> setShowModal(!showModal)} selectedFile={selectedFile} img = {img}/>
     <div className="flex shadow-md m-4 rounded-md bg-white min-w-[] max-w-[370px] max-h-[225px]">
       <div className="relative h-60 w-40 m-2">
         <Image
