@@ -19,7 +19,7 @@ export default function Modal({click,showModal,selectedFile,img}) {
                   </div>
                   {/*body*/}
                   <div className="relative p-6 flex-auto rounded-sm">
-                    <Image src={selectedFile||img} width="250" height="380"/>
+                    <Image src={selectedFile||img} width="250" height="380" placeholder = "blur" blurDataURL="LF7d,x_3xuRj~q_3xuRj_3?bt7Rj"/>
                   </div>
                   {/*footer*/}
                   <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
