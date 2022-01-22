@@ -6,7 +6,6 @@ export default function Modal({click,showModal,selectedFile,img}) {
           <>
             <div
               className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none scale-110 transition duration-1000"
-              
             >
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
                 {/*content*/}
