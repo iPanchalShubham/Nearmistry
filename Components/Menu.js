@@ -4,15 +4,9 @@ const Menu = ({ MenuHandler, showSidebar }) => {
   const router = useRouter();
   return (
     <>
-      <ReactDimmer
-        isOpen={showSidebar}
-        exitDimmer={MenuHandler}
-        onClick={MenuHandler}
-        zIndex={30}
-        blur={1.5}
-      />
+      <div className="bg-black opacity-70 top-0 z-50" ></div>
       <div
-        className={`top-0 left-0 bg-gray-100 p-10 pr-15 lg:pr-20 fixed h-full z-40  ease-out duration-100 ${
+        className={`top-0 left-0 bg-gray-100 p-10 pr-15 lg:pr-20 fixed h-full z-40  duration-200 ${
           showSidebar ? "translate-x-0" : "translate-x-[-100%]"
         }`}
       >

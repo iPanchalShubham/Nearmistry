@@ -18,7 +18,7 @@ function Header() {
         />
 
         <div
-          className="text-3xl font-semibold cursor-pointer"
+          className="text-2xl lg:text-3xl font-semibold cursor-pointer"
           onClick={() => router.push("/")}
         >
           Nearmistry
