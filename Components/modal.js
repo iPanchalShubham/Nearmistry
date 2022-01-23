@@ -1,19 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import { ReactDimmer } from "react-dimmer";
 export default function Modal({ click, showModal, selectedFile, img }) {
   return (
     <>
       {showModal ? (
         <>
-        <ReactDimmer
-          isOpen={showModal}
-          exitDimmer={click}
-          onClick = {click}
-          zIndex={30}
-          blur={2}
-        />
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none scale-110 transition duration-1000">
+         <div className="h-full w-full fixed top-0 right-0 z-40 bg-black opacity-50" onClick={click} ></div>
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-sm shadow-lg relative flex flex-col w-full bg-gray-100 outline-none focus:outline-none">

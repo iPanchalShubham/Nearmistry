@@ -1,16 +1,9 @@
-import { ReactDimmer } from "react-dimmer";
 import { useRouter } from "next/router";
 const Menu = ({ MenuHandler, showSidebar }) => {
   const router = useRouter();
   return (
     <>
-      <ReactDimmer
-        isOpen={showSidebar}
-        exitDimmer={MenuHandler}
-        onClick={MenuHandler}
-        zIndex={30}
-        blur={1}
-      />
+     {showSidebar?<div className="h-full w-full fixed top-0 right-0 z-40 bg-black opacity-50" onClick={MenuHandler} ></div>:null}
       <div
         className={`top-0 left-0 bg-gray-100 p-10 pr-15 lg:pr-20 fixed h-full z-40 duration-100 ${
           showSidebar ? "translate-x-0" : "translate-x-[-100%]"
