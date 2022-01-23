@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 bg-gray-100 text-gray-600 px-32 py-14 gap-y-10">
-      <div className="space-y-4 test-xs test-gray-800 cursor-pointer">
+      <div className="space-y-4 test-xs test-gray-800">
         <h5 className="font-bold cursor-pointer"> ABOUT</h5>
         <p className="cursor-pointer" >How it works</p>
         <p className="cursor-pointer">Why us.</p>

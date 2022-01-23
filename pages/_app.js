@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import { Router } from 'next/dist/client/router';
 import ProgressBar from '@badrap/bar-of-progress';
 const progress = new ProgressBar({
-  size:6,
+  size:2,
   color:"#FBFBFD",
   className:"z-50",
   delay:100,
