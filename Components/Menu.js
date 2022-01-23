@@ -9,7 +9,7 @@ const Menu = ({ MenuHandler, showSidebar }) => {
         exitDimmer={MenuHandler}
         onClick={MenuHandler}
         zIndex={30}
-        blur={1.5}
+        blur={1}
       />
       <div
         className={`top-0 left-0 bg-gray-100 p-10 pr-15 lg:pr-20 fixed h-full z-40 duration-100 ${
