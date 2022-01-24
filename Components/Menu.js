@@ -9,8 +9,10 @@ const Menu = ({ MenuHandler, showSidebar }) => {
           showSidebar ? "translate-x-0" : "translate-x-[-100%]"
         }`}
       >
+        <h2 className="text-3xl mt-9 font-thin" >Nearmistry.com</h2>
+        <hr className=""/>
         <div
-          className="mt-20 space-y-3  mr-4 font-extralight text-xl"
+          className="mt-10 space-y-3 font-extralight text-xl"
           onClick={() => router.push(`/404.js`)}
         >
           <h4 className="cursor-pointer">Why us?</h4>
