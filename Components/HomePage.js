@@ -18,8 +18,8 @@ function HomePage() {
     <div>
       <Head>
         <title>
-          NearMistry.com|Get people for contruction, renovation, maintainance
-          etc. in karnal,haryana
+          Get Workers for contruction, renovation, maintainance etc. in
+          karnal,haryana
         </title>
         <meta
           name="og:title"
@@ -99,7 +99,7 @@ function HomePage() {
             </div>
           </Link>
           <Link href="/Electrician/1">
-            <div className="categoryCards" >
+            <div className="categoryCards">
               <div className="relative h-7 w-7 lg:h-10 lg:w-10">
                 <Image
                   src={electricianImg}
@@ -124,18 +124,19 @@ function HomePage() {
               <p className="font-medium text-center">Plumber</p>
             </div>
           </Link>
-          
-          <div className="categoryCards" >
-            <div className="relative h-7 w-7 lg:h-10 lg:w-10">
-              <Image
-                src={maidImg}
-                layout="fill"
-                placeholder="blur"
-                alt={"Get Maids"}
-              />
+          <Link href="/Maid/1" >
+            <div className="categoryCards">
+              <div className="relative h-7 w-7 lg:h-10 lg:w-10">
+                <Image
+                  src={maidImg}
+                  layout="fill"
+                  placeholder="blur"
+                  alt={"Get Maids"}
+                />
+              </div>
+              <p className="font-medium text-center">Maid</p>
             </div>
-            <p className="font-medium text-center">Maid</p>
-          </div>
+          </Link>
           <Link href="/Labour/1">
             <button className="categoryCards">
               <div className="relative h-7 w-7 lg:h-10 lg:w-10">

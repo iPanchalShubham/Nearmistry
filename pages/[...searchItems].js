@@ -3,12 +3,25 @@ import Header from "../Components/Header.js";
 import ItemCard from "../Components/ItemCard.js";
 import axios from "axios";
 import Footer from "../Components/Footer.jsx";
-import { useRouter } from "next/router";
 import Pagination from '../Components/Pagination'
+import Head from "next/head";
 export default function ResultItems({ data }) {
-  const router = useRouter()
   return (
     <div>
+      <Head>
+        <title>
+          Get Workers for contruction, renovation, maintainance etc. in
+          karnal,haryana
+        </title>
+        <meta
+          name="og:title"
+          content="Get instant, Police verified workers like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
+        />
+        <meta
+          name="description"
+          content="Get instant, Police verified workers like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
+        />
+      </Head>
       <main className="max-w-8xl mx-auto">
         <Header />
         <div className="pt-6">
