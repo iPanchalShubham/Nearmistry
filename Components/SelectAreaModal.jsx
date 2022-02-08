@@ -20,7 +20,7 @@ export default function SelectAreaModal({ showModal, click }) {
                 </div>
                 {/*body*/}
                 <div className="flex items-center justify-center">
-                  <div className="flex border-2 rounded mx-2">
+                  <div className="flex rounded mx-2">
                     <input
                       type="text"
                       className="px-4 py-2 w-80 outline-blue-200"
