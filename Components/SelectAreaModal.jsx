@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, {useState } from "react";
 import axios from "axios";
-export default function SelectAreaModal({ showModal, click }) {
+export default function SelectAreaModal({ showModal, click,area}) {
   const [suggestions, setSuggestions] = useState([]);
-
+  const [input,setInput] = useState('')
   const fetchRes = async (e) => {
     try {
       const res = await axios
@@ -15,8 +15,12 @@ export default function SelectAreaModal({ showModal, click }) {
       console.log(e.message);
     }
   };
+  const inputHandler = (e) =>{
+    setInput(e)
+    console.log("Looke this boi"+e)
+  }
   console.log("Rendered!");
-  console.log(suggestions);
+  console.log(input);
   return (
     <>
       {showModal ? (
@@ -42,7 +46,8 @@ export default function SelectAreaModal({ showModal, click }) {
                       type="text"
                       className="py-2 w-[300px] outline-blue-200"
                       placeholder="Search your area to find workers"
-                      onChange={(e) => fetchRes(e)}
+                      onChange={(e) => {fetchRes(e);inputHandler(e.currentTarget.value)}}
+                      value = {input}
                     />
                     <button className="flex items-center justify-center px-4  text-white bg-[#5370cf] rounded-sm">
                       OK
@@ -52,8 +57,12 @@ export default function SelectAreaModal({ showModal, click }) {
 
                
                 <div className="flex flex-col ga ml-8 h-[300px] overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll">
-                  {suggestions?.map((res) => (
-                      <div className="mt-[13px] font-medium cursor-pointer">
+                  {suggestions?.map((res,index) => (
+                      <div 
+                      className="mt-[13px] font-medium cursor-pointer"
+                      onClick={(e) => {area(e.currentTarget.textContent);console.log(res.geometry.type,res.geometry.coordinates);inputHandler(e.currentTarget.innerText)}}
+                      key = {index}
+                      >
                         {res.text}
                       <span className="ml-3 text-sm text-gray-500 mt-1.5">
                         {res.place_name.split(',').slice(1)}
@@ -69,7 +78,7 @@ export default function SelectAreaModal({ showModal, click }) {
                   <button
                     className="text-[#3f51b5] font-bold uppercase text-sm px-6  mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={click}
+                    onClick={() => click()}
                   >
                     &#8592; Back
                   </button>

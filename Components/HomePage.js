@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header";
 import Image from "next/image";
 import helperImg from "../public/concrete-finisher.png";
 import rajMistryImg from "../public/rajmistri.png";
@@ -12,8 +11,6 @@ import plumberImg from "../public/plumber.png";
 import maidImg from "../public/maid.png";
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
-
 
 function HomePage() {
 
@@ -33,7 +30,6 @@ function HomePage() {
           content="Get instant, Police verfied people like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
         />
       </Head>
-      <Header/>
       <section>
         <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3  items-center">
           <Link href="/Raj Mistry/1">

@@ -7,15 +7,18 @@ import Menu from "./Menu";
 function Header() {
   const router = useRouter();
   const [showSidebar, setShowSidebar] = useState(false);
-  const [showModal,setShowModal] = useState(true)
+  const [showModal,setShowModal] = useState(false)
   
+  const [area,SetArea]  = useState('select area')
   const MenuHandler =()=>{
     setShowSidebar(!showSidebar)
   }
   const clickHandler = ()=>{
     setShowModal(!showModal)
   }
-
+  const areaHandler = (areaFromAreaModal) =>{
+    SetArea(areaFromAreaModal)
+  }
   
   return (
     <>
@@ -39,13 +42,17 @@ function Header() {
           <div className="h-4 w-4 lg:h-6 lg:w-5 text-red-500">
           <LocationMarkerIcon/>
           </div>
-          select area
+          {area.length>11?area.slice(0,11)+'...':area}
         </button>
-        <SelectAreaModal showModal={showModal} click={()=>clickHandler()}/>
+        <SelectAreaModal showModal={showModal} click={()=>clickHandler()} area = {areaHandler} location = {area}/>
 
       </div>
     </>
   );
 }
-
+/*
+— What’s GeoJSON Structure?
+It is a JSON document that must have an object inside it , as follows :
+<field>: { type: <GeoJSON type> , coordinates: <coordinates> }
+*/ 
 export default Header;

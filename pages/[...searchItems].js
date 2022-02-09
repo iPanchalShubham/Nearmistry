@@ -22,8 +22,8 @@ export default function ResultItems({ data }) {
           content="Get instant, Police verified workers like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
         />
       </Head>
+      <Header/>
       <main className="max-w-8xl mx-auto">
-        <Header />
         <div className="pt-6">
           <div className="grid grid-cols-1 justify-center sm:grid-cols-1 sm:px-10  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
             {data?.data.map((data, index) => (
