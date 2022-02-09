@@ -7,14 +7,16 @@ import Menu from "./Menu";
 function Header() {
   const router = useRouter();
   const [showSidebar, setShowSidebar] = useState(false);
-  const [showModal,setShowModal] = useState(true);
+  const [showModal,setShowModal] = useState(true)
+  
   const MenuHandler =()=>{
     setShowSidebar(!showSidebar)
   }
   const clickHandler = ()=>{
     setShowModal(!showModal)
   }
-  console.log(showModal)
+
+  
   return (
     <>
     <Menu MenuHandler={MenuHandler} showSidebar = {showSidebar}/>
