@@ -52,7 +52,7 @@ export async function getStaticProps({ params }) {
   const { data } = await axios.get(
     `${process.env.MAIN_DATA_GETTING_API}=${Number(
       params.searchItems[1]
-    )}&occupation=${params.searchItems[0]}`
+    )}&occupation=${params.searchItems[0]}&lat=29.6857&lng=76.9905`
   );
 
   return {
