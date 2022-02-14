@@ -57,6 +57,7 @@ export default function Form() {
     console.log(data.secure_url)
     setUserInfo({...userInfo,img:data.secure_url})
     console.log(userInfo)
+    console.log("data "+data)
 
   }
   return (
