@@ -34,7 +34,7 @@ function HomePage() {
         <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3  items-center">
           <Link href="/Raj Mistry/1">
             <button className="categoryCards">
-              <div className="relative h-7 w-7 lg:h-10 lg:w-10">
+              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
                   src={rajMistryImg}
                   layout="fill"
@@ -47,7 +47,7 @@ function HomePage() {
           </Link>
           <Link href="Tile Granite worker/1">
             <button className="categoryCards">
-              <div className="relative h-7 w-7 lg:h-10 lg:w-10">
+              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
                   src={tileWorkerImg}
                   layout="fill"
@@ -60,7 +60,7 @@ function HomePage() {
           </Link>
           <Link href="/Painter/1">
             <div className="categoryCards">
-              <div className="relative h-7 w-7 lg:h-10 lg:w-10">
+              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
                   src={painterImg}
                   layout="fill"
@@ -73,7 +73,7 @@ function HomePage() {
           </Link>
           <Link href="/Carpenter/1">
             <div className="categoryCards">
-              <div className="relative h-7 w-7 lg:h-10 lg:w-10">
+              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
                   src={carpenterImg}
                   layout="fill"
@@ -86,7 +86,7 @@ function HomePage() {
           </Link>
           <Link href="/Welder/1">
             <div className="categoryCards">
-              <div className="relative h-7 w-7 lg:h-10 lg:w-10">
+              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
                   src={welderImg}
                   layout="fill"
@@ -99,7 +99,7 @@ function HomePage() {
           </Link>
           <Link href="/Electrician/1">
             <div className="categoryCards">
-              <div className="relative h-7 w-7 lg:h-10 lg:w-10">
+              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
                   src={electricianImg}
                   layout="fill"
@@ -112,7 +112,7 @@ function HomePage() {
           </Link>
           <Link href="/Plumber/1">
             <div className="categoryCards">
-              <div className="relative h-7 w-7 lg:h-10 lg:w-10">
+              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
                   src={plumberImg}
                   layout="fill"
@@ -125,7 +125,7 @@ function HomePage() {
           </Link>
           <Link href="/Maid/1" >
             <div className="categoryCards">
-              <div className="relative h-7 w-7 lg:h-10 lg:w-10">
+              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
                   src={maidImg}
                   layout="fill"
@@ -138,7 +138,7 @@ function HomePage() {
           </Link>
           <Link href="/Labour/1">
             <button className="categoryCards">
-              <div className="relative h-7 w-7 lg:h-10 lg:w-10">
+              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
                   src={helperImg}
                   layout="fill"

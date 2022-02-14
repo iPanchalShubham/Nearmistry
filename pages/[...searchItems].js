@@ -50,7 +50,7 @@ export default function ResultItems({ data }) {
 export async function getStaticProps({ params }) {
   // const {occupation} = context.query
   const { data } = await axios.get(
-    `https://labrecruit.herokuapp.com/volunteerSection/homePage?page=${Number(
+    `${process.env.MAIN_DATA_GETTING_API}=${Number(
       params.searchItems[1]
     )}&occupation=${params.searchItems[0]}`
   );
@@ -66,7 +66,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   // /homePage/getInfo
   const { data } = await axios.get(
-    "https://labrecruit.herokuapp.com/volunteerSection/homePage/getInfo"
+    `${process.env.GET_OCCUPATION_ARRAY_API}`
   );
   let fetchedOccupations = data;
   const modifiedOccupations = [];

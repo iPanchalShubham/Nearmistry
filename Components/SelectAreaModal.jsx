@@ -7,7 +7,7 @@ export default function SelectAreaModal({ showModal, click,area}) {
     try {
       const res = await axios
         .get(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${e?.target.value}.json?country=in&limit=8&types=place%2Caddress%2Cdistrict%2Clocality%2Cneighborhood%2Cpoi&autocomplete=true&fuzzyMatch=true&access_token=pk.eyJ1Ijoic2h1YmhhbXBhbmNoYWwiLCJhIjoiY2t5eWI3NnM1MGlobTJ2cWtwN3oxY2V4eiJ9.0IM84Kv1l-NDFzfs6A2Ztg`
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${e?.target.value}.json?country=in&limit=8&types=place%2Caddress%2Cdistrict%2Clocality%2Cneighborhood%2Cpoi&autocomplete=true&fuzzyMatch=true&access_token=${process.env.NEXT_PUBLIC_API_TOKEN}`
         )
         .then((res) => res.data.features);
       setSuggestions(res);
@@ -17,10 +17,8 @@ export default function SelectAreaModal({ showModal, click,area}) {
   };
   const inputHandler = (e) =>{
     setInput(e)
-    console.log("Looke this boi"+e)
   }
-  console.log("Rendered!");
-  console.log(input);
+
   return (
     <>
       {showModal ? (
