@@ -1,7 +1,7 @@
 import React from "react";
-import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
+import CopyrightFooter from "./CopyrightFooter";
 export default function Form() {
     const [suggestions, setSuggestions] = useState([]);
   const [input,setInput] = useState('')
@@ -200,14 +200,7 @@ export default function Form() {
           </div>
         </div>
 
-        <footer className="w-full bg-grey-lighter py-8">
-          <div className="container mx-auto text-center px-8">
-            <p className="text-grey-dark mb-2 text-sm">
-              This is a product of{" "}
-              <span className="font-bold"><Link href="/AboutUs">Usherr</Link></span>
-            </p>
-          </div>
-        </footer>
+        <CopyrightFooter/>
       </div>
     </div>
   );
