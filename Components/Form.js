@@ -3,13 +3,29 @@ import { useState } from "react";
 import axios from "axios";
 import CopyrightFooter from "./CopyrightFooter";
 export default function Form() {
-    const [suggestions, setSuggestions] = useState([]);
-  const [input,setInput] = useState('')
+  const [suggestions, setSuggestions] = useState([]);
+  const [input, setInput] = useState("");
+  /*FORM DATA */
+  const [userInfo, setUserInfo] = useState({
+    fName: "",
+    lName: "",
+    age: "",
+    gender: "",
+    phoneNumber: "",
+    img: "",
+    occupation: "",
+    coordinates:"",
+    location:""
+  });
+
+  //*** FUNCTION FETCHING REPONSE FROM MAPBOX API. ***
+
   const fetchRes = async (e) => {
     try {
       const res = await axios
         .get(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${e?.target.value}.json?country=in&limit=8&types=place%2Caddress%2Cdistrict%2Clocality%2Cneighborhood%2Cpoi&autocomplete=true&fuzzyMatch=true&access_token=${process.env.API_TOKEN}`
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${e?.target.value}.json?country=in&limit=7&types=place%2Cpostcode%2Caddress%2Clocality%2Cneighborhood%2Cdistrict&autocomplete=true&fuzzyMatch=true&routing=true&worldview=in&access_token=${process.env.API_TOKEN}
+          `
         )
         .then((res) => res.data.features);
       setSuggestions(res);
@@ -17,8 +33,19 @@ export default function Form() {
       console.log(e.message);
     }
   };
-  const inputHandler = (e) =>{
-    setInput(e)
+  // *** FUNCTION HANDLING THE CLICK ON SUGGESTIONS ***
+  const inputHandler = (e,res) => {
+    setInput(e);
+    if (res) {
+      setUserInfo({ ...userInfo, coordinates:res?.geometry.coordinates,location:res?.text })
+    }
+  };
+  
+  const okHandler = (res) =>{
+    setSuggestions([])
+  }
+  const registerHandler = () =>{
+    console.log(userInfo)
   }
   return (
     <div>
@@ -43,6 +70,9 @@ export default function Form() {
                       id="first_name"
                       type="text"
                       placeholder="first name"
+                      onChange={(e) =>
+                        setUserInfo({ ...userInfo, fName: e.target.value })
+                      }
                     />
                   </div>
                   <div className="w-1/2 ml-1">
@@ -57,6 +87,9 @@ export default function Form() {
                       id="last_name"
                       type="text"
                       placeholder="last name"
+                      onChange={(e) =>
+                        setUserInfo({ ...userInfo, lName: e.target.value })
+                      }
                     />
                   </div>
                 </div>
@@ -74,6 +107,12 @@ export default function Form() {
                       type="tel"
                       maxLength={10}
                       placeholder="Phone Number"
+                      onChange={(e) =>
+                        setUserInfo({
+                          ...userInfo,
+                          phoneNumber: e.target.value,
+                        })
+                      }
                     />
                   </div>
                   <div className="w-[25%] ml-1">
@@ -87,16 +126,28 @@ export default function Form() {
                       className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
                       id="age"
                       type="number"
-                      min={18}
-                      max={60}
+                      min="18"
+                      max="60"
+                      
                       placeholder="Age"
+                      onChange={(e) =>
+                        setUserInfo({ ...userInfo, age: e.target.value })
+                      }
                     />
                   </div>
                 </div>
                 <div className="mb-4 space-x-6 flex justify-center font-medium">
                   <div className="space-x-2">
                     {" "}
-                    <input type="radio" id="Male" name="gender" value="Male" />
+                    <input
+                      type="radio"
+                      id="Male"
+                      name="gender"
+                      value="Male"
+                      onChange={(e) =>
+                        setUserInfo({ ...userInfo, gender: e.target.value })
+                      }
+                    />
                     <label htmlFor="Male">Male</label>
                   </div>
                   <div className="space-x-2">
@@ -106,11 +157,22 @@ export default function Form() {
                       id="Female"
                       name="gender"
                       value="Female"
+                      onChange={(e) =>
+                        setUserInfo({ ...userInfo, gender: e.target.value })
+                      }
                     />
                     <label htmlFor="Female">Female</label>
                   </div>
                   <div className="space-x-2">
-                    <input type="radio" id="Other" name="gender" value="Other" />
+                    <input
+                      type="radio"
+                      id="Other"
+                      name="gender"
+                      value="Other"
+                      onChange={(e) =>
+                        setUserInfo({ ...userInfo, gender: e.target.value })
+                      }
+                    />
                     <label htmlFor="Other">Other</label>
                   </div>
                 </div>
@@ -127,6 +189,9 @@ export default function Form() {
                       name="occupations"
                       id="occupation"
                       className="appearance-none border rounded w-full py-2 px-3 "
+                      onChange={(e) =>
+                        setUserInfo({ ...userInfo, occupation: e.target.value })
+                      }
                     >
                       <option value="Rajmistry">Rajmistry</option>
                       <option value="Labour">Labour</option>
@@ -142,55 +207,64 @@ export default function Form() {
                     </select>
                   </div>
                 </div>
-                <div className="mb-4" >
+                <div className="mb-4">
                   {" "}
                   <label
                     className="block text-grey-darker text-sm font-bold mb-2"
                     htmlFor="img"
+                   
                   >
                     Select image
                   </label>
-                  <input type="file" id="img" name="img" accept="image/*" />
+                  <input type="file" id="img" name="img" accept="image/*"  onChange={(e) =>
+                      setUserInfo({ ...userInfo, img: e.target.value })
+                    }/>
                 </div>
-                <label
-                    className="block text-sm font-bold mb-2"
-                    htmlFor="area"
-                  >
-                    Search and select your area
-                  </label>
+                <label className="block text-sm font-bold mb-2" htmlFor="area">
+                  Search and select your area
+                </label>
                 <div className="flex items-center sticky z-30">
                   <div className="flex rounded ml-1">
                     <input
                       type="text"
                       id="area"
-                      className="py-2 w-[270px] outline-blue-200 border-2 rounded"
+                      className="py-2 w-[210px] outline-blue-200 border-2 rounded"
                       placeholder="Where you provide your service"
-                      onChange={(e) => {fetchRes(e);inputHandler(e.currentTarget.value)}}
-                      value = {input}
+                      onChange={(e) => {
+                        fetchRes(e);
+                        inputHandler(e.currentTarget.value)
+                      }}
+                      value={input}
                     />
+                     <button className="flex items-center justify-center px-4  text-white bg-[#6271a5] rounded-sm"
+                     onClick={okHandler}
+                     >
+                      OK
+                    </button>
                   </div>
                 </div>
 
-               
                 <div className="flex flex-col ga ml-8 overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll">
-                  {suggestions?.map((res,index) => (
-                      <div 
+                  {suggestions?.map((res, index) => (
+                    <div
                       className="mt-[13px] font-medium cursor-pointer"
-                      onClick={(e) => {area(e.currentTarget.textContent);console.log(res.geometry.type,res.geometry.coordinates);inputHandler(e.currentTarget.innerText)}}
-                      key = {index}
-                      >
-                        {res.text}
+                      onClick={(e) => {
+                        inputHandler(e.currentTarget.innerText,res);
+                      }}
+                      key={index}
+                    >
+                      {res.text}
                       <span className="ml-3 text-sm text-gray-500 mt-1.5">
-                        {res.place_name.split(',').slice(1)}
+                        {res.place_name.split(",").slice(1).toString()}
                       </span>
-
                     </div>
                   ))}
-                  </div>
+                </div>
                 <div className="flex items-center justify-end mt-8">
                   <button
                     className="bg-[#5370cf] hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-md"
                     type="submit"
+                    onClick={registerHandler}
                   >
                     Register
                   </button>
@@ -200,7 +274,7 @@ export default function Form() {
           </div>
         </div>
 
-        <CopyrightFooter/>
+        <CopyrightFooter />
       </div>
     </div>
   );

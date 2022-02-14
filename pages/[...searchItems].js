@@ -6,6 +6,7 @@ import Footer from "../Components/Footer.jsx";
 import Pagination from '../Components/Pagination'
 import Head from "next/head";
 export default function ResultItems({ data }) {
+  console.log(data)
   return (
     <div>
       <Head>
