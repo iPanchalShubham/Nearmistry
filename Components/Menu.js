@@ -17,20 +17,27 @@ const Menu = ({ MenuHandler, showSidebar }) => {
       >
         <h2 className="text-3xl mt-9 font-thin">Nearmistry.com</h2>
         <hr className="" />
-        <div
-          className="mt-10 space-y-3 font-extralight text-xl"
-          onClick={() => router.push(`/404.js`)}
-        >
-          <h4 className="cursor-pointer">Why us?</h4>
-          <h4 className="cursor-pointer">Become a Volunteer</h4>
+        <div className="mt-10 space-y-3 font-extralight text-xl">
           <h4>
-            <Link href={"/registration"} className="cursor-pointer">
+            <Link href = {"/404.js"}>Why us?</Link>{" "}
+          </h4>
+          <h4>
+            <Link href = {"/404.js"}>Become a Volunteer</Link>{" "}
+          </h4>
+          <h4>
+            <Link href={"/registration"}>
               Registration
             </Link>
           </h4>
-          <h4 className="cursor-pointer">Contact us</h4>
-          <h4 className="cursor-pointer">About us</h4>
-          <h4 className="cursor-pointer">Help us</h4>
+          <h4>
+            <Link href = {"/404.js"}>Contact us</Link>{" "}
+          </h4>
+          <h4>
+            <Link href = {"/404.js"}>About us</Link>{" "}
+          </h4>
+          <h4>
+            <Link href = {"/404.js"}>Help us</Link>{" "}
+          </h4>
         </div>
       </div>
     </>

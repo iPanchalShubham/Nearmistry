@@ -41,14 +41,26 @@ export default function Form() {
     }
   };
   
-  const okHandler = (res) =>{
+  const okHandler = (e) =>{
+    e.preventDefault()
     setSuggestions([])
   }
-  const registerHandler = () =>{
+  const registerHandler = async(e) =>{
+    e.preventDefault()
+    const formData = new FormData();
+    formData.append('file',e.currentTarget.img.files[0])
+    formData.append('upload_preset',process.env.THUMBNAIL_PRESET)
+    const data =  await fetch(`https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,{
+      method:'POST',
+      body:formData,
+    }).then(r => r.json())
+    console.log(data.secure_url)
+    setUserInfo({...userInfo,img:data.secure_url})
     console.log(userInfo)
+
   }
   return (
-    <div>
+    <form onSubmit={(e)=> registerHandler(e)} >
       <div className="font-sans antialiased bg-grey-lightest">
         <div className="w-full bg-grey-lightest">
           <div className="container mx-auto py-8">
@@ -216,8 +228,8 @@ export default function Form() {
                   >
                     Select image
                   </label>
-                  <input type="file" id="img" name="img" accept="image/*"  onChange={(e) =>
-                      setUserInfo({ ...userInfo, img: e.target.value })
+                  <input type="file" id="img" name="img" accept=".jpg, .png, .jpeg"  onChange={(e) =>
+                      setUserInfo({ ...userInfo, img: e.currentTarget })
                     }/>
                 </div>
                 <label className="block text-sm font-bold mb-2" htmlFor="area">
@@ -237,7 +249,7 @@ export default function Form() {
                       value={input}
                     />
                      <button className="flex items-center justify-center px-4  text-white bg-[#6271a5] rounded-sm"
-                     onClick={okHandler}
+                     onClick={(e)=> okHandler(e)}
                      >
                       OK
                     </button>
@@ -264,7 +276,6 @@ export default function Form() {
                   <button
                     className="bg-[#5370cf] hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-md"
                     type="submit"
-                    onClick={registerHandler}
                   >
                     Register
                   </button>
@@ -276,6 +287,6 @@ export default function Form() {
 
         <CopyrightFooter />
       </div>
-    </div>
+    </form>
   );
 }
