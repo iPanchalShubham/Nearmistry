@@ -33,13 +33,13 @@ export default function Form() {
                 <div className="flex mb-4">
                   <div className="w-1/2 mr-1">
                     <label
-                      className="block text-grey-darker text-sm font-bold mb-2"
+                      className="block text-sm font-bold mb-2"
                       htmlFor="first_name"
                     >
                       First Name
                     </label>
                     <input
-                      className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                      className="appearance-none border rounded w-full py-2 px-3"
                       id="first_name"
                       type="text"
                       placeholder="first name"
@@ -47,13 +47,13 @@ export default function Form() {
                   </div>
                   <div className="w-1/2 ml-1">
                     <label
-                      className="block text-grey-darker text-sm font-bold mb-2"
+                      className="block text-sm font-bold mb-2"
                       htmlFor="last_name"
                     >
                       Last Name
                     </label>
                     <input
-                      className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                      className="appearance-none border rounded w-full py-2 px-3"
                       id="last_name"
                       type="text"
                       placeholder="last name"
@@ -63,13 +63,13 @@ export default function Form() {
                 <div className="flex mb-4">
                   <div className="w-[75%] mr-1">
                     <label
-                      className="block text-grey-darker text-sm font-bold mb-2"
+                      className="block text-sm font-bold mb-2"
                       htmlFor="phone_number"
                     >
                       Phone Number
                     </label>
                     <input
-                      className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                      className="appearance-none border rounded w-full py-2 px-3"
                       id="phone_number"
                       type="tel"
                       maxLength={10}
@@ -78,7 +78,7 @@ export default function Form() {
                   </div>
                   <div className="w-[25%] ml-1">
                     <label
-                      className="block text-grey-darker text-sm font-bold mb-2"
+                      className="block text-sm font-bold mb-2"
                       htmlFor="age"
                     >
                       Age
@@ -118,7 +118,7 @@ export default function Form() {
                   <div>
                     <label
                       htmlFor="occupation"
-                      className="block text-grey-darker text-sm font-bold mb-2"
+                      className="block text-sm font-bold mb-2"
                     >
                       Occupation
                     </label>
@@ -126,7 +126,7 @@ export default function Form() {
                     <select
                       name="occupations"
                       id="occupation"
-                      className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                      className="appearance-none border rounded w-full py-2 px-3 "
                     >
                       <option value="Rajmistry">Rajmistry</option>
                       <option value="Labour">Labour</option>
@@ -153,7 +153,7 @@ export default function Form() {
                   <input type="file" id="img" name="img" accept="image/*" />
                 </div>
                 <label
-                    className="block text-grey-darker text-sm font-bold mb-2"
+                    className="block text-sm font-bold mb-2"
                     htmlFor="area"
                   >
                     Search and select your area
