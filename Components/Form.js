@@ -59,7 +59,7 @@ export default function Form() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", e.currentTarget.files[0]);
-    formData.append("upload_preset", process.env.THUMBNAIL_PRESET);
+    formData.append("upload_preset","Shubh*Hustler");
     setLoadingVar("Processing...")
     const data = await fetch(
       `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
