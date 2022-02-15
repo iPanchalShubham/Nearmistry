@@ -20,7 +20,7 @@ export default function Form() {
       coordinates: [],
     },
   });
-
+  const [loadingVar, setLoadingVar] = useState("Register");
   //*** FUNCTION FETCHING REPONSE FROM MAPBOX API. ***
 
   const fetchRes = async (e) => {
@@ -60,15 +60,19 @@ export default function Form() {
     const formData = new FormData();
     formData.append("file", e.currentTarget.files[0]);
     formData.append("upload_preset", process.env.THUMBNAIL_PRESET);
+    setLoadingVar("Processing...")
     const data = await fetch(
       `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
       {
         method: "POST",
         body: formData,
       }
-    )
+      )
       .then((r) => r.json())
-      .then((r) => setUserInfo({ ...userInfo, imgUrl: r.secure_url }))
+      .then((r) => {setUserInfo({ ...userInfo, imgUrl: r.secure_url })
+        setLoadingVar("Register")
+        console.log(r.secure_url)
+    })
   };
 
   const registerHandler = async (e) => {
@@ -81,12 +85,12 @@ export default function Form() {
         method: "POST",
         body: userInfoNew,
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
           // 'Content-Type': 'application/x-www-form-urlencoded',
-        }
+        },
       }
     ).then((r) => r.json());
-    console.log(data2)
+    console.log(data2);
   };
   return (
     <form onSubmit={(e) => registerHandler(e)}>
@@ -111,7 +115,6 @@ export default function Form() {
                       id="first_name"
                       type="text"
                       placeholder="first name"
-                      
                       onChange={(e) =>
                         setUserInfo({ ...userInfo, fName: e.target.value })
                       }
@@ -172,7 +175,7 @@ export default function Form() {
                       type="number"
                       min="18"
                       max="60"
-                      required 
+                      required
                       placeholder="Age"
                       onChange={(e) =>
                         setUserInfo({ ...userInfo, age: e.target.value })
@@ -239,7 +242,9 @@ export default function Form() {
                         setUserInfo({ ...userInfo, occupation: e.target.value })
                       }
                     >
-                      <option value="" disabled selected hidden>Choose Occupation</option>
+                      <option value="" disabled selected hidden>
+                        Choose Occupation
+                      </option>
                       <option value="Rajmistry">Rajmistry</option>
                       <option value="Labour">Labour</option>
                       <option value="Tile Granite worker">
@@ -266,7 +271,7 @@ export default function Form() {
                     type="file"
                     id="img"
                     name="img"
-                    required 
+                    required
                     accept=".jpg, .png, .jpeg"
                     onChange={(e) => imageHandler(e)}
                   />
@@ -286,7 +291,7 @@ export default function Form() {
                         inputHandler(e.currentTarget.value);
                       }}
                       value={input}
-                      autocomplete="off"
+                      autoComplete="off"
                       required
                     />
                     <button
@@ -318,8 +323,9 @@ export default function Form() {
                   <button
                     className="bg-[#5370cf] hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-md"
                     type="submit"
+                    disabled={loadingVar == "Register" ? false : true}
                   >
-                    Register
+                    {loadingVar} 
                   </button>
                 </div>
               </div>
