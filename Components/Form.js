@@ -12,10 +12,13 @@ export default function Form() {
     age: "",
     gender: "",
     phoneNumber: "",
-    img: "",
+    imgUrl: "",
     occupation: "",
-    coordinates:"",
-    location:""
+    areaName: "",
+    location: {
+      type: "Point",
+      coordinates: [],
+    },
   });
 
   //*** FUNCTION FETCHING REPONSE FROM MAPBOX API. ***
@@ -34,34 +37,59 @@ export default function Form() {
     }
   };
   // *** FUNCTION HANDLING THE CLICK ON SUGGESTIONS ***
-  const inputHandler = (e,res) => {
+  const inputHandler = (e, res) => {
     setInput(e);
     if (res) {
-      setUserInfo({ ...userInfo, coordinates:res?.geometry.coordinates,location:res?.text })
+      setUserInfo((prevState) => ({
+        ...prevState,
+        areaName: res?.text,
+        location: {
+          ...prevState.location,
+          coordinates: res?.geometry.coordinates,
+        },
+      }));
     }
   };
-  
-  const okHandler = (e) =>{
-    e.preventDefault()
-    setSuggestions([])
-  }
-  const registerHandler = async(e) =>{
-    e.preventDefault()
-    const formData = new FormData();
-    formData.append('file',e.currentTarget.img.files[0])
-    formData.append('upload_preset',process.env.THUMBNAIL_PRESET)
-    const data =  await fetch(`https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,{
-      method:'POST',
-      body:formData,
-    }).then(r => r.json())
-    console.log(data.secure_url)
-    setUserInfo({...userInfo,img:data.secure_url})
-    console.log(userInfo)
-    console.log("data "+data)
 
-  }
+  const okHandler = (e) => {
+    e.preventDefault();
+    setSuggestions([]);
+  };
+  const imageHandler = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", e.currentTarget.files[0]);
+    formData.append("upload_preset", process.env.THUMBNAIL_PRESET);
+    const data = await fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      .then((r) => r.json())
+      .then((r) => setUserInfo({ ...userInfo, imgUrl: r.secure_url }))
+  };
+
+  const registerHandler = async (e) => {
+    e.preventDefault();
+    const userInfoNew = JSON.stringify(userInfo);
+    console.log(userInfoNew);
+    const data2 = await fetch(
+      "https://labrecruit.herokuapp.com/volunteerSection/newUser",
+      {
+        method: "POST",
+        body: userInfoNew,
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        }
+      }
+    ).then((r) => r.json());
+    console.log(data2)
+  };
   return (
-    <form onSubmit={(e)=> registerHandler(e)} >
+    <form onSubmit={(e) => registerHandler(e)}>
       <div className="font-sans antialiased bg-grey-lightest">
         <div className="w-full bg-grey-lightest">
           <div className="container mx-auto py-8">
@@ -141,7 +169,6 @@ export default function Form() {
                       type="number"
                       min="18"
                       max="60"
-                      
                       placeholder="Age"
                       onChange={(e) =>
                         setUserInfo({ ...userInfo, age: e.target.value })
@@ -225,13 +252,16 @@ export default function Form() {
                   <label
                     className="block text-grey-darker text-sm font-bold mb-2"
                     htmlFor="img"
-                   
                   >
                     Select image
                   </label>
-                  <input type="file" id="img" name="img" accept=".jpg, .png, .jpeg"  onChange={(e) =>
-                      setUserInfo({ ...userInfo, img: e.currentTarget })
-                    }/>
+                  <input
+                    type="file"
+                    id="img"
+                    name="img"
+                    accept=".jpg, .png, .jpeg"
+                    onChange={(e) => imageHandler(e)}
+                  />
                 </div>
                 <label className="block text-sm font-bold mb-2" htmlFor="area">
                   Search and select your area
@@ -245,13 +275,14 @@ export default function Form() {
                       placeholder="Where you provide your service"
                       onChange={(e) => {
                         fetchRes(e);
-                        inputHandler(e.currentTarget.value)
+                        inputHandler(e.currentTarget.value);
                       }}
                       value={input}
                     />
-                     <button className="flex items-center justify-center px-4  text-white bg-[#6271a5] rounded-sm"
-                     onClick={(e)=> okHandler(e)}
-                     >
+                    <button
+                      className="flex items-center justify-center px-4  text-white bg-[#6271a5] rounded-sm"
+                      onClick={(e) => okHandler(e)}
+                    >
                       OK
                     </button>
                   </div>
@@ -262,7 +293,7 @@ export default function Form() {
                     <div
                       className="mt-[13px] font-medium cursor-pointer"
                       onClick={(e) => {
-                        inputHandler(e.currentTarget.innerText,res);
+                        inputHandler(e.currentTarget.innerText, res);
                       }}
                       key={index}
                     >
