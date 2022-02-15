@@ -111,6 +111,7 @@ export default function Form() {
                       id="first_name"
                       type="text"
                       placeholder="first name"
+                      
                       onChange={(e) =>
                         setUserInfo({ ...userInfo, fName: e.target.value })
                       }
@@ -128,6 +129,7 @@ export default function Form() {
                       id="last_name"
                       type="text"
                       placeholder="last name"
+                      required
                       onChange={(e) =>
                         setUserInfo({ ...userInfo, lName: e.target.value })
                       }
@@ -147,6 +149,7 @@ export default function Form() {
                       id="phone_number"
                       type="tel"
                       maxLength={10}
+                      required
                       placeholder="Phone Number"
                       onChange={(e) =>
                         setUserInfo({
@@ -169,6 +172,7 @@ export default function Form() {
                       type="number"
                       min="18"
                       max="60"
+                      required 
                       placeholder="Age"
                       onChange={(e) =>
                         setUserInfo({ ...userInfo, age: e.target.value })
@@ -197,6 +201,7 @@ export default function Form() {
                       id="Female"
                       name="gender"
                       value="Female"
+                      required
                       onChange={(e) =>
                         setUserInfo({ ...userInfo, gender: e.target.value })
                       }
@@ -229,10 +234,12 @@ export default function Form() {
                       name="occupations"
                       id="occupation"
                       className="appearance-none border rounded w-full py-2 px-3 "
+                      required
                       onChange={(e) =>
                         setUserInfo({ ...userInfo, occupation: e.target.value })
                       }
                     >
+                      <option value="" disabled selected hidden>Choose Occupation</option>
                       <option value="Rajmistry">Rajmistry</option>
                       <option value="Labour">Labour</option>
                       <option value="Tile Granite worker">
@@ -259,6 +266,7 @@ export default function Form() {
                     type="file"
                     id="img"
                     name="img"
+                    required 
                     accept=".jpg, .png, .jpeg"
                     onChange={(e) => imageHandler(e)}
                   />
@@ -278,6 +286,8 @@ export default function Form() {
                         inputHandler(e.currentTarget.value);
                       }}
                       value={input}
+                      autocomplete="off"
+                      required
                     />
                     <button
                       className="flex items-center justify-center px-4  text-white bg-[#6271a5] rounded-sm"
