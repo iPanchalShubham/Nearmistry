@@ -30,7 +30,6 @@ export default function ResultItems({ data }) {
             {data?.data.map((data, index) => (
               <ItemCard
                 key={index}
-                img={data?.resizedBase64}
                 fName={data?.fName}
                 lName={data?.lName}
                 occupation={data?.occupation}
@@ -38,6 +37,8 @@ export default function ResultItems({ data }) {
                 gender={data?.gender}
                 phoneNumber={data?.phoneNumber}
                 selectedFile={data?.selectedFile}
+                imgUrl = {data?.imgUrl}
+                fullImgUrl = {data?.fullImgUrl}
               />
             ))}
           </div>
@@ -69,6 +70,7 @@ export async function getStaticPaths() {
   const { data } = await axios.get(
     `${process.env.GET_OCCUPATION_ARRAY_API}`
   );
+  console.log(data)
   let fetchedOccupations = data;
   const modifiedOccupations = [];
 

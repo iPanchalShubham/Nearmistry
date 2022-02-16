@@ -5,14 +5,14 @@ import { PhoneIcon } from "@heroicons/react/solid";
 import Modal from "./modal";
 
 
-function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,selectedFile}) {
+function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,fullImgUrl,imgUrl}) {
   const [showModal,setShowModal] = useState(false);
   return (<div>
-    <Modal showModal={showModal} click={()=> setShowModal(!showModal)} selectedFile={selectedFile} img = {img}/>
+    <Modal showModal={showModal} click={()=> setShowModal(!showModal)} selectedFile={fullImgUrl} img = {imgUrl}/>
     <div className="flex shadow-md m-4 rounded-md bg-white min-w-[] max-w-[370px] max-h-[225px]">
       <div className="relative h-60 w-40 m-2">
         <Image
-          src={img}
+          src={imgUrl}
           layout="responsive"
           width={160}
           height={210}
