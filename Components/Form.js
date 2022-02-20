@@ -20,6 +20,7 @@ export default function Form() {
       coordinates: [],
     },
   });
+  const [cloudFormData, setCloudFormData] = useState();
   const [loadingVar, setLoadingVar] = useState("Register");
   //*** FUNCTION FETCHING REPONSE FROM MAPBOX API. ***
 
@@ -56,41 +57,54 @@ export default function Form() {
     setSuggestions([]);
   };
   const imageHandler = async (e) => {
-    e.preventDefault();
     const formData = new FormData();
+    e.preventDefault();
     formData.append("file", e.currentTarget.files[0]);
-    formData.append("upload_preset","Shubh*Hustler");
-    setLoadingVar("Processing...")
-    const data = await fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
-      {
-        method: "POST",
-        body: formData,
-      }
-      )
-      .then((r) => r.json())
-      .then((r) => {setUserInfo({ ...userInfo, imgUrl: r.secure_url })
-        setLoadingVar("Register")
-        console.log(r.secure_url)
-    })
+    formData.append("upload_preset", "Shubh*Hustler");
+    setCloudFormData(formData);
   };
-
+  const cloudinaryApiDataHandler = (r) => {
+    console.log(r);
+    if (r) {
+      setUserInfo({ ...userInfo, imgUrl: r.secure_url });
+      setLoadingVar("Register");
+    } else {
+      setLoadingVar("Error");
+      alert("An error occured!");
+    }
+  };
   const registerHandler = async (e) => {
     e.preventDefault();
-    const userInfoNew = JSON.stringify(userInfo);
-    console.log(userInfoNew);
-    const data2 = await fetch(
-      "https://labrecruit.herokuapp.com/volunteerSection/newUser",
-      {
-        method: "POST",
-        body: userInfoNew,
-        headers: {
-          "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
+    setLoadingVar("Processing...");
+    try {
+      const data = await fetch(
+        `https://api-ap.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
+        {
+          method: "POST",
+          body: cloudFormData,
+        }
+      )
+        .then((r) => r.json())
+        .then((r) => cloudinaryApiDataHandler(r));
+      if (data) {
+        const jsonUserInfo = JSON.stringify(userInfo);
+        console.log(userInfoNew);
+        const data2 = await fetch(
+          "https://labrecruit.herokuapp.com/volunteerSection/newUser",
+          {
+            method: "POST",
+            body: jsonUserInfo,
+            headers: {
+              "Content-Type": "application/json",
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+          }
+        ).then((r) => r.json());
+        console.log(data2);
       }
-    ).then((r) => r.json());
-    console.log(data2);
+    } catch (error) {
+      alert(error.message);
+    }
   };
   return (
     <form onSubmit={(e) => registerHandler(e)}>
@@ -245,7 +259,7 @@ export default function Form() {
                       <option value="" disabled selected hidden>
                         Choose Occupation
                       </option>
-                      <option value="Rajmistry">Rajmistry</option>
+                      <option value="Raj Mistry">Raj mistry</option>
                       <option value="Labour">Labour</option>
                       <option value="Tile Granite worker">
                         Tile Granite worker
@@ -325,7 +339,7 @@ export default function Form() {
                     type="submit"
                     disabled={loadingVar == "Register" ? false : true}
                   >
-                    {loadingVar} 
+                    {loadingVar}
                   </button>
                 </div>
               </div>

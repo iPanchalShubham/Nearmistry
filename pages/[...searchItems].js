@@ -6,7 +6,7 @@ import Footer from "../Components/Footer.jsx";
 import Pagination from '../Components/Pagination'
 import Head from "next/head";
 export default function ResultItems({ data }) {
-  console.log(data)
+
   return (
     <div>
       <Head>
@@ -54,8 +54,9 @@ export async function getStaticProps({ params }) {
   const { data } = await axios.get(
     `${process.env.MAIN_DATA_GETTING_API}=${Number(
       params.searchItems[1]
-    )}&occupation=${params.searchItems[0]}&lat=29.6857&lng=76.9905`
+    )}&occupation=${params.searchItems[0]}`
   );
+  console.log(data)
 
   return {
     props: {
@@ -70,7 +71,7 @@ export async function getStaticPaths() {
   const { data } = await axios.get(
     `${process.env.GET_OCCUPATION_ARRAY_API}`
   );
-  console.log(data)
+  // console.log(data)
   let fetchedOccupations = data;
   const modifiedOccupations = [];
 

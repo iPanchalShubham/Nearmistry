@@ -1,8 +1,15 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-export default function SelectAreaModal({ showModal, click,area}) {
+import Link from "next/link";
+
+export default function SelectAreaModal({ showModal, click }) {
   const [suggestions, setSuggestions] = useState([]);
-  const [input,setInput] = useState('')
+  const [input, setInput] = useState("");
+  const [areaInfo, setAreaInfo] = useState({
+    areaName: "",
+    lat: "",
+    lng: "",
+  });
   const fetchRes = async (e) => {
     try {
       const res = await axios
@@ -15,9 +22,9 @@ export default function SelectAreaModal({ showModal, click,area}) {
       console.log(e.message);
     }
   };
-  const inputHandler = (e) =>{
-    setInput(e)
-  }
+  const inputHandler = (e) => {
+    setInput(e);
+  };
 
   return (
     <>
@@ -44,32 +51,56 @@ export default function SelectAreaModal({ showModal, click,area}) {
                       type="text"
                       className="py-2 w-[300px] outline-blue-200"
                       placeholder="Search your area to find workers"
-                      onChange={(e) => {fetchRes(e);inputHandler(e.currentTarget.value)}}
-                      value = {input}
+                      onChange={(e) => {
+                        fetchRes(e);
+                        inputHandler(e.currentTarget.value);
+                      }}
+                      value={input}
                     />
-                    <button className="flex items-center justify-center px-4  text-white bg-[#5370cf] rounded-sm">
-                      OK
+
+                    <button
+                      className="flex items-center justify-center px-4  text-white bg-[#5370cf] rounded-sm"
+                      onClick={areaInfo.lat?()=> click():null}
+                    >
+                      <Link
+                        href={areaInfo.lat ?{
+                          pathname: "/",
+                          query: {
+                            area: areaInfo.areaName,
+                            lat: areaInfo.lat,
+                            lng: areaInfo.lng,
+                          },
+                        } : "/"}
+                      >
+                        OK
+                      </Link>
                     </button>
                   </div>
                 </div>
 
-               
                 <div className="flex flex-col ga ml-8 h-[300px] overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll">
-                  {suggestions?.map((res,index) => (
-                      <div 
+                  {suggestions?.map((res, index) => (
+                    <div
                       className="mt-[13px] font-medium cursor-pointer"
-                      onClick={(e) => {area(e.currentTarget.textContent);console.log(res.geometry.type,res.geometry.coordinates);inputHandler(e.currentTarget.innerText)}}
-                      key = {index}
-                      >
-                        {res.text}
+                      onClick={(e) => {
+                        console.log(res.geometry.coordinates);
+                        inputHandler(e.currentTarget.innerText);
+                        setAreaInfo({
+                          ...areaInfo,
+                          areaName: res.text,
+                          lat: res.geometry.coordinates[0],
+                          lng: res.geometry.coordinates[1],
+                        });
+                      }}
+                      key={index}
+                    >
+                      {res.text}
                       <span className="ml-3 text-sm text-gray-500 mt-1.5">
-                        {res.place_name.split(',').slice(1)}
+                        {res.place_name.split(",").slice(1)}
                       </span>
-
                     </div>
                   ))}
-                  </div>
-              
+                </div>
 
                 {/*footer*/}
                 <div className="flex items-center justify-end p-1 border-t border-solid border-blueGray-200 rounded-b mt-auto">

@@ -1,24 +1,24 @@
 import { useState } from "react";
 import { MenuIcon } from "@heroicons/react/solid";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 import { LocationMarkerIcon } from "@heroicons/react/solid";
 import SelectAreaModal from "./SelectAreaModal";
 import Menu from "./Menu";
+import { useRef } from "react";
 function Header() {
   const router = useRouter();
   const [showSidebar, setShowSidebar] = useState(false);
   const [showModal,setShowModal] = useState(false)
   
-  const [area,SetArea]  = useState('select area')
+  const area = useRef("select area");
+  area.current = router.query.area || "select area"
   const MenuHandler =()=>{
     setShowSidebar(!showSidebar)
   }
   const clickHandler = ()=>{
     setShowModal(!showModal)
   }
-  const areaHandler = (areaFromAreaModal) =>{
-    SetArea(areaFromAreaModal)
-  }
+  
   
   return (
     <>
@@ -42,9 +42,9 @@ function Header() {
           <div className="h-4 w-4 lg:h-6 lg:w-5 text-red-500">
           <LocationMarkerIcon/>
           </div>
-          {area.length>11?area.slice(0,11)+'...':area}
+          {area.current.length>11?area.current.slice(0,11)+'...':area.current}
         </button>
-        <SelectAreaModal showModal={showModal} click={()=>clickHandler()} area = {areaHandler} location = {area}/>
+        <SelectAreaModal showModal={showModal} click={()=>clickHandler()} location = {area.current}/>
 
       </div>
     </>
