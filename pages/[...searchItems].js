@@ -56,7 +56,6 @@ export async function getStaticProps({ params }) {
       params.searchItems[1]
     )}&occupation=${params.searchItems[0]}`
   );
-  console.log(data)
 
   return {
     props: {
