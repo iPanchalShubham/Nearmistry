@@ -12,7 +12,7 @@ export default function NotFound() {
         <button
           className="text-[#3f51b5] font-bold uppercase text-sm px-6 py-3 mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
-          onClick={()=> router.push('/')}
+          onClick={()=> router.back()}
         >
           &#8592;Back❤️
         </button>
