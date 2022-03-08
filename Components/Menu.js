@@ -33,7 +33,7 @@ const Menu = ({ MenuHandler, showSidebar }) => {
             <Link href = {"/404.js"}>Contact us</Link>{" "}
           </h4>
           <h4>
-            <Link href = {"/404.js"}>About us</Link>{" "}
+            <Link href = {"/about"}>About us</Link>{" "}
           </h4>
           <h4>
             <Link href = {"/404.js"}>Help us</Link>{" "}

@@ -108,10 +108,10 @@ export default function Form() {
   };
   return (
     <form onSubmit={(e) => registerHandler(e)}>
-      <div className="font-sans antialiased bg-grey-lightest">
+      <div className="font-sans antialiased bg-grey-lightest  h-[85vh]">
         <div className="w-full bg-grey-lightest">
-          <div className="container mx-auto py-8">
-            <div className="w-5/6 lg:w-1/2 mx-auto bg-white rounded shadow">
+          <div className="mx-auto py-8">
+            <div className="lg:w-1/2 mx-auto bg-white">
               <div className="py-4 px-8 text-black text-2xl border-grey-lighter flex justify-center font-medium">
                 Registration
               </div>
@@ -347,8 +347,8 @@ export default function Form() {
           </div>
         </div>
 
-        <CopyrightFooter />
       </div>
+      <CopyrightFooter />
     </form>
   );
 }
