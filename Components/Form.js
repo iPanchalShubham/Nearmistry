@@ -56,22 +56,13 @@ export default function Form() {
     e.preventDefault();
     setSuggestions([]);
   };
+
   const imageHandler = async (e) => {
     const formData = new FormData();
     e.preventDefault();
     formData.append("file", e.currentTarget.files[0]);
     formData.append("upload_preset", "Shubh*Hustler");
     setCloudFormData(formData);
-  };
-  const cloudinaryApiDataHandler = (r) => {
-    console.log(r);
-    if (r) {
-      setUserInfo({ ...userInfo, imgUrl: r.secure_url });
-      setLoadingVar("Register");
-    } else {
-      setLoadingVar("Error");
-      alert("An error occured!");
-    }
   };
   const registerHandler = async (e) => {
     e.preventDefault();
@@ -83,12 +74,12 @@ export default function Form() {
           method: "POST",
           body: cloudFormData,
         }
-      )
-        .then((r) => r.json())
-        .then((r) => cloudinaryApiDataHandler(r));
+      ).then((r) => r.json());
+
       if (data) {
+        setUserInfo({ ...userInfo, imgUrl: data.secure_url });
         const jsonUserInfo = JSON.stringify(userInfo);
-        console.log(userInfoNew);
+        console.log(jsonUserInfo);
         const data2 = await fetch(
           "https://labrecruit.herokuapp.com/volunteerSection/newUser",
           {
@@ -100,10 +91,17 @@ export default function Form() {
             },
           }
         ).then((r) => r.json());
-        console.log(data2);
+        if (data2) {
+          console.log(data2);
+          setLoadingVar("Success🎉");
+        }
+      } else {
+        setLoadingVar("Register");
+        alert(error.message);
       }
     } catch (error) {
-      alert(error.message);
+      setLoadingVar("Register");
+      alert("Try re-uploading image!");
     }
   };
   return (
@@ -335,7 +333,11 @@ export default function Form() {
                 </div>
                 <div className="flex items-center justify-end mt-8">
                   <button
-                    className="bg-[#5370cf] hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-md"
+                    className={`${
+                      loadingVar == "Success🎉"
+                        ? "bg-[#4BB543]"
+                        : "bg-[#5370cf]"
+                    } hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-md`}
                     type="submit"
                     disabled={loadingVar == "Register" ? false : true}
                   >
@@ -346,7 +348,6 @@ export default function Form() {
             </div>
           </div>
         </div>
-
       </div>
       <CopyrightFooter />
     </form>
