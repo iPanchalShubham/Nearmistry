@@ -78,7 +78,7 @@ export default function Form() {
     setLoadingVar("Processing...");
     try {
       const data = await fetch(
-        `https://api-ap.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
+        `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
         {
           method: "POST",
           body: cloudFormData,
