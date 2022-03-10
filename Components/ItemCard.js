@@ -28,7 +28,7 @@ function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,full
           <div>
             <h1 className="text-[23px] lg:text-2xl">
               {fName[0]?.toUpperCase() + fName?.slice(1)}{" "}
-              {lName ? lName[0]?.toUpperCase() + lName?.slice(1) : ""}
+               {lName ? lName.length>5?lName[0]?.toUpperCase() + lName?.slice(1,3)+"..":lName[0]?.toUpperCase() + lName?.slice(1) : ""}
             </h1>
             <div className="mt-2">
               <h1 className="text-gray-500">Occupation: {occupation.length > 9?occupation.slice(0,9)+"...":occupation}</h1>
