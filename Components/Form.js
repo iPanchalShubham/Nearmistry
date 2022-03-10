@@ -64,6 +64,18 @@ export default function Form() {
     formData.append("upload_preset", "Shubh*Hustler");
     setCloudFormData(formData);
   };
+
+  const cloudinaryApiDataHandler = (r) => {
+    console.log(r);
+    if (r) {
+      setUserInfo({ ...userInfo, imgUrl: r.secure_url });
+      labrecruitApiHandler(r);
+    } else {
+      setLoadingVar("Error");
+      alert("An error occured!");
+    }
+  };
+  // ONCLICKING REGISTER BUTTON
   const registerHandler = async (e) => {
     e.preventDefault();
     setLoadingVar("Processing...");
@@ -74,10 +86,18 @@ export default function Form() {
           method: "POST",
           body: cloudFormData,
         }
-      ).then((r) => r.json());
+      )
+        .then((r) => r.json())
+        .then((r) => cloudinaryApiDataHandler(r));
 
-      if (data) {
-        setUserInfo({ ...userInfo, imgUrl: data.secure_url });
+    } catch (error) {
+      setLoadingVar("Register");
+      alert(error.message);
+    }
+  };
+  const labrecruitApiHandler =async () => {
+      try {
+        console.log(userInfo.imgUrl);
         const jsonUserInfo = JSON.stringify(userInfo);
         console.log(jsonUserInfo);
         const data2 = await fetch(
@@ -94,15 +114,10 @@ export default function Form() {
         if (data2) {
           console.log(data2);
           setLoadingVar("Success🎉");
-        }
-      } else {
-        setLoadingVar("Register");
+        } 
+      } catch (error) {
         alert(error.message);
       }
-    } catch (error) {
-      setLoadingVar("Register");
-      alert("Try re-uploading image!");
-    }
   };
   return (
     <form onSubmit={(e) => registerHandler(e)}>

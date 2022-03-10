@@ -14,6 +14,7 @@ function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,full
         <Image
           src={imgUrl}
           layout="responsive"
+          objectFit="cover"
           width={160}
           height={210}
           className="rounded-md"
