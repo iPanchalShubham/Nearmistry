@@ -12,15 +12,14 @@ export default function Form() {
     age: "",
     gender: "",
     phoneNumber: "",
-    imgUrl: "",
     occupation: "",
+    imgUrl: "",
     areaName: "",
     location: {
       type: "Point",
       coordinates: [],
     },
   });
-  const [cloudFormData, setCloudFormData] = useState();
   const [loadingVar, setLoadingVar] = useState("Register");
   //*** FUNCTION FETCHING REPONSE FROM MAPBOX API. ***
 
@@ -59,67 +58,47 @@ export default function Form() {
 
   const imageHandler = async (e) => {
     const formData = new FormData();
-    e.preventDefault();
     formData.append("file", e.currentTarget.files[0]);
-    formData.append("upload_preset", "Shubh*Hustler");
-    setCloudFormData(formData);
+    formData.append("upload_preset", process.env.THUMBNAIL_PRESET);
+    setLoadingVar("Processing...");
+    const data = await fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      .then((r) => r.json())
+      .then((r) => {
+        setUserInfo({ ...userInfo, imgUrl: r.secure_url });
+        setLoadingVar("Register");
+      });
   };
 
-  const cloudinaryApiDataHandler = (r) => {
-    console.log(r);
-    if (r) {
-      setUserInfo({ ...userInfo, imgUrl: r.secure_url });
-      if (userInfo.imgUrl !== "") {
-        labrecruitApiHandler();
-      }
-    } else {
-      setLoadingVar("Error");
-      alert("An error occured!");
-    }
-  };
   // ONCLICKING REGISTER BUTTON
   const registerHandler = async (e) => {
     e.preventDefault();
-    setLoadingVar("Processing...");
     try {
-      const data = await fetch(
-        `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
-        {
-          method: "POST",
-          body: cloudFormData,
-        }
-      )
-        .then((r) => r.json())
-        .then((r) => cloudinaryApiDataHandler(r));
-    } catch (error) {
-      setLoadingVar("Register");
-      alert(error.message);
-    }
-  };
-  const labrecruitApiHandler = async () => {
-    try {
-      console.log(userInfo.imgUrl);
-      const jsonUserInfo = JSON.stringify(userInfo);
-      console.log(jsonUserInfo);
+      const userInfoNew = JSON.stringify(userInfo);
+      console.log(userInfoNew);
+      setLoadingVar("Processing...")
       const data2 = await fetch(
         "https://labrecruit.herokuapp.com/volunteerSection/newUser",
         {
           method: "POST",
-          body: jsonUserInfo,
+          body: userInfoNew,
           headers: {
             "Content-Type": "application/json",
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
         }
       ).then((r) => r.json());
-      if (data2) {
-        console.log(data2);
-        setLoadingVar("Success🎉");
-      }
+    //  Set a model that shows response of backend api**********
     } catch (error) {
-      alert(error.message);
+      alert(error.message)
     }
   };
+
   return (
     <form onSubmit={(e) => registerHandler(e)}>
       <div className="font-sans antialiased bg-grey-lightest  h-[85vh]">
