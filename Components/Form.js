@@ -69,7 +69,9 @@ export default function Form() {
     console.log(r);
     if (r) {
       setUserInfo({ ...userInfo, imgUrl: r.secure_url });
-      labrecruitApiHandler(r);
+      if (userInfo.imgUrl !== "") {
+        labrecruitApiHandler();
+      }
     } else {
       setLoadingVar("Error");
       alert("An error occured!");
@@ -89,35 +91,34 @@ export default function Form() {
       )
         .then((r) => r.json())
         .then((r) => cloudinaryApiDataHandler(r));
-
     } catch (error) {
       setLoadingVar("Register");
       alert(error.message);
     }
   };
-  const labrecruitApiHandler =async () => {
-      try {
-        console.log(userInfo.imgUrl);
-        const jsonUserInfo = JSON.stringify(userInfo);
-        console.log(jsonUserInfo);
-        const data2 = await fetch(
-          "https://labrecruit.herokuapp.com/volunteerSection/newUser",
-          {
-            method: "POST",
-            body: jsonUserInfo,
-            headers: {
-              "Content-Type": "application/json",
-              // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-          }
-        ).then((r) => r.json());
-        if (data2) {
-          console.log(data2);
-          setLoadingVar("Success🎉");
-        } 
-      } catch (error) {
-        alert(error.message);
+  const labrecruitApiHandler = async () => {
+    try {
+      console.log(userInfo.imgUrl);
+      const jsonUserInfo = JSON.stringify(userInfo);
+      console.log(jsonUserInfo);
+      const data2 = await fetch(
+        "https://labrecruit.herokuapp.com/volunteerSection/newUser",
+        {
+          method: "POST",
+          body: jsonUserInfo,
+          headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      ).then((r) => r.json());
+      if (data2) {
+        console.log(data2);
+        setLoadingVar("Success🎉");
       }
+    } catch (error) {
+      alert(error.message);
+    }
   };
   return (
     <form onSubmit={(e) => registerHandler(e)}>

@@ -70,7 +70,7 @@ export async function getStaticPaths() {
   const { data } = await axios.get(
     `${process.env.GET_OCCUPATION_ARRAY_API}`
   );
-  // console.log(data)
+  console.log(data)
   let fetchedOccupations = data;
   const modifiedOccupations = [];
 
