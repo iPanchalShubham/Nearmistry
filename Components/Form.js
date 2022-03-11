@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import CopyrightFooter from "./Static components/CopyrightFooter";
+import CopyrightFooter from "./Static_components/CopyrightFooter";
 import FormsResponseModal from "./Modals/FormsResponseModal";
 export default function Form() {
   const [suggestions, setSuggestions] = useState([]);

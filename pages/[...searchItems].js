@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../Components/Static components/Header.js";
+import Header from "../Components/Static_components/Header.js";
 import ItemCard from "../Components/ItemCard.js";
 import axios from "axios";
-import Footer from "../Components/Static components/Footer.jsx";
+import Footer from "../Components/Static_components/Footer.jsx";
 import Pagination from '../Components/Pagination'
 import Head from "next/head";
 export default function ResultItems({ data }) {
