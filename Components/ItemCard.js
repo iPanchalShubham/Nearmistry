@@ -2,7 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { DotsHorizontalIcon } from "@heroicons/react/outline";
 import { PhoneIcon } from "@heroicons/react/solid";
-import Modal from "./modal";
+import Modal from "./Modals/modal";
 
 
 function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,fullImgUrl,imgUrl}) {

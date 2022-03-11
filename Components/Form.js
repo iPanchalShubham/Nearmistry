@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import CopyrightFooter from "./CopyrightFooter";
+import CopyrightFooter from "./Static components/CopyrightFooter";
+import FormsResponseModal from "./Modals/FormsResponseModal";
 export default function Form() {
   const [suggestions, setSuggestions] = useState([]);
   const [input, setInput] = useState("");
@@ -57,7 +58,8 @@ export default function Form() {
   };
 
   const imageHandler = async (e) => {
-    const formData = new FormData();
+    try {
+      const formData = new FormData();
     formData.append("file", e.currentTarget.files[0]);
     formData.append("upload_preset", process.env.THUMBNAIL_PRESET);
     setLoadingVar("Processing...");
@@ -73,6 +75,10 @@ export default function Form() {
         setUserInfo({ ...userInfo, imgUrl: r.secure_url });
         setLoadingVar("Register");
       });
+    } catch (error) {
+      modalHandler(error.response.status);
+    }
+    
   };
 
   // ONCLICKING REGISTER BUTTON
@@ -81,7 +87,7 @@ export default function Form() {
     try {
       const userInfoNew = JSON.stringify(userInfo);
       console.log(userInfoNew);
-      setLoadingVar("Processing...")
+      setLoadingVar("Processing...");
       const data2 = await fetch(
         "https://labrecruit.herokuapp.com/volunteerSection/newUser",
         {
@@ -92,15 +98,27 @@ export default function Form() {
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
         }
-      ).then((r) => r.json());
-    //  Set a model that shows response of backend api**********
+      ).then((r) => {
+        if (r.status !== 201) {
+          modalHandler(r.status)
+        } else {
+          modalHandler(r.status);
+        }
+      });
+      //  Set a model that shows response of backend api**********
     } catch (error) {
-      alert(error.message)
+      modalHandler(error.response.status);
     }
   };
-
+  const [openModal, setOpenModal] = useState(false);
+  const [response, setResponse] = useState("");
+  const modalHandler = (statusCode) => {
+    setOpenModal(!openModal);
+    setResponse(statusCode);
+  };
   return (
     <form onSubmit={(e) => registerHandler(e)}>
+      <FormsResponseModal openModal={openModal} response={response} clickModal = {modalHandler}/>
       <div className="font-sans antialiased bg-grey-lightest  h-[85vh]">
         <div className="w-full bg-grey-lightest">
           <div className="mx-auto py-8">
@@ -328,11 +346,9 @@ export default function Form() {
                 </div>
                 <div className="flex items-center justify-end mt-8">
                   <button
-                    className={`${
-                      loadingVar == "Success🎉"
-                        ? "bg-[#4BB543]"
-                        : "bg-[#5370cf]"
-                    } hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-md`}
+                    className="
+                       bg-[#5370cf]
+                     hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-md"
                     type="submit"
                     disabled={loadingVar == "Register" ? false : true}
                   >

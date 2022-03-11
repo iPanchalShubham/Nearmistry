@@ -1,4 +1,4 @@
-import Header from "../Components/Header";
+import Header from "../Components/Static components/Header";
 import { useRouter } from "next/router";
 export default function NotFound() {
   const router = useRouter();
