@@ -74,17 +74,18 @@ export default function Form() {
         return response.json();
       }
       modalHandler(response.status)
+      console.log(response)
     })
     .then((r) => {
       setUserInfo({ ...userInfo, imgUrl: r.secure_url });
       setLoadingVar("Register");
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error.message)
     });
      
     } catch (error) {
-      modalHandler(error);
+      modalHandler(error.response.status);
     }
     
   };
