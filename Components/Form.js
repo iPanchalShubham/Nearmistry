@@ -84,7 +84,7 @@ export default function Form() {
     });
      
     } catch (error) {
-      modalHandler(error.response.status);
+      modalHandler(error);
     }
     
   };
