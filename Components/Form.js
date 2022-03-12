@@ -69,12 +69,20 @@ export default function Form() {
         method: "POST",
         body: formData,
       }
-    )
-      .then((r) => r.json())
-      .then((r) => {
-        setUserInfo({ ...userInfo, imgUrl: r.secure_url });
-        setLoadingVar("Register");
-      });
+    ).then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      modalHandler(response.status)
+    })
+    .then((r) => {
+      setUserInfo({ ...userInfo, imgUrl: r.secure_url });
+      setLoadingVar("Register");
+    })
+    .catch((error) => {
+      console.log(error)
+    });
+     
     } catch (error) {
       modalHandler(error.response.status);
     }
@@ -84,6 +92,7 @@ export default function Form() {
   // ONCLICKING REGISTER BUTTON
   const registerHandler = async (e) => {
     e.preventDefault();
+    console.log(userInfo.imgUrl)
     try {
       const userInfoNew = JSON.stringify(userInfo);
       console.log(userInfoNew);

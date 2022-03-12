@@ -12,7 +12,7 @@ function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,full
     <div className="flex shadow-md m-4 rounded-md bg-white min-w-[] max-w-[370px] max-h-[225px]">
       <div className="relative h-60 w-40 m-2">
         <Image
-          src={imgUrl}
+          src={imgUrl||null}
           layout="responsive"
           objectFit="cover"
           width={160}
