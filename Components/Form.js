@@ -58,8 +58,7 @@ export default function Form() {
   };
 
   const imageHandler = async (e) => {
-    try {
-      const formData = new FormData();
+    const formData = new FormData();
     formData.append("file", e.currentTarget.files[0]);
     formData.append("upload_preset", process.env.THUMBNAIL_PRESET);
     setLoadingVar("Processing...");
@@ -83,10 +82,6 @@ export default function Form() {
     .catch((error) => {
       console.log(error.message)
     });
-     
-    } catch (error) {
-      modalHandler(error.response.status);
-    }
     
   };
 
