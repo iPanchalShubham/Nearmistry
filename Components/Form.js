@@ -100,13 +100,15 @@ export default function Form() {
           body: userInfoNew,
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
         }
       )
       .then((response) => {
         if (response.ok) {
+          modalHandler(response.status)
+        }
+        else if(!response.ok){
           modalHandler(response.status)
         }
         console.log(response)
