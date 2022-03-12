@@ -100,16 +100,17 @@ export default function Form() {
           body: userInfoNew,
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
         }
-      ).then((r) => {
-        if (r.status !== 201) {
-          modalHandler(r.status)
-        } else {
-          modalHandler(r.status);
+      )
+      .then((response) => {
+        if (response.ok) {
+          modalHandler(response.status)
         }
-      });
+        console.log(response)
+      })
       //  Set a model that shows response of backend api**********
     } catch (error) {
       modalHandler(error.response.status);
