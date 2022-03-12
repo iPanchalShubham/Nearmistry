@@ -27,7 +27,7 @@ function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,full
         <div className="flex flex-col mt-6 text-center items-center md:mt-6 lg:mt-8">
           <div>
             <h1 className="text-[23px] lg:text-2xl">
-              {fName[0]?.toUpperCase() + fName?.slice(1)}{" "}
+              {fName?fName[0]?.toUpperCase() + fName?.slice(1):""}{" "}
                {lName ? lName.length>5?lName[0]?.toUpperCase() + lName?.slice(1,3)+"..":lName[0]?.toUpperCase() + lName?.slice(1) : ""}
             </h1>
             <div className="mt-2">
