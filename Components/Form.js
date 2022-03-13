@@ -25,7 +25,7 @@ export default function Form() {
   });
   const [loadingVar, setLoadingVar] = useState("Register");
   // Modal controllers var
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const [response, setResponse] = useState("");
   //*** FUNCTION FETCHING REPONSE FROM MAPBOX API. ***
 
@@ -324,6 +324,7 @@ export default function Form() {
                       value={input}
                       autoComplete="off"
                       required
+                      disabled={loadingVar == "Register" ? false : true}
                     />
                     <button
                       className="flex items-center justify-center px-4  text-white bg-[#6271a5] rounded-sm"
