@@ -3,10 +3,9 @@ import Header from "../Components/Static_components/Header.js";
 import ItemCard from "../Components/ItemCard.js";
 import axios from "axios";
 import Footer from "../Components/Static_components/Footer.jsx";
-import Pagination from '../Components/Pagination'
+import Pagination from "../Components/Pagination";
 import Head from "next/head";
 export default function ResultItems({ data }) {
-
   return (
     <div>
       <Head>
@@ -23,7 +22,7 @@ export default function ResultItems({ data }) {
           content="Get instant, Police verified workers like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
         />
       </Head>
-      <Header/>
+      <Header />
       <main className="max-w-8xl mx-auto">
         <div className="pt-6">
           <div className="grid grid-cols-1 justify-center sm:grid-cols-1 sm:px-10  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
@@ -37,14 +36,17 @@ export default function ResultItems({ data }) {
                 gender={data?.gender}
                 phoneNumber={data?.phoneNumber}
                 selectedFile={data?.selectedFile}
-                imgUrl = {data?.imgUrl}
-                fullImgUrl = {data?.fullImgUrl}
+                imgUrl={data?.imgUrl}
+                fullImgUrl={data?.fullImgUrl}
               />
             ))}
           </div>
         </div>
       </main>
-      <Pagination noOfPages={data.numberOfPages} currentCategory={data.data[0].occupation}/>
+      <Pagination
+        noOfPages={data.numberOfPages}
+        currentCategory={data.data[0].occupation}
+      />
       <Footer />
     </div>
   );
@@ -67,10 +69,7 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   // /homePage/getInfo
-  const { data } = await axios.get(
-    `${process.env.GET_OCCUPATION_ARRAY_API}`
-  );
-  console.log(data)
+  const { data } = await axios.get(`${process.env.GET_OCCUPATION_ARRAY_API}`);
   let fetchedOccupations = data;
   const modifiedOccupations = [];
 

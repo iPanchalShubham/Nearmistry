@@ -4,8 +4,10 @@ import axios from "axios";
 import CopyrightFooter from "./Static_components/CopyrightFooter";
 import FormsResponseModal from "./Modals/FormsResponseModal";
 export default function Form() {
+
   const [suggestions, setSuggestions] = useState([]);
   const [input, setInput] = useState("");
+
   /*FORM DATA */
   const [userInfo, setUserInfo] = useState({
     fName: "",
@@ -22,6 +24,9 @@ export default function Form() {
     },
   });
   const [loadingVar, setLoadingVar] = useState("Register");
+  // Modal controllers var
+  const [openModal, setOpenModal] = useState(true);
+  const [response, setResponse] = useState("");
   //*** FUNCTION FETCHING REPONSE FROM MAPBOX API. ***
 
   const fetchRes = async (e) => {
@@ -51,12 +56,12 @@ export default function Form() {
       }));
     }
   };
-
+  
   const okHandler = (e) => {
     e.preventDefault();
     setSuggestions([]);
   };
-
+  
   const imageHandler = async (e) => {
     const formData = new FormData();
     formData.append("file", e.currentTarget.files[0]);
@@ -107,10 +112,8 @@ export default function Form() {
       modalHandler(response.status);
       console.log(response);
     }).catch(e => console.log(e));
-    //  Set a model that shows response of backend api**********
+    
   };
-  const [openModal, setOpenModal] = useState(false);
-  const [response, setResponse] = useState("");
   const modalHandler = (statusCode) => {
     setOpenModal(!openModal);
     setResponse(statusCode);
