@@ -68,55 +68,46 @@ export default function Form() {
         method: "POST",
         body: formData,
       }
-    ).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      modalHandler(response.status)
-      console.log(response)
-    })
-    .then((r) => {
-      setUserInfo({ ...userInfo, imgUrl: r.secure_url });
-      setLoadingVar("Register");
-    })
-    .catch((error) => {
-      console.log(error.message)
-    });
-    
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        modalHandler(response.status);
+        console.log(response);
+      })
+      .then((r) => {
+        setUserInfo({ ...userInfo, imgUrl: r.secure_url });
+        setLoadingVar("Register");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   // ONCLICKING REGISTER BUTTON
   const registerHandler = async (e) => {
     e.preventDefault();
-    console.log(userInfo.imgUrl)
-    try {
-      const userInfoNew = JSON.stringify(userInfo);
-      console.log(userInfoNew);
-      setLoadingVar("Processing...");
-      const data2 = await fetch(
-        "https://labrecruit.herokuapp.com/volunteerSection/newUser",
-        {
-          method: "POST",
-          body: userInfoNew,
-          headers: {
-            "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-          },
-        }
-      )
-      .then((response) => {
-        if (response.ok) {
-          modalHandler(response.status)
-        }
-        else if(!response.ok){
-          modalHandler(response.status)
-        }
-        console.log(response)
-      })
-      //  Set a model that shows response of backend api**********
-    } catch (error) {
-      modalHandler(error.response.status);
-    }
+    console.log(userInfo.imgUrl);
+
+    const userInfoNew = JSON.stringify(userInfo);
+    console.log(userInfoNew);
+    setLoadingVar("Processing...");
+    const data2 = await fetch(
+      "https://labrecruit.herokuapp.com/volunteerSection/newUser",
+      {
+        method: "POST",
+        body: userInfoNew,
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    ).then((response) => {
+      modalHandler(response.status);
+      console.log(response);
+    }).catch(e => console.log(e));
+    //  Set a model that shows response of backend api**********
   };
   const [openModal, setOpenModal] = useState(false);
   const [response, setResponse] = useState("");
@@ -126,7 +117,11 @@ export default function Form() {
   };
   return (
     <form onSubmit={(e) => registerHandler(e)}>
-      <FormsResponseModal openModal={openModal} response={response} clickModal = {modalHandler}/>
+      <FormsResponseModal
+        openModal={openModal}
+        response={response}
+        clickModal={modalHandler}
+      />
       <div className="font-sans antialiased bg-grey-lightest  h-[85vh]">
         <div className="w-full bg-grey-lightest">
           <div className="mx-auto py-8">
