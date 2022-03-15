@@ -8,6 +8,7 @@ export default function Home() {
       <Head>
         <title>NearMistry</title>
         <meta name="description" content="Get police verified painters, labours, masons etc in karnal" />
+        <meta name="keywords" content="nearmistry, near mistry, mistry in karnal, welders in karnal, welder in karnal, carpenters in karnal, plumbers in karnal"/>
       </Head>
       <main>
         <Header/>
