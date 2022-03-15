@@ -13,7 +13,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 function HomePage() {
-
   return (
     <div>
       <Head>
@@ -32,7 +31,7 @@ function HomePage() {
       </Head>
       <section>
         <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3  items-center">
-          <Link href="/Raj Mistry/1">
+          <Link href="/Raj Mistry/1" passHref>
             <button className="categoryCards">
               <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
@@ -45,7 +44,7 @@ function HomePage() {
               <p className="font-medium text-center">Raj Mistry</p>
             </button>
           </Link>
-          <Link href="Tile Granite worker/1">
+          <Link href="Tile Granite worker/1" passHref>
             <button className="categoryCards">
               <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
@@ -58,7 +57,7 @@ function HomePage() {
               <p className="font-medium text-center">Tile Granite worker</p>
             </button>
           </Link>
-          <Link href="/Painter/1">
+          <Link href="/Painter/1" passHref>
             <div className="categoryCards">
               <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
@@ -71,7 +70,7 @@ function HomePage() {
               <p className="font-medium text-center">Painter</p>
             </div>
           </Link>
-          <Link href="/Carpenter/1">
+          <Link href="/Carpenter/1" passHref>
             <div className="categoryCards">
               <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
@@ -84,7 +83,7 @@ function HomePage() {
               <p className="font-medium text-center">Carpenter</p>
             </div>
           </Link>
-          <Link href="/Welder/1">
+          <Link href="/Welder/1" passHref>
             <div className="categoryCards">
               <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
@@ -97,7 +96,7 @@ function HomePage() {
               <p className="font-medium text-center">Welder</p>
             </div>
           </Link>
-          <Link href="/Electrician/1">
+          <Link href="/Electrician/1" passHref>
             <div className="categoryCards">
               <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
@@ -110,7 +109,7 @@ function HomePage() {
               <p className="font-medium text-center">Electrician</p>
             </div>
           </Link>
-          <Link href="/Plumber/1">
+          <Link href="/Plumber/1" passHref>
             <div className="categoryCards">
               <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
@@ -123,7 +122,7 @@ function HomePage() {
               <p className="font-medium text-center">Plumber</p>
             </div>
           </Link>
-          <Link href="/Maid/1" >
+          <Link href="/Maid/1" passHref>
             <div className="categoryCards">
               <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
@@ -136,7 +135,7 @@ function HomePage() {
               <p className="font-medium text-center">Maid</p>
             </div>
           </Link>
-          <Link href="/Labour/1">
+          <Link href="/Labour/1" passHref>
             <button className="categoryCards">
               <div className="relative h-10 w-10 lg:h-12 lg:w-12">
                 <Image
@@ -152,7 +151,6 @@ function HomePage() {
             </button>
           </Link>
         </div>
-        
       </section>
     </div>
   );
