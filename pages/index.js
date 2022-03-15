@@ -2,6 +2,7 @@ import Head from "next/head";
 import Footer from "../Components/Static_components/Footer";
 import Header from "../Components/Static_components/Header";
 import HomePage from "../Components/HomePage";
+
 export default function Home() {
   return (
     <section>

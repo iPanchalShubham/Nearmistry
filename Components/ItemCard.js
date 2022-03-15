@@ -21,6 +21,7 @@ function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,full
           placeholder="blur"
           blurDataURL="LF7d,x_3xuRj~q_3xuRj_3?bt7Rj"
           onClick={() => setShowModal(!showModal)}
+          alt = ""
         />
       </div>
       <div className="block mx-auto">

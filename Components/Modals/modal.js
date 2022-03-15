@@ -22,6 +22,7 @@ export default function Modal({ click, showModal, selectedFile, img }) {
                     height="400"
                     placeholder="blur"
                     blurDataURL="LF7d,x_3xuRj~q_3xuRj_3?bt7Rj"
+                    alt=""
                   />
                 </div>
                 {/*footer*/}
