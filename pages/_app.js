@@ -1,9 +1,14 @@
 import '../styles/globals.css'
 import { Router } from 'next/dist/client/router';
 import ProgressBar from '@badrap/bar-of-progress';
+import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+
+  return <>
+  <Head> <meta name="viewport" content="width=device-width, initial-scale=1.0" /></Head>
+  <Component {...pageProps} />
+  </> 
 }
 const progress = new ProgressBar({
   size:2.5,
