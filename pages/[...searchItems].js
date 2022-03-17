@@ -5,16 +5,37 @@ import axios from "axios";
 import Footer from "../Components/Static_components/Footer.jsx";
 import Pagination from "../Components/Pagination";
 import Head from "next/head";
+import { useRouter } from "next/router";
+
 export default function ResultItems({ data }) {
+  const router = useRouter()
+  if (router.isFallback) {
+    return <div>
+    <Header />
+    <div className="absolute top-0 left-0 right-0 bottom-0 m-auto text-center w-[300spx] h-[100px]">
+      <div className="text-4xl font-thin lg:text-5xl">Thanks for your interest. </div>
+      <div className="text-3xl font-thin lg:text-4xl">We&apos;re working on it.</div>
+      <br />
+      <button
+        className="text-[#3f51b5] font-bold uppercase text-sm px-6 py-3 mr-1 mb-1 ease-linear transition-all duration-150"
+        type="button"
+        onClick={()=> router.back()}
+      >
+        &#8592;Back❤️
+      </button>
+    </div>
+  </div>
+ }
   return (
     <div>
+      
       <Head>
         <title>
           Get Workers for contruction, renovation, maintainance etc. in
           karnal,haryana
         </title>
         <meta
-          name="og:title"
+          name="title"
           content="Get instant, Police verified workers like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
         />
         <meta
@@ -44,8 +65,8 @@ export default function ResultItems({ data }) {
         </div>
       </main>
       <Pagination
-        noOfPages={data.numberOfPages}
-        currentCategory={data.data[0].occupation}
+        noOfPages={data?.numberOfPages}
+        currentCategory={data?.data[0].occupation}
       />
       <Footer />
     </div>
