@@ -5,7 +5,8 @@ function registration() {
   return (
     <div>
         <Header/>
-        <Form/></div>
+        <Form/>
+        </div>
   )
 }
 

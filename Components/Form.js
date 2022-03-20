@@ -3,8 +3,9 @@ import { useState } from "react";
 import axios from "axios";
 import CopyrightFooter from "./Static_components/CopyrightFooter";
 import FormsResponseModal from "./Modals/FormsResponseModal";
-export default function Form() {
+import Loading from "./Static_components/loading";
 
+export default function Form() {
   const [suggestions, setSuggestions] = useState([]);
   const [input, setInput] = useState("");
 
@@ -56,12 +57,12 @@ export default function Form() {
       }));
     }
   };
-  
+
   const okHandler = (e) => {
     e.preventDefault();
     setSuggestions([]);
   };
-  
+
   const imageHandler = async (e) => {
     const formData = new FormData();
     formData.append("file", e.currentTarget.files[0]);
@@ -108,24 +109,26 @@ export default function Form() {
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       }
-    ).then((response) => {
-      modalHandler(response.status);
-      console.log(response);
-    }).catch(e => console.log(e));
-    
+    )
+      .then((response) => {
+        modalHandler(response.status);
+        console.log(response);
+      })
+      .catch((e) => console.log(e));
   };
   const modalHandler = (statusCode) => {
     setOpenModal(!openModal);
     setResponse(statusCode);
   };
   return (
-    <form onSubmit={(e) => registerHandler(e)}>
+    <form onSubmit={(e) => registerHandler(e)} >
       <FormsResponseModal
         openModal={openModal}
         response={response}
         clickModal={modalHandler}
       />
-      <div className="font-sans antialiased bg-grey-lightest  h-[85vh]">
+          <Loading  openmodal = {loadingVar == "Processing..." & openModal == false?true:false}/>
+      <div className={`font-sans antialiased bg-grey-lightest  h-[100vh]`}>
         <div className="w-full bg-grey-lightest">
           <div className="mx-auto py-8">
             <div className="lg:w-1/2 mx-auto bg-white">
@@ -335,7 +338,7 @@ export default function Form() {
                   </div>
                 </div>
 
-                <div className="flex flex-col ga ml-8 overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll">
+                <div className="flex  flex-col ml-8 overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll">
                   {suggestions?.map((res, index) => (
                     <div
                       className="mt-[13px] font-medium cursor-pointer"
