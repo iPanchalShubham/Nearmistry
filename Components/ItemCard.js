@@ -5,11 +5,11 @@ import { PhoneIcon } from "@heroicons/react/solid";
 import Modal from "./Modals/modal";
 
 
-function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,fullImgUrl,imgUrl}) {
+function ItemCard({ fName, lName, occupation, age, gender, phoneNumber,fullImgUrl,imgUrl}) {
   const [showModal,setShowModal] = useState(false);
   return (<div>
     <Modal showModal={showModal} click={()=> setShowModal(!showModal)} selectedFile={fullImgUrl} img = {imgUrl}/>
-    <div className="flex shadow-md m-4 rounded-md bg-white min-w-[] max-w-[370px] max-h-[225px]">
+    <div className="flex shadow-md m-4 rounded-md bg-white max-w-[370px] max-h-[225px]">
       <div className="relative h-60 w-40 m-2">
         <Image
           src={imgUrl||null}
@@ -21,7 +21,7 @@ function ItemCard({ img, fName, lName, occupation, age, gender, phoneNumber,full
           placeholder="blur"
           blurDataURL="LF7d,x_3xuRj~q_3xuRj_3?bt7Rj"
           onClick={() => setShowModal(!showModal)}
-          alt = ""
+          alt = {fName||lName}
         />
       </div>
       <div className="block mx-auto">

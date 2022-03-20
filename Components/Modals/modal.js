@@ -15,7 +15,7 @@ export default function Modal({ click, showModal, selectedFile, img }) {
                   <h3 className="text-3xl font-semibold">More Information</h3>
                 </div>
                 {/*body*/}
-                <div className="relative p-6 flex-auto rounded-sm">
+                <div className="relative p-6 flex-auto">
                   <Image
                     src={selectedFile || img}
                     width="250"
@@ -23,6 +23,7 @@ export default function Modal({ click, showModal, selectedFile, img }) {
                     placeholder="blur"
                     blurDataURL="LF7d,x_3xuRj~q_3xuRj_3?bt7Rj"
                     alt=""
+                    objectFit="contain"
                   />
                 </div>
                 {/*footer*/}

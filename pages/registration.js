@@ -10,4 +10,4 @@ function registration() {
   )
 }
 
-export default registration
+export default registration;
