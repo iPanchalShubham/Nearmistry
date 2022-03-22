@@ -65,7 +65,11 @@ export default function Form() {
 
   const imageHandler = async (e) => {
     const formData = new FormData();
-    formData.append("file", e.currentTarget.files[0]);
+
+    for(let i = 0;i<e.currentTarget.files.length;i++ ){
+      formData.append("file", e.currentTarget.files[i]);
+      console.log(e.currentTarget.files[i])
+    }
     formData.append("upload_preset", "Shubh*Hustler");
     setLoadingVar("Processing...");
     const data = await fetch(
@@ -305,6 +309,7 @@ export default function Form() {
                     type="file"
                     id="img"
                     name="img"
+                    multiple
                     required
                     accept=".jpg, .png, .jpeg"
                     onChange={(e) => imageHandler(e)}

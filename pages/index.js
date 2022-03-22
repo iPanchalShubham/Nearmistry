@@ -7,17 +7,27 @@ export default function Home() {
   return (
     <section>
       <Head>
-        <title>NearMistry</title>
-        <meta name="description" content="Get police verified painters, labours, masons etc in karnal" />
-        <meta name="keywords" content="nearmistry, near mistry, mistry in karnal, welders in karnal, welder in karnal, carpenters in karnal, plumbers in karnal"/>
+        <title>Nearmistry - Instantly hire Blue-Collar professionals near you.</title>
+        <meta
+          name="description"
+          content="Find construction related shops or hire Blue-Collar (& Covid-19 safe) professionals instantly near you."
+        />
+        <meta
+          name="keywords"
+          content="nearmistry, near mistry, mistry in karnal, welders in karnal, welder in karnal, carpenters in karnal, plumbers in karnal, Rajmistry in karnal"
+        />
+        <meta
+          name="og:title"
+          content="Get instant, Police verfied people like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
+        />
       </Head>
       <main>
-        <Header/>
-        <section  className="min-h-screen" >
+        <Header />
+        <section className="min-h-screen">
           <HomePage />
         </section>
-       
-          <Footer/>
+
+        <Footer />
       </main>
     </section>
   );
@@ -25,4 +35,4 @@ export default function Home() {
 /*
 ########### FUN FACT ##############
 Relational database doesn't mean one table has a relationship with another. The word relational comes from Codd's relational algebra. Since Mongo is not based on relational algebra, it's not a relational database.
-*/ 
+*/

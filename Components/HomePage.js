@@ -9,26 +9,11 @@ import welderImg from "../public/welder.png";
 import electricianImg from "../public/electrician.png";
 import plumberImg from "../public/plumber.png";
 import maidImg from "../public/maid.png";
-import Head from "next/head";
 import Link from "next/link";
 
 function HomePage() {
   return (
     <div>
-      <Head>
-        <title>
-          Get Workers for contruction, renovation, maintainance etc. in
-          karnal,haryana
-        </title>
-        <meta
-          name="og:title"
-          content="Get instant, Police verfied people like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
-        />
-        <meta
-          name="description"
-          content="Get instant, Police verfied people like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
-        />
-      </Head>
       <section>
         <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3  items-center">
           <Link href="/Raj Mistry/1" passHref>
