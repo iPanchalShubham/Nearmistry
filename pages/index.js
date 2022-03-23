@@ -10,7 +10,7 @@ export default function Home() {
         <title>Nearmistry - Instantly hire Blue-Collar professionals near you.</title>
         <meta
           name="description"
-          content="Find construction related shops or hire Blue-Collar (& Covid-19 safe) professionals instantly near you."
+          content="Find construction related shops or hire Blue-Collar (& Covid-19 safe) professionals instantly near you for FREE."
         />
         <meta
           name="keywords"
@@ -18,7 +18,11 @@ export default function Home() {
         />
         <meta
           name="og:title"
-          content="Get instant, Police verfied people like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
+          content="Nearmistry - Instantly hire Blue-Collar professionals near you."
+        />
+        <meta
+          name="og:description"
+          content="Get construction related shops or hire Blue-Collar (& Covid-19 safe) professionals instantly near you for FREE."
         />
       </Head>
       <main>
