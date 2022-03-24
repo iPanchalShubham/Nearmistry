@@ -25,7 +25,7 @@ const Menu = ({ MenuHandler, showSidebar }) => {
             <Link href = {"/404.js"}>Become a Volunteer</Link>{" "}
           </h4>
           <h4>
-            <Link href={"/registration"}>
+            <Link href={"/nearmistry/registration"}>
               Registration
             </Link>
           </h4>

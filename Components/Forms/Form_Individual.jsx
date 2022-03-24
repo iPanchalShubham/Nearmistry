@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import CopyrightFooter from "./Static_components/CopyrightFooter";
-import FormsResponseModal from "./Modals/FormsResponseModal";
-import Loading from "./Static_components/loading";
-
+import CopyrightFooter from "../Static_components/CopyrightFooter";
+import FormsResponseModal from "../Modals/FormsResponseModal";
+import Loading from "../Static_components/loading";
 export default function Form() {
   const [suggestions, setSuggestions] = useState([]);
   const [input, setInput] = useState("");
@@ -66,10 +65,7 @@ export default function Form() {
   const imageHandler = async (e) => {
     const formData = new FormData();
 
-    for(let i = 0;i<e.currentTarget.files.length;i++ ){
-      formData.append("file", e.currentTarget.files[i]);
-      console.log(e.currentTarget.files[i])
-    }
+    formData.append("file", e.currentTarget.files[0]);
     formData.append("upload_preset", "Shubh*Hustler");
     setLoadingVar("Processing...");
     const data = await fetch(
@@ -93,6 +89,7 @@ export default function Form() {
       .catch((error) => {
         console.log(error.message);
       });
+      console.log(formData)
   };
 
   // ONCLICKING REGISTER BUTTON
@@ -125,18 +122,22 @@ export default function Form() {
     setResponse(statusCode);
   };
   return (
-    <form onSubmit={(e) => registerHandler(e)} >
+    <form onSubmit={(e) => registerHandler(e)}>
       <FormsResponseModal
         openModal={openModal}
         response={response}
         clickModal={modalHandler}
       />
-          <Loading  openmodal = {loadingVar == "Processing..." & openModal == false?true:false}/>
+      <Loading
+        openmodal={
+          (loadingVar == "Processing...") & (openModal == false) ? true : false
+        }
+      />
       <div className={`font-sans antialiased bg-grey-lightest  h-[100vh]`}>
         <div className="w-full bg-grey-lightest">
           <div className="mx-auto py-8">
             <div className="lg:w-1/2 mx-auto bg-white">
-              <div className="py-4 px-8 text-black text-2xl border-grey-lighter flex justify-center font-medium">
+              <div className="py-4 text-black items-center text-2xl border-grey-lighter flex justify-center font-medium space-x-2">
                 Registration
               </div>
               <div className="py-4 px-8">
@@ -309,7 +310,6 @@ export default function Form() {
                     type="file"
                     id="img"
                     name="img"
-                    multiple
                     required
                     accept=".jpg, .png, .jpeg"
                     onChange={(e) => imageHandler(e)}
