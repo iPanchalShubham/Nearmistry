@@ -11,12 +11,12 @@ export default function Form() {
 
   /*FORM DATA */
   const [businessInfo, setBusinessInfo] = useState({
-    BName: "",
+    bName: "",
     bAge: "",
     phoneNumber: "",
     bType: "",
     imgUrl: [],
-    ownerImg:"",
+    ownerImg: "",
     areaName: "",
     location: {
       type: "Point",
@@ -61,43 +61,82 @@ export default function Form() {
     e.preventDefault();
     setSuggestions([]);
   };
-
+  const OwnerImageHandler = async (event) => {
+    setLoadingVar("Processing...");
+    event.preventDefault();
+    const files = [...event.currentTarget.files];
+    console.log(files);
+    const promises = [];
+    files.forEach(async (element, i) => {
+      const formData = new FormData();
+      formData.append("file", element);
+      formData.append("public_id",setBusinessInfo.phoneNumber+i)
+      formData.append("upload_preset", "Shubh*Hustler");
+      promises.push(
+        fetch(
+          `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        )
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+            modalHandler(response.status);
+            console.log(response);
+          })
+          .then((r) => {
+            setBusinessInfo((prevState) => ({
+              ...businessInfo,
+              imgUrl: [...prevState.imgUrl, r.secure_url],
+            }));
+          })
+      );
+    });
+    Promise.all(promises).then(function () {
+      console.log(businessInfo.imgUrl);
+      setLoadingVar("Register");
+    });
+  };
   const imageHandler = async (event) => {
     setLoadingVar("Processing...");
     event.preventDefault();
     const files = [...event.currentTarget.files];
-    console.log(files)
-    const promises = []
-    files.forEach(async (element,i) => {
+    console.log(files);
+    const promises = [];
+    files.forEach(async (element, i) => {
       const formData = new FormData();
       formData.append("file", element);
-      // formData.append("public_id",setbusinessInfo.phoneNumber+i)
+      formData.append("public_id",setBusinessInfo.phoneNumber+i)
       formData.append("upload_preset", "Shubh*Hustler");
-      promises.push(fetch(
-        `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      )
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
+      promises.push(
+        fetch(
+          `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
+          {
+            method: "POST",
+            body: formData,
           }
-          modalHandler(response.status);
-          console.log(response);
-        })
-        .then((r) => {
-          setBusinessInfo((prevState) => ({
-            ...businessInfo,
-            imgUrl: [...prevState.imgUrl, r.secure_url],
-          }));
-        }))
-
+        )
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+            modalHandler(response.status);
+            console.log(response);
+          })
+          .then((r) => {
+            setBusinessInfo((prevState) => ({
+              ...businessInfo,
+              imgUrl: [...prevState.imgUrl, r.secure_url],
+            }));
+          })
+      );
     });
-    Promise.all(promises).then(function() {
-      console.log (businessInfo.imgUrl);
-      setLoadingVar("Register")
+    Promise.all(promises).then(function () {
+      console.log(businessInfo.imgUrl);
+      setLoadingVar("Register");
     });
     console.log(businessInfo.imgUrl);
   };
@@ -109,23 +148,23 @@ export default function Form() {
 
     const userInfoNew = JSON.stringify(businessInfo);
     console.log(userInfoNew);
-    // setLoadingVar("Processing...");
-    // const data2 = await fetch(
-    //   "https://labrecruit.herokuapp.com/volunteerSection/newUser",
-    //   {
-    //     method: "POST",
-    //     body: userInfoNew,
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       // 'Content-Type': 'application/x-www-form-urlencoded',
-    //     },
-    //   }
-    // )
-    //   .then((response) => {
-    //     modalHandler(response.status);
-    //     console.log(response);
-    //   })
-    //   .catch((e) => console.log(e));
+    setLoadingVar("Processing...");
+    const data2 = await fetch(
+      "https://labrecruit.herokuapp.com/volunteerSection/newUser",
+      {
+        method: "POST",
+        body: userInfoNew,
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    )
+      .then((response) => {
+        modalHandler(response.status);
+        console.log(response);
+      })
+      .catch((e) => console.log(e));
   };
   const modalHandler = (statusCode) => {
     setOpenModal(!openModal);
@@ -149,7 +188,7 @@ export default function Form() {
             <div className="lg:w-1/2 mx-auto bg-white">
               {/* REGISTRATION */}
               <div className="py-4 text-black items-center text-2xl border-grey-lighter flex justify-center font-medium space-x-2">
-              Business Registration
+                Business Registration
               </div>
               <div className="py-4 px-8">
                 <div className="flex mb-4">
@@ -168,12 +207,15 @@ export default function Form() {
                       type="text"
                       placeholder="Bussiness_name"
                       onChange={(e) =>
-                        setBusinessInfo({ ...businessInfo, BName: e.target.value })
+                        setBusinessInfo({
+                          ...businessInfo,
+                          bName: e.target.value,
+                        })
                       }
                     />
                   </div>
                 </div>
-                    {/* ---------- SECOND FIELED -====> PHONENUMBER --------*/}
+                {/* ---------- SECOND FIELED -====> PHONENUMBER --------*/}
 
                 <div className="flex mb-4">
                   <div className="w-[75%] mr-1">
@@ -214,7 +256,10 @@ export default function Form() {
                       required
                       placeholder="Years"
                       onChange={(e) =>
-                        setBusinessInfo({ ...businessInfo, bAge: e.target.value })
+                        setBusinessInfo({
+                          ...businessInfo,
+                          bAge: e.target.value,
+                        })
                       }
                     />
                   </div>
@@ -236,22 +281,27 @@ export default function Form() {
                       className="appearance-none border rounded w-full py-2 px-3 "
                       required
                       onChange={(e) =>
-                        setBusinessInfo({ ...businessInfo, bType: e.target.value })
+                        setBusinessInfo({
+                          ...businessInfo,
+                          bType: e.target.value,
+                        })
                       }
                     >
                       <option value="" disabled selected hidden>
                         Choose Occupation
                       </option>
-                      <option value="Contractor">Labour contractor(Thekedaar)</option>
-                      <option value="Tile Granite">
-                        Tile Granite
+                      <option value="Contractor">
+                        Labour contractor(Thekedaar)
                       </option>
+                      <option value="Tile Granite">Tile Granite</option>
                       <option value="Wood_works">Wood works</option>
                       <option value="Welding">Welding(Fabrication)</option>
                       <option value="Electrical">Electrical</option>
                       <option value="Sanitary">Sanitary</option>
                       <option value="Paint_shop">Paint shop</option>
-                      <option value="Building material">Building material</option>
+                      <option value="Building material">
+                        Building material
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -261,7 +311,7 @@ export default function Form() {
                     className="block text-grey-darker text-sm font-bold mb-2"
                     htmlFor="img"
                   >
-                    Select image
+                    Upload images of your Business
                   </label>
                   <input
                     type="file"
@@ -273,8 +323,27 @@ export default function Form() {
                     onChange={(e) => imageHandler(e)}
                   />
                 </div>
-                <div>
+                <hr />
+
+                <div className="mb-4">
+                  {" "}
+                  <label
+                    className="block text-grey-darker text-sm font-bold mb-2"
+                    htmlFor="img"
+                  >
+                    Upload Owner's Image
+                  </label>
+                  <input
+                    type="file"
+                    id="img"
+                    name="img"
+                    required
+                    accept=".jpg, .png, .jpeg"
+                    onChange={(e) => OwnerImageHandler(e)}
+                  />
                 </div>
+                <hr />
+
                 <label className="block text-sm font-bold mb-2" htmlFor="area">
                   Search and select your area
                 </label>
