@@ -331,7 +331,7 @@ export default function Form() {
                     className="block text-grey-darker text-sm font-bold mb-2"
                     htmlFor="img"
                   >
-                    Upload Owner's Image
+                    Upload Owner&apos;s Image
                   </label>
                   <input
                     type="file"
