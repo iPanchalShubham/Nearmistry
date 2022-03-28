@@ -5,7 +5,7 @@ export default function aboutPage(){
 return <div>
    <Head>
         <title>
-         About us|NearMistry.com
+         About us - NearMistry.com
         </title>
         <meta
           name="title"

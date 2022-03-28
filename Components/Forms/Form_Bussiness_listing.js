@@ -70,7 +70,7 @@ export default function Form() {
     files.forEach(async (element, i) => {
       const formData = new FormData();
       formData.append("file", element);
-      formData.append("public_id",setBusinessInfo.phoneNumber+i)
+      formData.append("public_id", businessInfo.phoneNumber + i);
       formData.append("upload_preset", "Shubh*Hustler");
       promises.push(
         fetch(
@@ -88,10 +88,10 @@ export default function Form() {
             console.log(response);
           })
           .then((r) => {
-            setBusinessInfo((prevState) => ({
+            setBusinessInfo({
               ...businessInfo,
-              imgUrl: [...prevState.imgUrl, r.secure_url],
-            }));
+              ownerImg: r.secure_url,
+            });
           })
       );
     });
@@ -109,7 +109,8 @@ export default function Form() {
     files.forEach(async (element, i) => {
       const formData = new FormData();
       formData.append("file", element);
-      formData.append("public_id",setBusinessInfo.phoneNumber+i)
+      // formData.append("public_id",businessInfo.phoneNumber+i)
+      console.log(i);
       formData.append("upload_preset", "Shubh*Hustler");
       promises.push(
         fetch(
@@ -150,12 +151,13 @@ export default function Form() {
     console.log(userInfoNew);
     setLoadingVar("Processing...");
     const data2 = await fetch(
-      "https://labrecruit.herokuapp.com/volunteerSection/newUser",
+      "http://localhost:5000/volunteerSection/newBusiness",
       {
         method: "POST",
         body: userInfoNew,
         headers: {
-          "Content-Type": "application/json",
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       }
@@ -205,7 +207,8 @@ export default function Form() {
                       className="appearance-none border rounded w-full py-2 px-3"
                       id="Business_Name"
                       type="text"
-                      placeholder="Bussiness_name"
+                      required
+                      placeholder="Bussiness name"
                       onChange={(e) =>
                         setBusinessInfo({
                           ...businessInfo,

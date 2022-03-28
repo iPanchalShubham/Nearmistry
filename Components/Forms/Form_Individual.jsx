@@ -101,7 +101,7 @@ export default function Form() {
     console.log(userInfoNew);
     setLoadingVar("Processing...");
     const data2 = await fetch(
-      "https://labrecruit.herokuapp.com/volunteerSection/newUser",
+      "http://localhost:5000/volunteerSection/newUser",
       {
         method: "POST",
         body: userInfoNew,

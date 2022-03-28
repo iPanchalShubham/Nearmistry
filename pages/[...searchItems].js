@@ -14,12 +14,20 @@ export default function ResultItems({ data }) {
           karnal,haryana
         </title>
         <meta
-          name="og:title"
-          content="Get instant, Police verified workers like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
+          name="description"
+          content="Find construction related shops or hire Blue-Collar (& Covid-19 safe) professionals instantly near you for FREE."
         />
         <meta
-          name="description"
-          content="Get instant, Police verified workers like Painters, Rajmistry, Labours and many more... for contruction, maintainance, renovation like works in karnal,haryana."
+          name="keywords"
+          content="nearmistry, near mistry, mistry in karnal, welders in karnal, welder in karnal, carpenters in karnal, plumbers in karnal, Rajmistry in karnal"
+        />
+        <meta
+          name="og:title"
+          content="Nearmistry - Instantly hire Blue-Collar professionals near you."
+        />
+        <meta
+          name="og:description"
+          content="Get construction related shops or hire Blue-Collar (& Covid-19 safe) professionals instantly near you for FREE."
         />
       </Head>
       <Header />
