@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-const Menu = ({ MenuHandler, showSidebar }) => {
+const Menu = ({ MenuHandler, showSidebar, regButtonClick }) => {
   const router = useRouter();
   return (
     <>
@@ -15,29 +15,26 @@ const Menu = ({ MenuHandler, showSidebar }) => {
           showSidebar ? "translate-x-0" : "translate-x-[-100%]"
         }`}
       >
-        <h2 className="text-3xl mt-9 font-thin">Nearmistry.com</h2>
-        <hr className="" />
+        <div className="text-3xl mt-9 font-thin">Nearmistry.com</div>
         <div className="mt-10 space-y-3 font-extralight text-xl">
-          <h4>
-            <Link href = {"/404.js"}>Why us?</Link>{" "}
-          </h4>
-          <h4>
-            <Link href = {"/404.js"}>Become a Volunteer</Link>{" "}
-          </h4>
-          <h4>
-            <Link href={"/nearmistry/registration"}>
-              Registration
-            </Link>
-          </h4>
-          <h4>
-            <Link href = {"/404.js"}>Contact us</Link>{" "}
-          </h4>
-          <h4>
-            <Link href = {"/about"}>About us</Link>{" "}
-          </h4>
-          <h4>
-            <Link href = {"/404.js"}>Help us</Link>{" "}
-          </h4>
+          <div>
+            <Link href={"/404.js"}>Why us?</Link>{" "}
+          </div>
+          <div>
+            <Link href={"/404.js"}>Become a Volunteer</Link>{" "}
+          </div>
+          <div>
+            <div onClick={() => {regButtonClick(); MenuHandler()}} className = "cursor-pointer">Registration</div>
+          </div>
+          <div>
+            <Link href={"/404.js"}>Contact us</Link>{" "}
+          </div>
+          <div>
+            <Link href={"/about"}>About us</Link>{" "}
+          </div>
+          <div>
+            <Link href={"/404.js"}>Help us</Link>{" "}
+          </div>
         </div>
       </div>
     </>

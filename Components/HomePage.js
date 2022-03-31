@@ -10,7 +10,6 @@ import electricianImg from "../public/electrician.png";
 import plumberImg from "../public/plumber.png";
 import maidImg from "../public/maid.png";
 import Link from "next/link";
-
 function HomePage() {
   return (
     <div>
