@@ -156,8 +156,8 @@ export default function Form() {
         method: "POST",
         body: userInfoNew,
         headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       }
@@ -291,7 +291,7 @@ export default function Form() {
                       }
                     >
                       <option value="" disabled selected hidden>
-                        Choose Occupation
+                        Choose business type
                       </option>
                       <option value="Contractor">
                         Labour contractor(Thekedaar)

@@ -40,7 +40,7 @@ export default function Modal({ click, showModal }) {
                   </div>
                   <div className="font-medium text-2xl mx-10">or</div>
                   <div>
-                    <Link href={"/business/registration"} passHref>
+                    <Link href={"/business/registration"} passHref = {true}>
                       <Image
                         src={business}
                         width="64px"
