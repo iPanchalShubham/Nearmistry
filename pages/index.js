@@ -24,6 +24,7 @@ export default function Home() {
           name="og:description"
           content="Get construction related shops or hire Blue-Collar (& Covid-19 safe) professionals instantly near you for FREE."
         />
+        <link rel="shortcut icon" href="nearmistry.com/favicon.ico"/>
       </Head>
       <main>
         <Header />

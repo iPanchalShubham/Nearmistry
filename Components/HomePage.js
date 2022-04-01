@@ -9,12 +9,34 @@ import welderImg from "../public/welder.png";
 import electricianImg from "../public/electrician.png";
 import plumberImg from "../public/plumber.png";
 import maidImg from "../public/maid.png";
+import new_badge from "../public/new_.png";
+import furniture_shops from '../public/furniture_shops.png';
+import contractor from "../public/contractor.png"
+import tile_shops from '../public/tile_shops.png'
+import plumbing_shops from '../public/plumbing_shops.png'
+import welding_shops from '../public/welding_shops.png'
+import paint_shops from "../public/paint_shops.png"
 import Link from "next/link";
 function HomePage() {
   return (
     <div>
       <section>
-        <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3  items-center">
+      <div className="flex justify-center">
+            <div className="mt-7 justify-center flex items-center bg-yellow-200 rounded-lg pb-2 pl-8">
+              <p className="lg:font-medium lg:text-xl font-bold">
+                Find professionals near you
+              </p>
+              <div>
+                <Image
+                  src={new_badge}
+                  objectFit="contain"
+                  height={40}
+                  width={40}
+                />
+              </div>
+            </div>
+          </div>
+        <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3 items-center">
           <Link href="/Raj Mistry/1" passHref>
             <button className="categoryCards">
               <div className="relative h-10 w-10 lg:h-12 lg:w-12">
@@ -134,6 +156,103 @@ function HomePage() {
               <p className="font-medium text-center">Labour</p>
             </button>
           </Link>
+        </div>
+        <div>
+          <div className="flex justify-center">
+            <div className="mt-7 justify-center flex items-center bg-yellow-200 rounded-lg pb-2 pl-4">
+              <p className="lg:font-medium lg:text-xl font-bold">
+                Find construction shops near you
+              </p>
+              <div>
+                <Image
+                  src={new_badge}
+                  objectFit="contain"
+                  height={40}
+                  width={40}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3  items-center">
+            <Link href="/Raj Mistry/1" passHref>
+              <button className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={contractor}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Thekedaar"}
+                  />
+                </div>
+                <p className="font-medium text-center">Contractor (Thekedaar)</p>
+              </button>
+            </Link>
+            <Link href="Tile Granite worker/1" passHref>
+              <button className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={tile_shops}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Tile Granite shops"}
+                  />
+                </div>
+                <p className="font-medium text-center">Tile granite shops</p>
+              </button>
+            </Link>
+            <Link href="/Painter/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={paint_shops}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Painter"}
+                  />
+                </div>
+                <p className="font-medium text-center">Paint shops</p>
+              </div>
+            </Link>
+            <Link href="/Carpenter/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-14 lg:w-14">
+                  <Image
+                    src={furniture_shops}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Furniture shops"}
+                  />
+                </div>
+                <p className="font-medium text-center">Wood works</p>
+              </div>
+            </Link>
+            <Link href="/Welder/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={welding_shops}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Welder"}
+                  />
+                </div>
+                <p className="font-medium text-center">Welding shops</p>
+              </div>
+            </Link>
+            <Link href="/Electrician/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={plumbing_shops}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Electrician"}
+                  />
+                </div>
+                <p className="font-medium text-center">Plumbing shops</p>
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
