@@ -10,32 +10,33 @@ import electricianImg from "../public/electrician.png";
 import plumberImg from "../public/plumber.png";
 import maidImg from "../public/maid.png";
 import new_badge from "../public/new_.png";
-import furniture_shops from '../public/furniture_shops.png';
-import contractor from "../public/contractor.png"
-import tile_shops from '../public/tile_shops.png'
-import plumbing_shops from '../public/plumbing_shops.png'
-import welding_shops from '../public/welding_shops.png'
-import paint_shops from "../public/paint_shops.png"
+import furniture_shops from "../public/furniture_shops.png";
+import contractor from "../public/contractor.png";
+import tile_shops from "../public/tile_shops.png";
+import plumbing_shops from "../public/plumbing_shops.png";
+import welding_shops from "../public/welding_shops.png";
+import paint_shops from "../public/paint_shops.png";
 import Link from "next/link";
+import banner from "../public/nearmistry_banner.jpg";
 function HomePage() {
   return (
     <div>
       <section>
-      <div className="flex justify-center">
-            <div className="mt-7 justify-center flex items-center bg-yellow-200 rounded-lg pb-2 pl-8">
-              <p className="lg:font-medium lg:text-xl font-bold">
-                Find professionals near you
-              </p>
-              <div>
-                <Image
-                  src={new_badge}
-                  objectFit="contain"
-                  height={40}
-                  width={40}
-                />
-              </div>
+        <div className="flex justify-center">
+          <div className="mt-5 lg:mt-7 justify-center flex items-center bg-yellow-200 rounded-lg pl-8">
+            <p className="lg:font-medium lg:text-xl font-bold">
+              Find professionals near you
+            </p>
+            <div>
+              <Image
+                src={new_badge}
+                objectFit="contain"
+                height={40}
+                width={40}
+              />
             </div>
           </div>
+        </div>
         <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3 items-center">
           <Link href="/Raj Mistry/1" passHref>
             <button className="categoryCards">
@@ -157,9 +158,10 @@ function HomePage() {
             </button>
           </Link>
         </div>
+      
         <div>
           <div className="flex justify-center">
-            <div className="mt-7 justify-center flex items-center bg-yellow-200 rounded-lg pb-2 pl-4">
+            <div className="mt-5 justify-center flex items-center bg-yellow-200 rounded-lg pl-4">
               <p className="lg:font-medium lg:text-xl font-bold">
                 Find construction shops near you
               </p>
@@ -184,7 +186,9 @@ function HomePage() {
                     alt={"Get Thekedaar"}
                   />
                 </div>
-                <p className="font-medium text-center">Contractor (Thekedaar)</p>
+                <p className="font-medium text-center">
+                  Contractor (Thekedaar)
+                </p>
               </button>
             </Link>
             <Link href="Tile Granite worker/1" passHref>
@@ -254,6 +258,16 @@ function HomePage() {
             </Link>
           </div>
         </div>
+        <div className="lg:mt-12 mx-auto relative h-40 lg:h-60 ">
+            <Image
+              src={banner}
+              objectFit = "contain"
+              layout="fill"
+              placeholder="blur"
+              alt="How to find on Nearmistry"
+              quality="50"
+            />
+          </div>
       </section>
     </div>
   );
