@@ -21,157 +21,153 @@ import banner from "../public/nearmistry_banner.jpg";
 function HomePage() {
   return (
     <div>
+      <div className="mx-auto relative w-[70%] pb-[30%] bg-gradient-to-t from-current to-transparent maskBanner z-[-1] mb-[-100px]">
+        <Image
+          src={banner}
+          layout="fill"
+          placeholder="blur"
+          alt="How to find on Nearmistry"
+          quality="50"
+        />
+      </div>
       <section>
-        <div className="flex justify-center">
-          <div className="mt-5 lg:mt-7 justify-center flex items-center bg-yellow-200 rounded-lg pl-8">
-            <p className="lg:font-medium lg:text-xl font-bold">
-              Find professionals near you
-            </p>
-            <div>
-              <Image
-                src={new_badge}
-                objectFit="contain"
-                height={40}
-                width={40}
-              />
-            </div>
+        <div className="shadow bg-white bg-opacity-5">
+          <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3 items-center">
+            <Link href="/Raj Mistry/1" passHref>
+              <button className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={rajMistryImg}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Raj Mistry"}
+                  />
+                </div>
+                <p className="font-medium text-center">Raj Mistry</p>
+              </button>
+            </Link>
+            <Link href="Tile Granite worker/1" passHref>
+              <button className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={tileWorkerImg}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Tile Granite worker"}
+                  />
+                </div>
+                <p className="font-medium text-center">Tile Granite worker</p>
+              </button>
+            </Link>
+            <Link href="/Painter/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={painterImg}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Painter"}
+                  />
+                </div>
+                <p className="font-medium text-center">Painter</p>
+              </div>
+            </Link>
+            <Link href="/Carpenter/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={carpenterImg}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Carpenter"}
+                  />
+                </div>
+                <p className="font-medium text-center">Carpenter</p>
+              </div>
+            </Link>
+            <Link href="/Welder/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={welderImg}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Welder"}
+                  />
+                </div>
+                <p className="font-medium text-center">Welder</p>
+              </div>
+            </Link>
+            <Link href="/Electrician/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={electricianImg}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Electrician"}
+                  />
+                </div>
+                <p className="font-medium text-center">Electrician</p>
+              </div>
+            </Link>
+            <Link href="/Plumber/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={plumberImg}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Plumbers"}
+                  />
+                </div>
+                <p className="font-medium text-center">Plumber</p>
+              </div>
+            </Link>
+            <Link href="/Maid/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={maidImg}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Maids"}
+                  />
+                </div>
+                <p className="font-medium text-center">Maid</p>
+              </div>
+            </Link>
+            <Link href="/Labour/1" passHref>
+              <button className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                  <Image
+                    src={helperImg}
+                    layout="fill"
+                    objectFit="contain"
+                    placeholder="blur"
+                    alt={"Get Labour"}
+                  />
+                  {/*Icons made by <a href="https://www.flaticon.com/authors/skyclick" title="Skyclick">Skyclick</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>*/}
+                </div>
+                <p className="font-medium text-center">Labour</p>
+              </button>
+            </Link>
           </div>
-        </div>
-        <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3 items-center">
-          <Link href="/Raj Mistry/1" passHref>
-            <button className="categoryCards">
-              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
-                <Image
-                  src={rajMistryImg}
-                  layout="fill"
-                  placeholder="blur"
-                  alt={"Get Raj Mistry"}
-                />
-              </div>
-              <p className="font-medium text-center">Raj Mistry</p>
-            </button>
-          </Link>
-          <Link href="Tile Granite worker/1" passHref>
-            <button className="categoryCards">
-              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
-                <Image
-                  src={tileWorkerImg}
-                  layout="fill"
-                  placeholder="blur"
-                  alt={"Get Tile Granite worker"}
-                />
-              </div>
-              <p className="font-medium text-center">Tile Granite worker</p>
-            </button>
-          </Link>
-          <Link href="/Painter/1" passHref>
-            <div className="categoryCards">
-              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
-                <Image
-                  src={painterImg}
-                  layout="fill"
-                  placeholder="blur"
-                  alt={"Get Painter"}
-                />
-              </div>
-              <p className="font-medium text-center">Painter</p>
-            </div>
-          </Link>
-          <Link href="/Carpenter/1" passHref>
-            <div className="categoryCards">
-              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
-                <Image
-                  src={carpenterImg}
-                  layout="fill"
-                  placeholder="blur"
-                  alt={"Get Carpenter"}
-                />
-              </div>
-              <p className="font-medium text-center">Carpenter</p>
-            </div>
-          </Link>
-          <Link href="/Welder/1" passHref>
-            <div className="categoryCards">
-              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
-                <Image
-                  src={welderImg}
-                  layout="fill"
-                  placeholder="blur"
-                  alt={"Get Welder"}
-                />
-              </div>
-              <p className="font-medium text-center">Welder</p>
-            </div>
-          </Link>
-          <Link href="/Electrician/1" passHref>
-            <div className="categoryCards">
-              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
-                <Image
-                  src={electricianImg}
-                  layout="fill"
-                  placeholder="blur"
-                  alt={"Get Electrician"}
-                />
-              </div>
-              <p className="font-medium text-center">Electrician</p>
-            </div>
-          </Link>
-          <Link href="/Plumber/1" passHref>
-            <div className="categoryCards">
-              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
-                <Image
-                  src={plumberImg}
-                  layout="fill"
-                  placeholder="blur"
-                  alt={"Get Plumbers"}
-                />
-              </div>
-              <p className="font-medium text-center">Plumber</p>
-            </div>
-          </Link>
-          <Link href="/Maid/1" passHref>
-            <div className="categoryCards">
-              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
-                <Image
-                  src={maidImg}
-                  layout="fill"
-                  placeholder="blur"
-                  alt={"Get Maids"}
-                />
-              </div>
-              <p className="font-medium text-center">Maid</p>
-            </div>
-          </Link>
-          <Link href="/Labour/1" passHref>
-            <button className="categoryCards">
-              <div className="relative h-10 w-10 lg:h-12 lg:w-12">
-                <Image
-                  src={helperImg}
-                  layout="fill"
-                  objectFit="contain"
-                  placeholder="blur"
-                  alt={"Get Labour"}
-                />
-                {/*Icons made by <a href="https://www.flaticon.com/authors/skyclick" title="Skyclick">Skyclick</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>*/}
-              </div>
-              <p className="font-medium text-center">Labour</p>
-            </button>
-          </Link>
-        </div>
-      
-        <div>
-          <div className="flex justify-center">
-            <div className="mt-5 justify-center flex items-center bg-yellow-200 rounded-lg pl-4">
-              <p className="lg:font-medium lg:text-xl font-bold">
-                Find construction shops near you
-              </p>
-              <div>
-                <Image
-                  src={new_badge}
-                  objectFit="contain"
-                  height={40}
-                  width={40}
-                />
+
+          <div>
+            <div className="flex justify-center">
+              <div className="mt-5 justify-center flex items-center bg-yellow-200 rounded-lg pl-4">
+                <p className="lg:font-medium lg:text-xl font-bold">
+                  Find construction shops near you
+                </p>
+                <div>
+                  <Image
+                    src={new_badge}
+                    objectFit="contain"
+                    height={40}
+                    width={40}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -258,16 +254,6 @@ function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="lg:mt-12 mx-auto relative h-40 lg:h-60 ">
-            <Image
-              src={banner}
-              objectFit = "contain"
-              layout="fill"
-              placeholder="blur"
-              alt="How to find on Nearmistry"
-              quality="50"
-            />
-          </div>
       </section>
     </div>
   );

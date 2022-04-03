@@ -5,7 +5,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
+.maskBanner{
+  mask-image: linear-gradient(to bottom ,rgba(0,0,0,1),rgba(0,0,0,0.5));
+}
 a {
   color: inherit;
   text-decoration: none;

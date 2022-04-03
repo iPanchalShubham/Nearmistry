@@ -30,7 +30,7 @@ function Header() {
         MenuHandler={MenuHandler}
         showSidebar={showSidebar}
       />
-      <div className="pr-1 sticky top-0 z-50 grid grid-flow-col justify-between pl-3 lg:pr-4 py-4 bg-gradient-to-r from-[#5370cf] via-[#5385cf] to-[#5370cf] text-white shadow-md items-center">
+      <div className="pr-1 sticky top-0 z-50 grid grid-flow-col justify-between pl-3 lg:pr-4 py-4 bg-[#6599FF] text-white shadow-md items-center">
         <MenuIcon
           className="h-7 w-7 cursor-pointer"
           onClick={() => MenuHandler()}
