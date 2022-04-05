@@ -21,7 +21,7 @@ import banner from "../public/nearmistry_banner.jpg";
 function HomePage() {
   return (
     <div>
-      <div className="mx-auto relative w-[70%] pb-[30%] bg-gradient-to-t from-current to-transparent maskBanner z-[-1] mb-[-100px]">
+      <div className="mx-auto relative w-[93%] lg: pb-[55%] bg-gradient-to-t from-current to-transparent maskBanner z-[-1] mb-[-60px] md:mb-[-200px] lg:mb-[-400px] ">
         <Image
           src={banner}
           layout="fill"
@@ -30,12 +30,19 @@ function HomePage() {
           quality="50"
         />
       </div>
-      <section>
-        <div className="shadow bg-white bg-opacity-5">
+      <section className="flex justify-center relative">
+        <div className="shadow bg-white rounded-t self-center w-[93%]">
+          <div>
+            <div className="justify-center flex items-center bg-yellow-200 rounded-lg py-1">
+              <p className="lg:font-medium lg:text-xl font-bold">
+                Choose category
+              </p>
+            </div>
+          </div>
           <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3 items-center">
             <Link href="/Raj Mistry/1" passHref>
               <button className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-9 w-9 lg:h-12 lg:w-12">
                   <Image
                     src={rajMistryImg}
                     layout="fill"
@@ -48,7 +55,7 @@ function HomePage() {
             </Link>
             <Link href="Tile Granite worker/1" passHref>
               <button className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={tileWorkerImg}
                     layout="fill"
@@ -61,7 +68,7 @@ function HomePage() {
             </Link>
             <Link href="/Painter/1" passHref>
               <div className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={painterImg}
                     layout="fill"
@@ -74,7 +81,7 @@ function HomePage() {
             </Link>
             <Link href="/Carpenter/1" passHref>
               <div className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={carpenterImg}
                     layout="fill"
@@ -87,7 +94,7 @@ function HomePage() {
             </Link>
             <Link href="/Welder/1" passHref>
               <div className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={welderImg}
                     layout="fill"
@@ -100,7 +107,7 @@ function HomePage() {
             </Link>
             <Link href="/Electrician/1" passHref>
               <div className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={electricianImg}
                     layout="fill"
@@ -113,7 +120,7 @@ function HomePage() {
             </Link>
             <Link href="/Plumber/1" passHref>
               <div className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={plumberImg}
                     layout="fill"
@@ -126,7 +133,7 @@ function HomePage() {
             </Link>
             <Link href="/Maid/1" passHref>
               <div className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={maidImg}
                     layout="fill"
@@ -139,7 +146,7 @@ function HomePage() {
             </Link>
             <Link href="/Labour/1" passHref>
               <button className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={helperImg}
                     layout="fill"
@@ -155,26 +162,16 @@ function HomePage() {
           </div>
 
           <div>
-            <div className="flex justify-center">
-              <div className="mt-5 justify-center flex items-center bg-yellow-200 rounded-lg pl-4">
-                <p className="lg:font-medium lg:text-xl font-bold">
-                  Find construction shops near you
-                </p>
-                <div>
-                  <Image
-                    src={new_badge}
-                    objectFit="contain"
-                    height={40}
-                    width={40}
-                  />
-                </div>
-              </div>
+            <div className="mt-7 justify-center flex items-center bg-yellow-200 rounded-t py-1">
+              <p className="lg:font-medium lg:text-xl font-bold">
+                Find best contruction shops near you
+              </p>
             </div>
           </div>
           <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3  items-center">
             <Link href="/Raj Mistry/1" passHref>
               <button className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={contractor}
                     layout="fill"
@@ -189,7 +186,7 @@ function HomePage() {
             </Link>
             <Link href="Tile Granite worker/1" passHref>
               <button className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={tile_shops}
                     layout="fill"
@@ -202,7 +199,7 @@ function HomePage() {
             </Link>
             <Link href="/Painter/1" passHref>
               <div className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={paint_shops}
                     layout="fill"
@@ -215,7 +212,7 @@ function HomePage() {
             </Link>
             <Link href="/Carpenter/1" passHref>
               <div className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-14 lg:w-14">
+                <div className="relative h-8 w-8 lg:h-14 lg:w-14">
                   <Image
                     src={furniture_shops}
                     layout="fill"
@@ -228,7 +225,7 @@ function HomePage() {
             </Link>
             <Link href="/Welder/1" passHref>
               <div className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={welding_shops}
                     layout="fill"
@@ -241,7 +238,7 @@ function HomePage() {
             </Link>
             <Link href="/Electrician/1" passHref>
               <div className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-12 lg:w-12">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
                     src={plumbing_shops}
                     layout="fill"
