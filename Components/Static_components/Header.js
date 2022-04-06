@@ -30,7 +30,7 @@ function Header() {
         MenuHandler={MenuHandler}
         showSidebar={showSidebar}
       />
-      <div className="pr-1 sticky top-0 z-50 grid grid-flow-col justify-between pl-3 lg:pr-4 py-4 bg-[#6599FF] text-white shadow-md items-center">
+      <div className="pr-1 sticky top-0 z-50 grid grid-flow-col justify-between pl-3 lg:pr-4 py-2 bg-[#58a0f9] text-white shadow-md items-center">
         <MenuIcon
           className="h-7 w-7 cursor-pointer"
           onClick={() => MenuHandler()}
@@ -43,7 +43,7 @@ function Header() {
           Nearmistry
         </div>
         <button
-          className="text-[10px]  lg:text-[15px] uppercase font-semibold cursor-pointer border-2 px-1 bg-gray-50 rounded-md flex items-center text-[#5370cf] py-1"
+          className="text-[10px]  lg:text-[15px] uppercase font-semibold cursor-pointer border-2 px-1 bg-gray-50 rounded-md flex items-center text-[#5370cf] py-0.5"
           onClick={() => clickHandler()}
         >
           <div className="h-4 w-4 lg:h-6 lg:w-5 text-red-500">

@@ -9,7 +9,6 @@ import welderImg from "../public/welder.png";
 import electricianImg from "../public/electrician.png";
 import plumberImg from "../public/plumber.png";
 import maidImg from "../public/maid.png";
-import new_badge from "../public/new_.png";
 import furniture_shops from "../public/furniture_shops.png";
 import contractor from "../public/contractor.png";
 import tile_shops from "../public/tile_shops.png";
@@ -21,7 +20,7 @@ import banner from "../public/nearmistry_banner.jpg";
 function HomePage() {
   return (
     <div>
-      <div className="mx-auto relative w-[93%] lg: pb-[55%] bg-gradient-to-t from-current to-transparent maskBanner z-[-1] mb-[-60px] md:mb-[-200px] lg:mb-[-400px] ">
+      <div className="mx-auto relative w-[100%] lg: pb-[55%] maskBanner z-[-1] mb-[-60px] md:mb-[-200px] lg:mb-[-300px] xl:mb-[-420px] ">
         <Image
           src={banner}
           layout="fill"
@@ -30,10 +29,10 @@ function HomePage() {
           quality="50"
         />
       </div>
-      <section className="flex justify-center relative">
-        <div className="shadow bg-white rounded-t self-center w-[93%]">
+      <section className="flex justify-center relative mb-3">
+        <div className="shadow-lg bg-white rounded-t-xl self-center w-[93%]">
           <div>
-            <div className="justify-center flex items-center bg-yellow-200 rounded-lg py-1">
+            <div className="justify-center flex items-center bg-yellow-200 shadow rounded-t-xl py-1">
               <p className="lg:font-medium lg:text-xl font-bold">
                 Choose category
               </p>
@@ -162,7 +161,7 @@ function HomePage() {
           </div>
 
           <div>
-            <div className="mt-7 justify-center flex items-center bg-yellow-200 rounded-t py-1">
+            <div className="mt-7 justify-center flex items-center bg-yellow-200 rounded-t-xl shadow py-1">
               <p className="lg:font-medium lg:text-xl font-bold">
                 Find best contruction shops near you
               </p>
