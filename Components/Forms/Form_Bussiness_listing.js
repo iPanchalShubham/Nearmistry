@@ -70,7 +70,7 @@ export default function Form() {
     files.forEach(async (element, i) => {
       const formData = new FormData();
       formData.append("file", element);
-      formData.append("public_id", businessInfo.phoneNumber + i);
+      formData.append("public_id", businessInfo.bName+phoneNumber);
       formData.append("upload_preset", "Shubh*Hustler");
       promises.push(
         fetch(
@@ -109,7 +109,7 @@ export default function Form() {
     files.forEach(async (element, i) => {
       const formData = new FormData();
       formData.append("file", element);
-      // formData.append("public_id",businessInfo.phoneNumber+i)
+      formData.append("public_id",businessInfo.phoneNumber+i)
       console.log(i);
       formData.append("upload_preset", "Shubh*Hustler");
       promises.push(
@@ -151,7 +151,7 @@ export default function Form() {
     console.log(userInfoNew);
     setLoadingVar("Processing...");
     const data2 = await fetch(
-      "http://localhost:5000/volunteerSection/newBusiness",
+      "https://labrecruit.herokuapp.com/volunteerSection/newBusiness",
       {
         method: "POST",
         body: userInfoNew,
@@ -322,6 +322,7 @@ export default function Form() {
                     name="img"
                     multiple
                     required
+                    disabled={businessInfo.phoneNumber !== "" ? false : true}
                     accept=".jpg, .png, .jpeg"
                     onChange={(e) => imageHandler(e)}
                   />
@@ -340,7 +341,7 @@ export default function Form() {
                     type="file"
                     id="img"
                     name="img"
-                    required
+                    disabled={businessInfo.phoneNumber !== "" ? false : true}
                     accept=".jpg, .png, .jpeg"
                     onChange={(e) => OwnerImageHandler(e)}
                   />
