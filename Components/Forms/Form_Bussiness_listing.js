@@ -14,8 +14,8 @@ export default function Form() {
     bName: "",
     bAge: "",
     phoneNumber: "",
-    bType: "",
-    imgUrl: [],
+    occupation: "",
+    imgUrlArray: [],
     ownerImg: "",
     areaName: "",
     location: {
@@ -70,7 +70,7 @@ export default function Form() {
     files.forEach(async (element, i) => {
       const formData = new FormData();
       formData.append("file", element);
-      formData.append("public_id", businessInfo.bName+phoneNumber);
+      formData.append("public_id", businessInfo.bName+ businessInfo.phoneNumber);
       formData.append("upload_preset", "Shubh*Hustler");
       promises.push(
         fetch(
@@ -96,7 +96,7 @@ export default function Form() {
       );
     });
     Promise.all(promises).then(function () {
-      console.log(businessInfo.imgUrl);
+      console.log(businessInfo.imgUrlArray);
       setLoadingVar("Register");
     });
   };
@@ -130,22 +130,22 @@ export default function Form() {
           .then((r) => {
             setBusinessInfo((prevState) => ({
               ...businessInfo,
-              imgUrl: [...prevState.imgUrl, r.secure_url],
+              imgUrlArray: [...prevState.imgUrlArray, r.secure_url],
             }));
           })
       );
     });
     Promise.all(promises).then(function () {
-      console.log(businessInfo.imgUrl);
+      console.log(businessInfo.imgUrlArray);
       setLoadingVar("Register");
     });
-    console.log(businessInfo.imgUrl);
+    console.log(businessInfo.imgUrlArray);
   };
 
   // ONCLICKING REGISTER BUTTON
   const registerHandler = async (e) => {
     e.preventDefault();
-    console.log(businessInfo.imgUrl);
+    console.log(businessInfo.imgUrlArray);
 
     const userInfoNew = JSON.stringify(businessInfo);
     console.log(userInfoNew);
@@ -284,24 +284,31 @@ export default function Form() {
                       className="appearance-none border rounded w-full py-2 px-3 "
                       required
                       onChange={(e) =>
+                        // console.log(e.target.value)
                         setBusinessInfo({
                           ...businessInfo,
-                          bType: e.target.value,
+                          occupation: e.target.value,
                         })
                       }
                     >
                       <option value="" disabled selected hidden>
                         Choose business type
                       </option>
-                      <option value="Contractor">
+                      <option value="Tile Granite">Tile Granite</option>
+                      <option value="Wood works">Wood works</option>
+                      <option value="Labour contractor(Thekedaar)">
                         Labour contractor(Thekedaar)
                       </option>
-                      <option value="Tile Granite">Tile Granite</option>
-                      <option value="Wood_works">Wood works</option>
-                      <option value="Welding">Welding(Fabrication)</option>
+                      <option value="Welding">Welding</option>
                       <option value="Electrical">Electrical</option>
+                      <option value="Painter contractor(Thekedaar)">
+                        Painter contractor(Thekedaar)
+                      </option>
                       <option value="Sanitary">Sanitary</option>
-                      <option value="Paint_shop">Paint shop</option>
+                      <option value="Paints">Paint shop</option>
+                      <option value="Tile Granite contractor(Thekedaar)">
+                        Tile Granite contractor(Thekedaar)
+                      </option>
                       <option value="Building material">
                         Building material
                       </option>

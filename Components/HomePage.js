@@ -167,7 +167,7 @@ function HomePage() {
             </div>
           </div>
           <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3  items-center">
-            <Link href="/Raj Mistry/1" passHref>
+            <Link href="/Contractors/1" passHref>
               <button className="categoryCards">
                 <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
@@ -182,7 +182,7 @@ function HomePage() {
                 </p>
               </button>
             </Link>
-            <Link href="Tile Granite worker/1" passHref>
+            <Link href="Tile Granite/1" passHref>
               <button className="categoryCards">
                 <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
@@ -195,7 +195,7 @@ function HomePage() {
                 <p className="font-medium text-center">Tile granite shops</p>
               </button>
             </Link>
-            <Link href="/Painter/1" passHref>
+            <Link href="/Paints/1" passHref>
               <div className="categoryCards">
                 <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
@@ -208,7 +208,7 @@ function HomePage() {
                 <p className="font-medium text-center">Paint shops</p>
               </div>
             </Link>
-            <Link href="/Carpenter/1" passHref>
+            <Link href="/Wood works/1" passHref>
               <div className="categoryCards">
                 <div className="relative h-8 w-8 lg:h-14 lg:w-14">
                   <Image
@@ -221,7 +221,7 @@ function HomePage() {
                 <p className="font-medium text-center">Wood works</p>
               </div>
             </Link>
-            <Link href="/Welder/1" passHref>
+            <Link href="/Welding/1" passHref>
               <div className="categoryCards">
                 <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image
@@ -234,7 +234,7 @@ function HomePage() {
                 <p className="font-medium text-center">Welding shops</p>
               </div>
             </Link>
-            <Link href="/Electrician/1" passHref>
+            <Link href="/Sanitary/1" passHref>
               <div className="categoryCards">
                 <div className="relative h-8 w-8 lg:h-12 lg:w-12">
                   <Image

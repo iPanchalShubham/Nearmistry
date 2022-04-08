@@ -5,14 +5,14 @@ import { PhoneIcon } from "@heroicons/react/solid";
 import Modal from "./Modals/modal";
 
 
-function ItemCard({ fName, lName, occupation, age, gender, phoneNumber,fullImgUrl,imgUrl}) {
+function ItemCard({ fName, lName, occupation, age, gender, phoneNumber,fullImgUrl,imgUrl,bName,bAge,ownerImg}) {
   const [showModal,setShowModal] = useState(false);
   return (<div>
     <Modal showModal={showModal} click={()=> setShowModal(!showModal)} selectedFile={fullImgUrl} img = {imgUrl}/>
     <div className="flex shadow-md m-4 rounded-md bg-white max-w-[370px] max-h-[225px]">
       <div className="relative h-60 w-40 m-2">
         <Image
-          src={imgUrl||null}
+          src={imgUrl||ownerImg||null}
           layout="responsive"
           objectFit="cover"
           width={160}
@@ -28,13 +28,14 @@ function ItemCard({ fName, lName, occupation, age, gender, phoneNumber,fullImgUr
         <div className="flex flex-col mt-6 text-center items-center md:mt-6 lg:mt-8">
           <div>
             <h1 className="text-[23px] lg:text-2xl">
-              {fName?fName[0]?.toUpperCase() + fName?.slice(1):""}{" "}
+              {fName?fName[0]?.toUpperCase() + fName?.slice(1):""}  {bName?bName[0]?.toUpperCase() + bName?.slice(1):""}{" "}
                {lName ? lName.length>5?lName[0]?.toUpperCase() + lName?.slice(1,3)+"..":lName[0]?.toUpperCase() + lName?.slice(1) : ""}
+
             </h1>
             <div className="mt-2">
-              <h1 className="text-gray-500">Occupation: {occupation.length > 9?occupation.slice(0,9)+"...":occupation}</h1>
-              <h2 className="text-gray-500">Age: {age}</h2>
-              <h2 className="text-gray-500"> Gender: {gender} </h2>
+              <h1 className="text-gray-500">{bAge?``:occupation.length > 9?occupation.slice(0,9)+"...":occupation} </h1>
+              <h2 className="text-gray-500">{bAge?`${bAge} years`:`Age${age}`}</h2>
+              <h2 className="text-gray-500">{bAge?``:`Gender: ${gender}`}  </h2>
             </div>
 
             <button className="block mx-auto text-[#20264b] active:bg-gray-200 active:px-2 active:scale-110 transition duration-100">

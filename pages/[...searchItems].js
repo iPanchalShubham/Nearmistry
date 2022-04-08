@@ -6,6 +6,7 @@ import Footer from "../Components/Static_components/Footer.jsx";
 import Pagination from "../Components/Pagination";
 import Head from "next/head";
 export default function ResultItems({ data }) {
+  console.log(data)
   return (
     <div>
       <Head>
@@ -46,6 +47,10 @@ export default function ResultItems({ data }) {
                 selectedFile={data?.selectedFile}
                 imgUrl={data?.imgUrl}
                 fullImgUrl={data?.fullImgUrl}
+                //Business details
+                ownerImg = {data?.ownerImg}
+                bName = {data?.bName}
+                bAge = {data?.bAge}
               />
             ))}
           </div>
@@ -91,6 +96,7 @@ export async function getStaticPaths() {
       modifiedOccupations.push(obj);
     }
   }
+  console.log(fetchedOccupations)
   return {
     paths: modifiedOccupations.map((modifiedOccupation) => {
       return {
