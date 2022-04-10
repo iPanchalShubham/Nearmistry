@@ -6,12 +6,12 @@ export default function Modal({ click, showModal, selectedFile, img }) {
       {showModal ? (
         <>
          <div className="h-full w-full fixed top-0 right-0 z-40 bg-black opacity-50" onClick={click} ></div>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+          <div className=" justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className=" relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-sm shadow-lg relative flex flex-col w-full bg-gray-100 outline-none focus:outline-none">
+              <div className=" border-0 rounded-sm shadow-lg relative flex flex-col w-full bg-gray-100 outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                <div className="h-[90%] flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   <h3 className="text-3xl font-semibold">More Information</h3>
                 </div>
                 {/*body*/}
