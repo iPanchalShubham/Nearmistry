@@ -13,9 +13,6 @@ function ItemCard({
   phoneNumber,
   fullImgUrl,
   imgUrl,
-  bName,
-  bAge,
-  ownerImg,
 }) {
   const [showModal, setShowModal] = useState(false);
   return (
@@ -29,7 +26,7 @@ function ItemCard({
       <div className="flex shadow-md m-4 rounded-md bg-white max-w-[370px] max-h-[225px]">
         <div className="relative h-60 w-40 m-2">
           <Image
-            src={imgUrl || ownerImg || null}
+            src={imgUrl || null}
             layout="responsive"
             objectFit="cover"
             width={160}
@@ -41,31 +38,20 @@ function ItemCard({
             alt={fName || lName}
           />
         </div>
-        <div className="block mx-auto">
-          <div className="flex flex-col mt-6 text-center items-center md:mt-6 lg:mt-8">
-            <div>
-              <h1 className="text-[23px] lg:text-2xl">
+          <div className="mt-6 items-center md:mt-6">
+            <div className="">
+              <h1 className="text-[1.2rem] lg:text-2xl">
                 {fName ? fName[0]?.toUpperCase() + fName?.slice(1) : ""}{" "}
-                {bName ? bName[0]?.toUpperCase() + bName?.slice(1) : ""}{" "}
                 {lName
-                  ? lName.length > 5
-                    ? lName[0]?.toUpperCase() + lName?.slice(1, 3) + ".."
-                    : lName[0]?.toUpperCase() + lName?.slice(1)
+                    ? lName[0]?.toUpperCase() + lName?.slice(1)
                   : ""}
               </h1>
               <div className="mt-2">
-                <h1 className="text-gray-500">
-                  {bAge
-                    ? ``
-                    : occupation.length > 9
-                    ? occupation.slice(0, 9) + "..."
-                    : occupation}{" "}
-                </h1>
-                <h2 className="text-gray-500">
-                  Age: {age}
+                <h2 className="tag">
+                  #{age} years
                 </h2>
-                <h2 className="text-gray-500">
-                  {bAge ? `` : `Gender: ${gender}`}{" "}
+                <h2 className="tag">
+                #{gender}
                 </h2>
               </div>
 
@@ -78,7 +64,7 @@ function ItemCard({
                 style={{ textDecoration: "none" }}
                 href={`tel:${phoneNumber}`}
                 className="flex mt-2 border-[1px] border-[#3f51b5] text-[#3f51b5]
-          rounded-[3px] active:scale-90 transition duration-150 items-center justify-center px-2"
+          rounded-[3px] active:scale-90 transition duration-150 items-center justify-center "
               >
                 <PhoneIcon className="h-5" />
                 Call Now
@@ -87,7 +73,6 @@ function ItemCard({
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
