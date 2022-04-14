@@ -1,17 +1,18 @@
 import React from "react";
 import Header from "../Components/Static_components/Header.js";
-import ItemCard from "../Components/ItemCard.js";
+import ItemCard from "../Components/IndiCard.js";
 import axios from "axios";
 import Footer from "../Components/Static_components/Footer.jsx";
 import Pagination from "../Components/Pagination";
 import Head from "next/head";
+import BusinessCard from "../Components/BusinessCard.js";
 export default function ResultItems({ data }) {
   console.log(data)
   return (
     <div>
       <Head>
         <title>
-          Get Workers for contruction, renovation, maintainance etc. in
+          Get  for contruction, renovation, maintainance etc. in
           karnal,haryana
         </title>
         <meta
@@ -36,7 +37,14 @@ export default function ResultItems({ data }) {
         <div className="pt-6">
           <div className="grid grid-cols-1 justify-center sm:grid-cols-1 sm:px-10  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
             {data?.data.map((data, index) => (
-              <ItemCard
+              data.bAge?<BusinessCard 
+              bAge={data?.bAge}
+              bName = {data?.bName}
+              phoneNumber = {data?.phoneNumber}
+              ownerImg = {data?.ownerImg}
+              areaName = {data.areaName}
+              imgUrlArray = {data.imgUrlArray}
+              />:<ItemCard
                 key={index}
                 fName={data?.fName}
                 lName={data?.lName}
@@ -48,9 +56,7 @@ export default function ResultItems({ data }) {
                 imgUrl={data?.imgUrl}
                 fullImgUrl={data?.fullImgUrl}
                 //Business details
-                ownerImg = {data?.ownerImg}
-                bName = {data?.bName}
-                bAge = {data?.bAge}
+                
               />
             ))}
           </div>
