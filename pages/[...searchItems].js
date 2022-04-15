@@ -38,6 +38,7 @@ export default function ResultItems({ data }) {
           <div className="grid grid-cols-1 justify-center sm:grid-cols-1 sm:px-10  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
             {data?.data.map((data, index) => (
               data.bAge?<BusinessCard 
+              key = {index}
               bAge={data?.bAge}
               bName = {data?.bName}
               phoneNumber = {data?.phoneNumber}

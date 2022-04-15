@@ -25,7 +25,7 @@ export default function Modal({ click, showModal, imgUrlArray }) {
                   <h3 className="text-2xl font-semibold">More Information</h3>
                 </div> */}
                 {/*body*/}
-                <div className="flex space-x-3 overflow-x-scroll scrollbar-hide p-3 bg-gray-400">
+                <div className="flex space-x-3 overflow-x-scroll scrollbar-hide p-3 bg-gray-300">
                   {imgUrlArray?.map((img, index) => (
                     <ItemsImages img={img || selectedFile} key={index} />
                   ))}
