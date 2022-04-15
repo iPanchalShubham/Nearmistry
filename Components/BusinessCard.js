@@ -24,7 +24,7 @@ function BusinessCard({
       <div className="flex shadow-md m-4 rounded-md bg-white max-w-[360px] max-h-[215px]">
         <div className="relative h-[13rem]  min-w-[155px] m-1 lg:m-1">
           <Image
-            src={ownerImg || null}
+            src={ownerImg || imgUrlArray[0]}
             layout="responsive"
             objectFit="cover"
             width={160}
@@ -48,12 +48,12 @@ function BusinessCard({
             />
           </svg>
         </div>
-        <div className="lg:mt-6 mt-2 items-center md:mt-6">
+        <div className="mt-1 items-center">
           <div className="">
             <h1 className="text-[1.2rem] lg:text-xl">
               {bName}
             </h1>
-            <div className="mt-2 h-20 text-ellipsis  overflow-hidden">
+            <div className="mt-2 h-20 text-ellipsis  overflow-scroll">
               <h2 className="tag">#{bAge} years</h2>
               <h2 className="tag">#Fabrication</h2>
               <h2 className="tag">#Steel grills</h2>
