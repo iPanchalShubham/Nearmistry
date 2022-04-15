@@ -12,7 +12,7 @@ export default function ResultItems({ data }) {
     <div>
       <Head>
         <title>
-          Get  for contruction, renovation, maintainance etc. in
+          Get {data.occupation} for contruction, renovation, maintainance etc. in
           karnal,haryana
         </title>
         <meta
@@ -45,6 +45,7 @@ export default function ResultItems({ data }) {
               ownerImg = {data?.ownerImg}
               areaName = {data.areaName}
               imgUrlArray = {data.imgUrlArray}
+              tags = {data?.tags}
               />:<ItemCard
                 key={index}
                 fName={data?.fName}

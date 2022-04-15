@@ -28,8 +28,8 @@ function HomePage() {
           alt="How to find on Nearmistry"
         />
       </div>
-      <section className="flex justify-center relative mb-3">
-        <div className="shadow-lg bg-white rounded-t-xl self-center w-[93%]">
+      <section className="flex justify-center relative mb-3 ">
+        <div className="shadow-lg bg-white rounded-t-xl self-center w-[93%] pb-10">
           <div>
             <div className="justify-center flex items-center bg-yellow-200 shadow rounded-t-xl py-1">
               <p className="lg:font-medium lg:text-xl font-bold">

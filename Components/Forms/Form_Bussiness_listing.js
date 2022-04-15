@@ -4,7 +4,6 @@ import axios from "axios";
 import CopyrightFooter from "../Static_components/CopyrightFooter";
 import FormsResponseModal from "../Modals/FormsResponseModal";
 import Loading from "../Static_components/loading";
-import Image from "next/image";
 export default function Form() {
   const [suggestions, setSuggestions] = useState([]);
   const [input, setInput] = useState("");
@@ -22,6 +21,7 @@ export default function Form() {
       type: "Point",
       coordinates: [],
     },
+    tags: "",
   });
   const [loadingVar, setLoadingVar] = useState("Register");
   // Modal controllers var
@@ -70,7 +70,10 @@ export default function Form() {
     files.forEach(async (element, i) => {
       const formData = new FormData();
       formData.append("file", element);
-      formData.append("public_id", businessInfo.bName+ businessInfo.phoneNumber);
+      formData.append(
+        "public_id",
+        businessInfo.bName + businessInfo.phoneNumber
+      );
       formData.append("upload_preset", "Shubh*Hustler");
       promises.push(
         fetch(
@@ -109,7 +112,7 @@ export default function Form() {
     files.forEach(async (element, i) => {
       const formData = new FormData();
       formData.append("file", element);
-      formData.append("public_id",businessInfo.phoneNumber+i)
+      formData.append("public_id", businessInfo.phoneNumber + i);
       console.log(i);
       formData.append("upload_preset", "Shubh*Hustler");
       promises.push(
@@ -315,6 +318,32 @@ export default function Form() {
                     </select>
                   </div>
                 </div>
+                {/* Tags */}
+                <div>
+                  <div>
+                    <label
+                      className="block text-sm font-bold mb-2"
+                      htmlFor="Tags area"
+                    >
+                      Write your services, for ex- Steel Door, Main Gate, Wire fitting...
+                    </label>
+                    <div >
+                      
+                        <input
+                          type="text"
+                          id="Tags area"
+                          className="py-2 w-full border-2 rounded mb-2"
+                          placeholder="Steel Doors, Plumbing, Paints"
+                          onChange={(e) => {
+                            setBusinessInfo({...businessInfo,tags:e.target.value})
+                            console.log(businessInfo.tags)
+                          }}
+                          autoComplete="off"
+                          required
+                        />
+                    </div>
+                  </div>
+                </div>
                 <div className="mb-4">
                   {" "}
                   <label
@@ -354,7 +383,7 @@ export default function Form() {
                   />
                 </div>
                 <hr />
-
+                {/* Search field and button */}
                 <label className="block text-sm font-bold mb-2" htmlFor="area">
                   Search and select your area
                 </label>
