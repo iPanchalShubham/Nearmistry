@@ -50,10 +50,10 @@ function BusinessCard({
         </div>
         <div className="mt-1 items-center">
           <div className="">
-            <h1 className="text-[1.2rem] lg:text-xl">
+            <h1 className="text-[1.2rem] lg:text-lg">
               {bName}
             </h1>
-            <div className="mt-2 h-20 text-ellipsis  overflow-scroll">
+            <div className="mt-2 h-20 text-ellipsis overflow-y-auto  lg:scrollbar-hide">
               <h2 className="tag">#{bAge} years</h2>
               <h2 className="tag">#Fabrication</h2>
               <h2 className="tag">#Steel grills</h2>
