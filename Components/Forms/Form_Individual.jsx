@@ -16,7 +16,7 @@ export default function Form() {
     gender: "",
     phoneNumber: "",
     occupation: "",
-    imgUrl: "",
+    imgUrlArray: "",
     areaName: "",
     location: {
       type: "Point",
@@ -62,40 +62,51 @@ export default function Form() {
     setSuggestions([]);
   };
 
-  const imageHandler = async (e) => {
-    const formData = new FormData();
-
-    formData.append("file", e.currentTarget.files[0]);
-    formData.append("upload_preset", "Shubh*Hustler");
+  const imageHandler = async (event) => {
     setLoadingVar("Processing...");
-    const data = await fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
-      {
-        method: "POST",
-        body: formData,
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        modalHandler(response.status);
-        console.log(response);
-      })
-      .then((r) => {
-        setUserInfo({ ...userInfo, imgUrl: r.secure_url });
-        setLoadingVar("Register");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-      console.log(formData)
+    event.preventDefault();
+    const files = [...event.currentTarget.files];
+    console.log(files);
+    const promises = [];
+    files.forEach(async (element, i) => {
+      const formData = new FormData();
+      formData.append("file", element);
+      formData.append("public_id", userInfo.phoneNumber + i);
+      console.log(i);
+      formData.append("upload_preset", "Shubh*Hustler");
+      promises.push(
+        fetch(
+          `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        )
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+            modalHandler(response.status);
+            console.log(response);
+          })
+          .then((r) => {
+            setUserInfo((prevState) => ({
+              ...userInfo,
+              imgUrlArray: [...prevState.imgUrlArray, r.secure_url],
+            }));
+          })
+      );
+    });
+    Promise.all(promises).then(function () {
+      console.log(userInfo.imgUrlArray);
+      setLoadingVar("Register");
+    });
   };
 
   // ONCLICKING REGISTER BUTTON
   const registerHandler = async (e) => {
     e.preventDefault();
-    console.log(userInfo.imgUrl);
+    console.log(userInfo.imgUrlArray);
 
     const userInfoNew = JSON.stringify(userInfo);
     console.log(userInfoNew);
@@ -311,6 +322,7 @@ export default function Form() {
                     id="img"
                     name="img"
                     required
+                    multiple
                     accept=".jpg, .png, .jpeg"
                     onChange={(e) => imageHandler(e)}
                   />

@@ -53,7 +53,7 @@ function BusinessCard({
             <h1 className="text-[1.2rem] lg:text-lg">
               {bName}
             </h1>
-            <div className="mt-2 h-20 text-ellipsis overflow-y-auto  lg:scrollbar-hide">
+            <div className="mt-2 h-fit text-ellipsis overflow-y-auto  lg:scrollbar-hide">
               <h2 className="tag">#{bAge} years</h2>
              {tags?.split(',')?.map((tag,index)=> (
                <h2 className="tag" key={index}>#{tag}</h2>

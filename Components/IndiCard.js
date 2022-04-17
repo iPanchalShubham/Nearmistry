@@ -11,7 +11,7 @@ function IndiCard({
   gender,
   phoneNumber,
   fullImgUrl,
-  imgUrl,
+  imgUrlArray,
 }) {
   const [showModal, setShowModal] = useState(false);
   return (
@@ -19,12 +19,12 @@ function IndiCard({
       <Modal
         showModal={showModal}
         click={() => setShowModal(!showModal)}
-        imgUrlArray={fullImgUrl || imgUrl}
+        imgUrlArray={fullImgUrl || imgUrlArray}
       />
       <div className="flex shadow-md m-4 rounded-md bg-white max-w-[360px] max-h-[215px]">
         <div className="relative h-[13rem]  min-w-[155px] m-1 lg:m-1">
           <Image
-            src={imgUrl || null}
+            src={imgUrlArray[0] || null}
             layout="responsive"
             objectFit="cover"
             width={160}

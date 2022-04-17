@@ -55,7 +55,7 @@ export default function ResultItems({ data }) {
                 gender={data?.gender}
                 phoneNumber={data?.phoneNumber}
                 selectedFile={data?.selectedFile}
-                imgUrl={data?.imgUrl}
+                imgUrlArray={data?.imgUrlArray}
                 fullImgUrl={data?.fullImgUrl}
                 //Business details
                 
