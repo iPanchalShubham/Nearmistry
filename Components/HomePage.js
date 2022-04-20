@@ -12,9 +12,11 @@ import maidImg from "../public/maid.png";
 import furniture_shops from "../public/furniture_shops.png";
 import contractor from "../public/contractor.png";
 import tile_shops from "../public/tile_shops.png";
-import plumbing_shops from "../public/plumbing_shops.png";
+import plumbing_shops from "../public/sanitary_shop.png";
 import welding_shops from "../public/welding_shops.png";
 import paint_shops from "../public/paint_shops.png";
+import Next_arrow from "../public/Next_arrow.png";
+import building_materials_shop from "../public/building-materials_shop.png";
 import Link from "next/link";
 import banner from "../public/nearmistry_banner.jpg";
 function HomePage() {
@@ -167,6 +169,19 @@ function HomePage() {
             </div>
           </div>
           <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3  items-center">
+            <Link href="/Building material/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
+                  <Image
+                    src={building_materials_shop}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get best Building material"}
+                  />
+                </div>
+                <p className="font-medium text-center">Building material </p>
+              </div>
+            </Link>
             <Link href="/Contractors/1" passHref>
               <button className="categoryCards">
                 <div className="relative h-8 w-8 lg:h-12 lg:w-12">
@@ -244,7 +259,19 @@ function HomePage() {
                     alt={"Get Electrician"}
                   />
                 </div>
-                <p className="font-medium text-center">Plumbing shops</p>
+                <p className="font-medium text-center">Plumbing & Sanitary </p>
+              </div>
+            </Link>
+             <Link href="/Suggestion/" passHref>
+              <div className="categoryCards">
+                <div className="relative h-6 w-6 ">
+                  <Image
+                    src={Next_arrow}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get best Building material"}
+                  />
+                </div>
               </div>
             </Link>
           </div>

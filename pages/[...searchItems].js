@@ -58,6 +58,7 @@ export default function ResultItems({ data }) {
                 imgUrlArray={data?.imgUrlArray}
                 fullImgUrl={data?.fullImgUrl}
                 //Business details
+                tags = {data?.tags}
                 
               />
             ))}

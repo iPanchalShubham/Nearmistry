@@ -12,6 +12,7 @@ function IndiCard({
   phoneNumber,
   fullImgUrl,
   imgUrlArray,
+  tags
 }) {
   const [showModal, setShowModal] = useState(false);
   return (
@@ -54,16 +55,16 @@ function IndiCard({
               {fName ? fName[0]?.toUpperCase() + fName?.slice(1) : ""}{" "}
               {lName ? lName[0]?.toUpperCase() + lName?.slice(1) : ""}
             </h1>
-            <div className="mt-2 h-20 text-ellipsis  overflow-hidden">
+            <div className="mt-2 h-20 text-ellipsis overflow-y-auto  lg:scrollbar-hide">
               <h2 className="tag">#{age} years</h2>
-              <h2 className="tag">#{gender}</h2>
-              <h2 className="tag">#Fabrication</h2>
-              <h2 className="tag">#Steel grills</h2>
-              <h2 className="tag">#Main Doors</h2>
-              <h2 className="tag">#Steel works</h2>
-              <h2 className="tag">#Iron doors</h2>
-              <h2 className="tag">#Welding</h2>
+             {tags?.split(',')?.map((tag,index)=> (
+               <h2 className="tag" key={index}>#{tag}</h2>
+             )) }
+             <h2 className="tag">
+              this this
+             </h2>
             </div>
+
 
             <button className="block mx-auto text-black active:bg-gray-200 active:px-2 active:scale-110 transition duration-100">
               <DotsHorizontalIcon className="h-6" />
