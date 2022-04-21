@@ -22,6 +22,7 @@ export default function Form() {
       type: "Point",
       coordinates: [],
     },
+    tags:""
   });
   const [loadingVar, setLoadingVar] = useState("Register");
   // Modal controllers var
@@ -307,6 +308,33 @@ export default function Form() {
                       <option value="Maid">Maid</option>
                       <option value="Painter">Painter</option>
                     </select>
+                  </div>
+                </div>
+                {/* Tags */}
+                <div>
+                  <div>
+                    <label
+                      className="block text-sm font-bold mb-2"
+                      htmlFor="Tags area"
+                    >
+                      Write your services, for ex- Steel Door, Main Gate, Wire
+                      fitting...
+                    </label>
+                    <textarea  className=" w-[100%] border-2 rounded"
+                      placeholder="Steel Doors, Plumbing, Paints, Plumbing, Sanitary..."
+                      type="text"
+                        id="Tags area"
+                        onChange={(e) => {
+                          setUserInfo({
+                            ...userInfo,
+                            tags: e.target.value,
+                          });
+                          console.log(userInfo.tags);
+                        }}
+                          autoComplete="off"
+                          required
+                        />
+                    
                   </div>
                 </div>
                 <div className="mb-4">

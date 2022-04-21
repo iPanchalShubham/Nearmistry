@@ -49,8 +49,8 @@ function IndiCard({
             />
           </svg>
         </div>
-        <div className="lg:mt-6 mt-2 items-center md:mt-6">
-          <div className="">
+        <div className="lg:mt-6 mt-2 items-center">
+          <div>
             <h1 className="text-[1.2rem] lg:text-xl">
               {fName ? fName[0]?.toUpperCase() + fName?.slice(1) : ""}{" "}
               {lName ? lName[0]?.toUpperCase() + lName?.slice(1) : ""}
@@ -70,12 +70,12 @@ function IndiCard({
               <DotsHorizontalIcon className="h-6" />
             </button>
           </div>
-          <div>
+          <div className="flex">
             <a
               style={{ textDecoration: "none" }}
               href={`tel:${phoneNumber}`}
-              className="flex mt-2 border-[1px] border-[#3f51b5] text-[#3f51b5]
-          rounded-[3px] active:scale-90 transition duration-150 items-center"
+              className="flex justify-center mt-2 border-[1px] border-[#3f51b5] text-[#3f51b5]
+          rounded-[3px] active:scale-90 transition duration-150 items-center px-2"
             >
               <PhoneIcon className="h-5" />
               Call Now
