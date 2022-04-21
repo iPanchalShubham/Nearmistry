@@ -50,7 +50,7 @@ function BusinessCard({
         </div>
         <div className="mt-1 items-center">
           <div className="">
-            <h1 className="text-[1.2rem] lg:text-lg whitespace-nowrap overflow-hidden w-48 text-ellipsis">
+            <h1 className="text-[1.2rem] lg:text-lg whitespace-nowrap overflow-hidden s-phones:w-[165px] n-phones:w-48  text-ellipsis">
               
               {bName}
             </h1>

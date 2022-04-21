@@ -75,7 +75,7 @@ function IndiCard({
               style={{ textDecoration: "none" }}
               href={`tel:${phoneNumber}`}
               className="flex mt-2 border-[1px] border-[#3f51b5] text-[#3f51b5]
-          rounded-[3px] active:scale-90 transition duration-150 items-center justify-center "
+          rounded-[3px] active:scale-90 transition duration-150 items-center"
             >
               <PhoneIcon className="h-5" />
               Call Now
