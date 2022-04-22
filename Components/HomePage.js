@@ -19,6 +19,7 @@ import Next_arrow from "../public/Next_arrow.png";
 import building_materials_shop from "../public/building-materials_shop.png";
 import Link from "next/link";
 import banner from "../public/nearmistry_banner.jpg";
+import ElectricalShop from "../public/Electric_shop.png";
 function HomePage() {
   return (
     <div>
@@ -262,7 +263,20 @@ function HomePage() {
                 <p className="font-medium text-center">Plumbing & Sanitary </p>
               </div>
             </Link>
-             <Link href="/Suggestion/" passHref>
+            <Link href="/Electrical/1" passHref>
+              <div className="categoryCards">
+                <div className="relative h-10 w-10 lg:h-14 lg:w-14">
+                  <Image
+                    src={ElectricalShop}
+                    layout="fill"
+                    placeholder="blur"
+                    alt={"Get Electrician"}
+                  />
+                </div>
+                <p className="font-medium text-center">Electrical Stores </p>
+              </div>
+            </Link>
+            <Link href="/Suggestion/" passHref>
               <div className="categoryCards">
                 <div className="relative h-6 w-6 ">
                   <Image
