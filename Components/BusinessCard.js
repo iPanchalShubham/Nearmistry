@@ -10,7 +10,8 @@ function BusinessCard({
   phoneNumber,
   imgUrlArray,
   ownerImg,
-  tags
+  tags,
+  address
 }) {
   const [showModal, setShowModal] = useState(false);
   return (
@@ -33,7 +34,7 @@ function BusinessCard({
             placeholder="blur"
             blurDataURL="LF7d,x_3xuRj~q_3xuRj_3?bt7Rj"
             onClick={() => setShowModal(!showModal)}
-            alt = {bName}
+            alt={bName}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,19 +52,20 @@ function BusinessCard({
         <div className="mt-1 items-center">
           <div className="">
             <h1 className="text-[1.2rem] lg:text-lg whitespace-nowrap overflow-hidden s-phones:w-[165px] n-phones:w-48  text-ellipsis">
-              
               {bName}
             </h1>
+            <div className="text-xs font-medium text-gray-600 mt-1 whitespace-nowrap overflow-hidden s-phones:w-[165px] n-phones:w-48  text-ellipsis">
+              {address}
+            </div>
             <div className="mt-2 h-20 text-ellipsis overflow-y-auto  lg:scrollbar-hide">
               <h2 className="tag">#{bAge} years</h2>
-             {tags?.split(',')?.map((tag,index)=> (
-               <h2 className="tag" key={index}>#{tag}</h2>
-             )) }
-             <h2 className="tag">
-              this this
-             </h2>
+              {tags?.split(",")?.map((tag, index) => (
+                <h2 className="tag" key={index}>
+                  #{tag}
+                </h2>
+              ))}
+              <h2 className="tag">this this</h2>
             </div>
-
             <button className="block mx-auto text-black active:bg-gray-200 active:px-2 active:scale-110 transition duration-100">
               <DotsHorizontalIcon className="h-6" />
             </button>

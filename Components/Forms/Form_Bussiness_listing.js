@@ -17,6 +17,7 @@ export default function Form() {
     imgUrlArray: [],
     ownerImg: "",
     areaName: "",
+    address:"",
     location: {
       type: "Point",
       coordinates: [],
@@ -318,6 +319,29 @@ export default function Form() {
                     </select>
                   </div>
                 </div>
+                <div className="w-full mb-2">
+                    {/* ---------- Fifith FILED ===> BUSINESS ADDRESS --------*/}
+
+                    <label
+                      className="block text-sm font-bold mb-2"
+                      htmlFor="established_in"
+                    >
+                      Business address
+                    </label>
+                    <input
+                      className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                      id="Adress"
+                      type="text"
+                      required
+                      placeholder="Example: Shop no. 32,Main durga road,karnal"
+                      onChange={(e) =>
+                        setBusinessInfo({
+                          ...businessInfo,
+                          address: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
                 {/* Tags */}
                 <div>
                   <div>
@@ -344,6 +368,7 @@ export default function Form() {
                     </div>
                   </div>
                 </div>
+               
                 <div className="mb-4">
                   {" "}
                   <label
