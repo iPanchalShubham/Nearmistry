@@ -45,6 +45,7 @@ export default function ResultItems({ data }) {
               ownerImg = {data?.ownerImg}
               areaName = {data.areaName}
               imgUrlArray = {data.imgUrlArray}
+              address = {data?.address}
               tags = {data?.tags}
               />:<ItemCard
                 key={index}
