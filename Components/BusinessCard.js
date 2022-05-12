@@ -61,10 +61,9 @@ function BusinessCard({
               <h2 className="tag">#{bAge} years</h2>
               {tags?.split(",")?.map((tag, index) => (
                 <h2 className="tag" key={index}>
-                  #{tag}
+                  #{tag.trim()}
                 </h2>
               ))}
-              <h2 className="tag">this this</h2>
             </div>
             <button className="block mx-auto text-black active:bg-gray-200 active:px-2 active:scale-110 transition duration-100">
               <DotsHorizontalIcon className="h-6" />
