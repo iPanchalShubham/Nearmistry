@@ -1,3 +1,4 @@
+// Menu component
 import Link from "next/link";
 import { useRouter } from "next/router";
 const Menu = ({ MenuHandler, showSidebar, regButtonClick }) => {

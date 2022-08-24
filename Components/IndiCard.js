@@ -1,3 +1,4 @@
+// Card ui for individuals
 import Image from "next/image";
 import React, { useState } from "react";
 import { DotsHorizontalIcon } from "@heroicons/react/outline";
@@ -12,7 +13,7 @@ function IndiCard({
   phoneNumber,
   fullImgUrl,
   imgUrlArray,
-  tags
+  tags,
 }) {
   const [showModal, setShowModal] = useState(false);
   return (
@@ -57,14 +58,13 @@ function IndiCard({
             </h1>
             <div className="mt-2 h-20 text-ellipsis overflow-y-auto  lg:scrollbar-hide">
               <h2 className="tag">#{age} years</h2>
-             {tags?.split(',')?.map((tag,index)=> (
-               <h2 className="tag" key={index}>#{tag}</h2>
-             )) }
-             <h2 className="tag">
-              this this
-             </h2>
+              {tags?.split(",")?.map((tag, index) => (
+                <h2 className="tag" key={index}>
+                  #{tag}
+                </h2>
+              ))}
+              <h2 className="tag">this this</h2>
             </div>
-
 
             <button className="block mx-auto text-black active:bg-gray-200 active:px-2 active:scale-110 transition duration-100">
               <DotsHorizontalIcon className="h-6" />

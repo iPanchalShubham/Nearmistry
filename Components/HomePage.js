@@ -20,6 +20,7 @@ import building_materials_shop from "../public/building-materials_shop.png";
 import Link from "next/link";
 import banner from "../public/nearmistry_banner.jpg";
 import ElectricalShop from "../public/Electric_shop.png";
+
 function HomePage() {
   return (
     <div>
@@ -161,7 +162,7 @@ function HomePage() {
               </button>
             </Link>
           </div>
-
+          {/* Construction material shops */}
           <div>
             <div className="mt-7 justify-center flex items-center bg-yellow-200 rounded-t-xl shadow py-1">
               <p className="lg:font-medium lg:text-xl font-bold">

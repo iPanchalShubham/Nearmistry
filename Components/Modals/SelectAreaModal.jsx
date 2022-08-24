@@ -1,3 +1,4 @@
+// Modal for address or area search
 import React, { useState } from "react";
 import axios from "axios";
 import Link from "next/link";

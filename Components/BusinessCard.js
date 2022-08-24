@@ -1,3 +1,4 @@
+// Card ui for businesses
 import Image from "next/image";
 import React, { useState } from "react";
 import { DotsHorizontalIcon } from "@heroicons/react/outline";

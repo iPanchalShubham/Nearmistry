@@ -1,3 +1,4 @@
+// Forms to register for businesses
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
@@ -17,7 +18,7 @@ export default function Form() {
     imgUrlArray: [],
     ownerImg: "",
     areaName: "",
-    address:"",
+    address: "",
     location: {
       type: "Point",
       coordinates: [],
@@ -320,28 +321,28 @@ export default function Form() {
                   </div>
                 </div>
                 <div className="w-full mb-2">
-                    {/* ---------- Fifith FILED ===> BUSINESS ADDRESS --------*/}
+                  {/* ---------- Fifith FILED ===> BUSINESS ADDRESS --------*/}
 
-                    <label
-                      className="block text-sm font-bold mb-2"
-                      htmlFor="established_in"
-                    >
-                      Business address
-                    </label>
-                    <input
-                      className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-                      id="Adress"
-                      type="text"
-                      required
-                      placeholder="Example: Shop no. 32,Main durga road,karnal"
-                      onChange={(e) =>
-                        setBusinessInfo({
-                          ...businessInfo,
-                          address: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
+                  <label
+                    className="block text-sm font-bold mb-2"
+                    htmlFor="established_in"
+                  >
+                    Business address
+                  </label>
+                  <input
+                    className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                    id="Adress"
+                    type="text"
+                    required
+                    placeholder="Example: Shop no. 32,Main durga road,karnal"
+                    onChange={(e) =>
+                      setBusinessInfo({
+                        ...businessInfo,
+                        address: e.target.value,
+                      })
+                    }
+                  />
+                </div>
                 {/* Tags */}
                 <div>
                   <div>
@@ -349,26 +350,29 @@ export default function Form() {
                       className="block text-sm font-bold mb-2"
                       htmlFor="Tags area"
                     >
-                      Write your services, for ex- Steel Door, Main Gate, Wire fitting...
+                      Write your services, for ex- Steel Door, Main Gate, Wire
+                      fitting...
                     </label>
-                    <div >
-                      
-                        <input
-                          type="text"
-                          id="Tags area"
-                          className="py-2 w-full border-2 rounded mb-2"
-                          placeholder="Steel Doors, Plumbing, Paints"
-                          onChange={(e) => {
-                            setBusinessInfo({...businessInfo,tags:e.target.value})
-                            console.log(businessInfo.tags)
-                          }}
-                          autoComplete="off"
-                          required
-                        />
+                    <div>
+                      <input
+                        type="text"
+                        id="Tags area"
+                        className="py-2 w-full border-2 rounded mb-2"
+                        placeholder="Steel Doors, Plumbing, Paints"
+                        onChange={(e) => {
+                          setBusinessInfo({
+                            ...businessInfo,
+                            tags: e.target.value,
+                          });
+                          console.log(businessInfo.tags);
+                        }}
+                        autoComplete="off"
+                        required
+                      />
                     </div>
                   </div>
                 </div>
-               
+
                 <div className="mb-4">
                   {" "}
                   <label
