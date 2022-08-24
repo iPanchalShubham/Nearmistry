@@ -1,3 +1,4 @@
+// Registration choice modal
 import React from "react";
 import Image from "next/image";
 import individual from "../../public/individual.png";
@@ -40,7 +41,7 @@ export default function Modal({ click, showModal }) {
                   </div>
                   <div className="font-medium text-2xl mx-10">or</div>
                   <div>
-                    <Link href={"/business/registration"} passHref = {true}>
+                    <Link href={"/business/registration"} passHref={true}>
                       <Image
                         src={business}
                         width="64px"

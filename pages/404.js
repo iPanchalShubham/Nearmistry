@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <div>
       <Header />
-      <div className="absolute top-0 left-0 right-0 bottom-0 m-auto text-center w-[300spx] h-[100px]">
+      <div className="absolute top-0 left-0 right-0 bottom-0 m-auto text-center w-[300px] h-[100px]">
         <div className="text-4xl font-thin lg:text-5xl">Thanks for your interest. </div>
         <div className="text-3xl font-thin lg:text-4xl">We&apos;re working on it.</div>
         <br />

@@ -1,3 +1,4 @@
+// Form for individual's registration
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
@@ -22,7 +23,7 @@ export default function Form() {
       type: "Point",
       coordinates: [],
     },
-    tags:""
+    tags: "",
   });
   const [loadingVar, setLoadingVar] = useState("Register");
   // Modal controllers var
@@ -57,7 +58,7 @@ export default function Form() {
       }));
     }
   };
-
+  // Function handling the ok button in modal
   const okHandler = (e) => {
     e.preventDefault();
     setSuggestions([]);
@@ -67,13 +68,11 @@ export default function Form() {
     setLoadingVar("Processing...");
     event.preventDefault();
     const files = [...event.currentTarget.files];
-    console.log(files);
     const promises = [];
     files.forEach(async (element, i) => {
       const formData = new FormData();
       formData.append("file", element);
       formData.append("public_id", userInfo.phoneNumber + i);
-      console.log(i);
       formData.append("upload_preset", "Shubh*Hustler");
       promises.push(
         fetch(
@@ -88,7 +87,6 @@ export default function Form() {
               return response.json();
             }
             modalHandler(response.status);
-            console.log(response);
           })
           .then((r) => {
             setUserInfo((prevState) => ({
@@ -110,7 +108,6 @@ export default function Form() {
     console.log(userInfo.imgUrlArray);
 
     const userInfoNew = JSON.stringify(userInfo);
-    console.log(userInfoNew);
     setLoadingVar("Processing...");
     const data2 = await fetch(
       "https://labrecruit.herokuapp.com/volunteerSection/newUser",
@@ -129,6 +126,7 @@ export default function Form() {
       })
       .catch((e) => console.log(e));
   };
+  // Modal handler
   const modalHandler = (statusCode) => {
     setOpenModal(!openModal);
     setResponse(statusCode);
@@ -152,8 +150,10 @@ export default function Form() {
               <div className="py-4 text-black items-center text-2xl border-grey-lighter flex justify-center font-medium space-x-2">
                 Registration
               </div>
+
               <div className="py-4 px-8">
                 <div className="flex mb-4">
+                  {/* First name */}
                   <div className="w-1/2 mr-1">
                     <label
                       className="block text-sm font-bold mb-2"
@@ -171,6 +171,7 @@ export default function Form() {
                       }
                     />
                   </div>
+                  {/* Last name */}
                   <div className="w-1/2 ml-1">
                     <label
                       className="block text-sm font-bold mb-2"
@@ -190,7 +191,9 @@ export default function Form() {
                     />
                   </div>
                 </div>
+
                 <div className="flex mb-4">
+                  {/* Phone number */}
                   <div className="w-[75%] mr-1">
                     <label
                       className="block text-sm font-bold mb-2"
@@ -213,6 +216,7 @@ export default function Form() {
                       }
                     />
                   </div>
+                  {/* Age */}
                   <div className="w-[25%] ml-1">
                     <label
                       className="block text-sm font-bold mb-2"
@@ -234,6 +238,8 @@ export default function Form() {
                     />
                   </div>
                 </div>
+
+                {/* Genders */}
                 <div className="mb-4 space-x-6 flex justify-center font-medium">
                   <div className="space-x-2">
                     {" "}
@@ -275,6 +281,7 @@ export default function Form() {
                     <label htmlFor="Other">Other</label>
                   </div>
                 </div>
+                {/* Occupations */}
                 <div className="mb-4">
                   <div>
                     <label
@@ -320,23 +327,24 @@ export default function Form() {
                       Write your services, for ex- Steel Door, Main Gate, Wire
                       fitting...
                     </label>
-                    <textarea  className=" w-[100%] border-2 rounded"
+                    <textarea
+                      className=" w-[100%] border-2 rounded"
                       placeholder="Steel Doors, Plumbing, Paints, Plumbing, Sanitary..."
                       type="text"
-                        id="Tags area"
-                        onChange={(e) => {
-                          setUserInfo({
-                            ...userInfo,
-                            tags: e.target.value,
-                          });
-                          console.log(userInfo.tags);
-                        }}
-                          autoComplete="off"
-                          required
-                        />
-                    
+                      id="Tags area"
+                      onChange={(e) => {
+                        setUserInfo({
+                          ...userInfo,
+                          tags: e.target.value,
+                        });
+                        console.log(userInfo.tags);
+                      }}
+                      autoComplete="off"
+                      required
+                    />
                   </div>
                 </div>
+                {/* Upload image */}
                 <div className="mb-4">
                   {" "}
                   <label
@@ -355,9 +363,11 @@ export default function Form() {
                     onChange={(e) => imageHandler(e)}
                   />
                 </div>
+                {/* Search your address */}
                 <label className="block text-sm font-bold mb-2" htmlFor="area">
                   Search and select your area
                 </label>
+                {/* OK button in address search */}
                 <div className="flex items-center sticky z-30">
                   <div className="flex rounded ml-1">
                     <input
@@ -382,7 +392,7 @@ export default function Form() {
                     </button>
                   </div>
                 </div>
-
+                {/* Search recommandations for similar places */}
                 <div className="flex  flex-col ml-8 overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll">
                   {suggestions?.map((res, index) => (
                     <div
