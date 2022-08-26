@@ -1,7 +1,7 @@
 // Modal for showing the fail or pass status of registration after submitting the registration form.
 import React from "react";
 import Router from "next/router";
-function FormsResponseModal({ response, openModal }) {
+function registrationStatusModal({ response, openModal }) {
   console.log(response);
   return (
     <>
@@ -76,4 +76,4 @@ function FormsResponseModal({ response, openModal }) {
   );
 }
 
-export default FormsResponseModal;
+export default registrationStatusModal;

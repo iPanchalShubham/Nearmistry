@@ -1,11 +1,11 @@
 import React from "react";
 import Header from "../Components/Static_components/Header.js";
-import ItemCard from "../Components/IndiCard.js";
+import ItemCard from "../Components/UI/IndiCard.js";
 import axios from "axios";
 import Footer from "../Components/Static_components/Footer.jsx";
-import Pagination from "../Components/Pagination";
+import Pagination from "../Components/Lib/Pagination";
 import Head from "next/head";
-import BusinessCard from "../Components/BusinessCard.js";
+import BusinessCard from "../Components/UI/BusinessCard";
 
 export default function ResultItems({ data }) {
   return (

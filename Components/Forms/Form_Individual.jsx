@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import CopyrightFooter from "../Static_components/CopyrightFooter";
-import FormsResponseModal from "../Modals/FormsResponseModal";
+import registrationStatusModal from "../Modals/registrationStatusModal";
 import Loading from "../Static_components/loading";
 export default function Form() {
   const [suggestions, setSuggestions] = useState([]);
@@ -133,7 +133,7 @@ export default function Form() {
   };
   return (
     <form onSubmit={(e) => registerHandler(e)}>
-      <FormsResponseModal
+      <registrationStatusModal
         openModal={openModal}
         response={response}
         clickModal={modalHandler}
