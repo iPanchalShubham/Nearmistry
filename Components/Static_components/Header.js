@@ -3,7 +3,7 @@ import { MenuIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import { LocationMarkerIcon } from "@heroicons/react/solid";
 import SelectAreaModal from "../Modals/SelectAreaModal";
-import Menu from "../Menu";
+import Menu from "./Menu";
 import { useRef } from "react";
 import RegChoice from "../Modals/Reg_choice_modal.jsx";
 function Header() {
