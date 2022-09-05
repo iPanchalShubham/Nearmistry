@@ -17,11 +17,9 @@ import welding_shops from "../public/welding_shops.png";
 import paint_shops from "../public/paint_shops.png";
 import Next_arrow from "../public/Next_arrow.png";
 import building_materials_shop from "../public/building-materials_shop.png";
-import Link from "next/link";
 import banner from "../public/nearmistry_banner.jpg";
 import ElectricalShop from "../public/Electric_shop.png";
 import CategoryComponent from "./UI/CategoryComponent";
-// categoryName, categoryImg
 function HomePage() {
   return (
     <div>
@@ -137,7 +135,7 @@ function HomePage() {
 
             <CategoryComponent
               categoryImg={Next_arrow}
-              categoryName={"Suggestion"}
+              categoryName={"more..."}
             />
           </div>
         </div>
