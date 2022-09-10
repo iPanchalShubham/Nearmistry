@@ -9,7 +9,6 @@ function IndiCard({
   fName,
   lName,
   age,
-  gender,
   phoneNumber,
   fullImgUrl,
   imgUrlArray,
@@ -41,7 +40,7 @@ function IndiCard({
             xmlns="http://www.w3.org/2000/svg"
             className="absolute top-[190px] left-[1px] h-3 w-3 p-0"
             viewBox="0 0 20 20"
-            // fill=""
+            
           >
             <path
               fillRule="evenodd"
