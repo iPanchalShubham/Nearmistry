@@ -12,7 +12,7 @@ export default function ResultItems({ data }) {
     <div>
       <Head>
         <title>
-          Get {data.occupation} for contruction, renovation, maintainance etc.
+          Get {data.data[0].occupation} for contruction, renovation, maintainance etc.
           in karnal,haryana
         </title>
         <meta
