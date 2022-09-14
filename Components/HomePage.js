@@ -29,6 +29,8 @@ function HomePage() {
           layout="fill"
           placeholder="blur"
           alt="How to find on Nearmistry"
+          quality={100}
+          priority
         />
       </div>
       <section className="flex justify-center relative mb-3 ">
