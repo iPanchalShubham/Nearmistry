@@ -6,8 +6,8 @@ module.exports = {
   ],
   theme: {
     screens: {
-      's-phones': '360px',
-      'n-phones':'380px',
+      's-phones': '360px',//small phones
+      'n-phones':'380px',//normal phones
       ...defaultTheme.screens,
     },
   },
