@@ -7,7 +7,7 @@ export default function CopyrightFooter() {
       <p className="text-grey-dark mb-2 text-sm">
         &copy; Copyright
         <span className="font-bold">
-          <Link href="/about"> NearMistry </Link>
+          <Link href="/about"> Nearmistry </Link>
         </span>
         {new Date().getFullYear()}
       </p>

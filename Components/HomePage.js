@@ -20,6 +20,7 @@ import building_materials_shop from "../public/building-materials_shop.png";
 import banner from "../public/nearmistry_banner.jpg";
 import ElectricalShop from "../public/Electric_shop.png";
 import CategoryComponent from "./UI/CategoryComponent";
+import Jobs from "./UI/Jobs";
 function HomePage() {
   return (
     <div>
@@ -88,7 +89,7 @@ function HomePage() {
 
           {/* Construction material shops */}
           <div>
-            <div className="mt-7 justify-center flex items-center bg-yellow-200 rounded-t-xl shadow py-1">
+            <div className="mt-20 justify-center flex items-center bg-yellow-200 rounded-t-xl shadow py-1">
               <p className="lg:font-medium lg:text-xl font-bold">
                 Find best contruction shops near you
               </p>
@@ -140,6 +141,21 @@ function HomePage() {
               categoryName={"more..."}
             />
           </div>
+          <div>
+            <div className="mt-28 justify-center flex items-center bg-yellow-200 rounded-t-xl shadow py-1">
+              <p className="lg:font-medium lg:text-xl font-bold">
+              Find work in your area
+              </p>
+            </div>
+          </div>
+      <section className="mx-5">
+
+        <Jobs/>
+        <Jobs/>
+        <Jobs/>
+        <Jobs/>
+
+      </section>
         </div>
       </section>
     </div>

@@ -12,14 +12,18 @@ function BusinessCard({
   imgUrlArray,
   ownerImg,
   tags,
-  address
+  address,
 }) {
   const [showModal, setShowModal] = useState(false);
+  const modalHandler = () => {
+    console.log('lskjfldkjlfjsldjfljsdljfl')
+    setShowModal(prevState => !prevState)
+  };
   return (
     <div>
       <Modal
         showModal={showModal}
-        click={() => setShowModal(!showModal)}
+        click={modalHandler}
         selectedFile={imgUrlArray || null}
         imgUrlArray={imgUrlArray || null}
       />

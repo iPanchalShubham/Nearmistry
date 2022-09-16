@@ -1,15 +1,13 @@
 // Menu component
 import Link from "next/link";
 import { useRouter } from "next/router";
+import BackDrop from "./Backdrop";
 const Menu = ({ MenuHandler, showSidebar, regButtonClick }) => {
   const router = useRouter();
   return (
     <>
       {showSidebar ? (
-        <div
-          className="h-full w-full fixed top-0 right-0 z-40 bg-black opacity-50"
-          onClick={MenuHandler}
-        ></div>
+        <BackDrop toggle={MenuHandler}/>
       ) : null}
       <div
         className={`top-0 left-0 bg-white p-10 pr-15 lg:pr-20 fixed h-full z-40 ease-in duration-150 ${
