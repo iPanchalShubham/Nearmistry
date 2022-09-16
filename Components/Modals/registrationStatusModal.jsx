@@ -1,13 +1,14 @@
 // Modal for showing the fail or pass status of registration after submitting the registration form.
 import React from "react";
 import Router from "next/router";
+import BackDrop from "../Static_components/Backdrop";
 function registrationStatusModal({ response, openModal }) {
   console.log(response);
   return (
     <>
       {openModal ? (
         <div>
-          <div className="h-full w-[100%] fixed top-0 right-0 z-40 bg-black opacity-50" />
+          <BackDrop/>
           <div className="justify-center items-center flex overflow-hidden fixed inset-0 outline-none focus:outline-none max-h-72 my-auto mx-auto  border max-w-[340px] shadow-lg rounded-md bg-white z-50">
             <div className="mt-3 text-center">
               {response == 201 ? (

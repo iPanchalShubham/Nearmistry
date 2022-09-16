@@ -6,7 +6,7 @@ function Jobs() {
   return (
     <>
       <div className="flex justify-center mt-5">
-        <div className="flex md:flex-row h-52 max-w-full rounded-lg bg-gray-50 shadow-md">
+        <div className="flex md:flex-row h-40 max-w-full rounded-lg bg-gray-50 shadow-md">
           <img
             className="h-auto object-cover s-phones:w-32 sm:40 rounded-t-lg md:rounded-none md:rounded-l-lg"
             src="https://i.pinimg.com/originals/08/80/cc/0880cc6d291d1eb5368b309002bc94a6.jpg"
@@ -14,7 +14,7 @@ function Jobs() {
           />
           <div className="mx-6 my-6 n-phones:my-0 flex flex-col justify-start min-w-0">
             <h5 className="text-gray-900 text-xl font-medium mb-2">Plumbing</h5>
-            <p className="text-gray-700 text-sm">Address:house no. 453, Karnal</p>
+            <p className="text-gray-700 text-sm">Address: house no. 453, Karnal</p>
             <p className="truncate">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat
               animi voluptatibus vero ipsum assumenda, et voluptatem illo modi

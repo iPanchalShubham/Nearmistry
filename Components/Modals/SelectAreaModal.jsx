@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import BackDrop from "../Static_components/Backdrop";
 
 export default function SelectAreaModal({ showModal, click }) {
   const [suggestions, setSuggestions] = useState([]);
@@ -31,10 +32,7 @@ export default function SelectAreaModal({ showModal, click }) {
     <>
       {showModal ? (
         <>
-          <div
-            className="h-full w-[100%] fixed top-0 right-0 z-40 bg-black opacity-50"
-            onClick={click}
-          />
+         <BackDrop/>
           <div className="justify-center items-center flex overflow-hidden fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative  my-6 mx-auto max-w-3xl h-[300px] ">
               {/*content*/}

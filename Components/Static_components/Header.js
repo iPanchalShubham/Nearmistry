@@ -5,7 +5,7 @@ import { LocationMarkerIcon } from "@heroicons/react/solid";
 import SelectAreaModal from "../Modals/SelectAreaModal";
 import Menu from "./Menu";
 import { useRef } from "react";
-import RegChoice from "../Modals/Reg_choice_modal.jsx";
+import RegChoice from "../Modals/RegChoiceModal.jsx";
 function Header() {
   const router = useRouter();
   const [showSidebar, setShowSidebar] = useState(false);
@@ -16,7 +16,7 @@ function Header() {
   const MenuHandler = () => {
     setShowSidebar(!showSidebar);
   };
-  const clickHandler = () => {
+  const placeSelectionModalHandler = () => {
     setShowModal(!showModal);
   };
   const choiceModalHandler = () => {
@@ -44,7 +44,7 @@ function Header() {
         </div>
         <button
           className="text-[10px]  lg:text-[15px] uppercase font-semibold cursor-pointer border-2 px-1 bg-gray-50 rounded-md flex items-center text-[#5370cf] py-0.5"
-          onClick={() => clickHandler()}
+          onClick={() => placeSelectionModalHandler()}
         >
           <div className="h-4 w-4 lg:h-6 lg:w-5 text-red-500">
             <LocationMarkerIcon />
@@ -55,10 +55,12 @@ function Header() {
         </button>
         <SelectAreaModal
           showModal={showModal}
-          click={() => clickHandler()}
+          click={() => placeSelectionModalHandler()}
           location={area.current}
         />
-        <RegChoice showModal={choiceModal} click={choiceModalHandler} />
+      </div>
+      <div className="flex justify-center">
+        <RegChoice showModal={choiceModal} toggle={choiceModalHandler} />
       </div>
     </>
   );
