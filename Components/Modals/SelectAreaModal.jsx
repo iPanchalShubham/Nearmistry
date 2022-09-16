@@ -12,18 +12,30 @@ export default function SelectAreaModal({ showModal, click }) {
     lat: "",
     lng: "",
   });
-  const fetchRes = async (e) => {
+  const [timeoutID, setTimeoutID] = useState();
+  // Debounce api
+  function debouce(callBack, delay = 1000) {
+    return (...args) => {
+      if (timeoutID) clearTimeout(timeoutID);
+      const timeout = setTimeout(() => {
+        callBack(...args);
+      }, delay);
+      setTimeoutID(timeout);
+    };
+  }
+  const fetchPlacesSuggestions = debouce(async (place) => {
     try {
       const res = await axios
         .get(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${e?.target.value}.json?country=in&limit=7&types=place%2Cpostcode%2Caddress%2Clocality%2Cneighborhood%2Cdistrict&autocomplete=true&fuzzyMatch=true&routing=true&worldview=in&access_token=${process.env.API_TOKEN}`
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json?country=in&limit=7&types=place%2Cpostcode%2Caddress%2Clocality%2Cneighborhood%2Cdistrict&autocomplete=true&fuzzyMatch=true&routing=true&worldview=in&access_token=${process.env.API_TOKEN}`
         )
         .then((res) => res.data.features);
       setSuggestions(res);
     } catch (e) {
       console.log(e.message);
     }
-  };
+  }, 3000);
+
   const inputHandler = (e) => {
     setInput(e);
   };
@@ -32,7 +44,7 @@ export default function SelectAreaModal({ showModal, click }) {
     <>
       {showModal ? (
         <>
-         <BackDrop/>
+          <BackDrop />
           <div className="justify-center items-center flex overflow-hidden fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative  my-6 mx-auto max-w-3xl h-[300px] ">
               {/*content*/}
@@ -51,7 +63,7 @@ export default function SelectAreaModal({ showModal, click }) {
                       className="py-2 w-[300px] outline-blue-200"
                       placeholder="Search your area to find workers"
                       onChange={(e) => {
-                        fetchRes(e);
+                        fetchPlacesSuggestions(e.target.value);
                         inputHandler(e.currentTarget.value);
                       }}
                       value={input}
@@ -59,17 +71,21 @@ export default function SelectAreaModal({ showModal, click }) {
 
                     <button
                       className="flex items-center justify-center px-4  text-white bg-[#5370cf] rounded-sm"
-                      onClick={areaInfo.lat?()=> click():null}
+                      onClick={areaInfo.lat ? () => click() : null}
                     >
                       <Link
-                        href={areaInfo.lat ?{
-                          pathname: "/",
-                          query: {
-                            area: areaInfo.areaName,
-                            lat: areaInfo.lat,
-                            lng: areaInfo.lng,
-                          },
-                        } : "/"}
+                        href={
+                          areaInfo.lat
+                            ? {
+                                pathname: "/",
+                                query: {
+                                  area: areaInfo.areaName,
+                                  lat: areaInfo.lat,
+                                  lng: areaInfo.lng,
+                                },
+                              }
+                            : "/"
+                        }
                       >
                         OK
                       </Link>
