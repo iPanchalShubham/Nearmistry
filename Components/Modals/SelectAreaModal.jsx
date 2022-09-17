@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import BackDrop from "../Static_components/Backdrop";
+import { debouce } from "../Utils/debounce";
 
 export default function SelectAreaModal({ showModal, click }) {
   const [suggestions, setSuggestions] = useState([]);
@@ -12,17 +13,7 @@ export default function SelectAreaModal({ showModal, click }) {
     lat: "",
     lng: "",
   });
-  const [timeoutID, setTimeoutID] = useState();
-  // Debounce api
-  function debouce(callBack, delay = 1000) {
-    return (...args) => {
-      if (timeoutID) clearTimeout(timeoutID);
-      const timeout = setTimeout(() => {
-        callBack(...args);
-      }, delay);
-      setTimeoutID(timeout);
-    };
-  }
+
   const fetchPlacesSuggestions = debouce(async (place) => {
     try {
       const res = await axios
@@ -34,7 +25,7 @@ export default function SelectAreaModal({ showModal, click }) {
     } catch (e) {
       console.log(e.message);
     }
-  }, 3000);
+  });
 
   const inputHandler = (e) => {
     setInput(e);

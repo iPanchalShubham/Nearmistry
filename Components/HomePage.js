@@ -24,13 +24,14 @@ import Jobs from "./UI/Jobs";
 function HomePage() {
   return (
     <div>
-      <div className="mx-auto relative w-[100%] lg: pb-[55%] maskBanner z-[-1] mb-[-80px] md:mb-[-200px] lg:mb-[-300px] xl:mb-[-420px] ">
+      <div className="mx-auto relative w-[100%] pb-[55%] maskBanner z-[-1] mb-[-90px] md:mb-[-200px] lg:mb-[-300px] xl:mb-[-420px]">
         <Image
           src={banner}
           layout="fill"
           placeholder="blur"
           alt="How to find on Nearmistry"
           quality={100}
+          
           priority
         />
       </div>
