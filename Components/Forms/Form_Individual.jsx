@@ -3,8 +3,10 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import CopyrightFooter from "../Static_components/CopyrightFooter";
-import registrationStatusModal from "../Modals/registrationStatusModal";
+import RegistrationStatusModal from "../Modals/registrationStatusModal";
 import Loading from "../Static_components/loading";
+import { Debounce } from "../Utils/Debounce.jsx";
+import Renderer from "../Modals/Renderer/Renderer";
 export default function Form() {
   const [suggestions, setSuggestions] = useState([]);
   const [input, setInput] = useState("");
@@ -31,7 +33,7 @@ export default function Form() {
   const [response, setResponse] = useState("");
   //*** FUNCTION FETCHING REPONSE FROM MAPBOX API. ***
 
-  const fetchRes = async (e) => {
+  const fetchRes = Debounce(async (e) => {
     try {
       const res = await axios
         .get(
@@ -43,7 +45,7 @@ export default function Form() {
     } catch (e) {
       console.log(e.message);
     }
-  };
+  })
   // *** FUNCTION HANDLING THE CLICK ON SUGGESTIONS ***
   const inputHandler = (e, res) => {
     setInput(e);
@@ -133,7 +135,8 @@ export default function Form() {
   };
   return (
     <form onSubmit={(e) => registerHandler(e)}>
-      <registrationStatusModal
+    <Renderer/>
+      <RegistrationStatusModal
         openModal={openModal}
         response={response}
         clickModal={modalHandler}
