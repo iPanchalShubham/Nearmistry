@@ -63,7 +63,7 @@ function Header() {
           showModal={showModal}
           toggle={() => placeSelectionModalHandler()}
           Heading = {()=><>Where do you want to find Workers.</>}
-          Content = {()=><SelectAreaModal/>}
+          Content = {()=><SelectAreaModal  toggle={() => placeSelectionModalHandler()}/>}
         />
       </div>
     </>

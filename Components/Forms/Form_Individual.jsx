@@ -1,15 +1,11 @@
 // Form for individual's registration
 import React from "react";
 import { useState } from "react";
-import axios from "axios";
-import CopyrightFooter from "../Static_components/CopyrightFooter";
 import RegistrationStatusModal from "../Modals/registrationStatusModal";
 import Loading from "../Static_components/loading";
-import { Debounce } from "../Utils/Debounce.jsx";
 import Renderer from "../Modals/Renderer/Renderer";
+import PlacesSearchBar from "../Utils/PlacesSearchBar";
 export default function Form() {
-  const [suggestions, setSuggestions] = useState([]);
-  const [input, setInput] = useState("");
 
   /*FORM DATA */
   const [userInfo, setUserInfo] = useState({
@@ -32,39 +28,6 @@ export default function Form() {
   const [openModal, setOpenModal] = useState(false);
   const [response, setResponse] = useState("");
   //*** FUNCTION FETCHING REPONSE FROM MAPBOX API. ***
-
-  const fetchRes = Debounce(async (e) => {
-    try {
-      const res = await axios
-        .get(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${e?.target.value}.json?country=in&limit=7&types=place%2Cpostcode%2Caddress%2Clocality%2Cneighborhood%2Cdistrict&autocomplete=true&fuzzyMatch=true&routing=true&worldview=in&access_token=${process.env.API_TOKEN}
-          `
-        )
-        .then((res) => res.data.features);
-      setSuggestions(res);
-    } catch (e) {
-      console.log(e.message);
-    }
-  })
-  // *** FUNCTION HANDLING THE CLICK ON SUGGESTIONS ***
-  const inputHandler = (e, res) => {
-    setInput(e);
-    if (res) {
-      setUserInfo((prevState) => ({
-        ...prevState,
-        areaName: res?.text,
-        location: {
-          ...prevState.location,
-          coordinates: res?.geometry.coordinates,
-        },
-      }));
-    }
-  };
-  // Function handling the ok button in modal
-  const okHandler = (e) => {
-    e.preventDefault();
-    setSuggestions([]);
-  };
 
   const imageHandler = async (event) => {
     setLoadingVar("Processing...");
@@ -135,7 +98,7 @@ export default function Form() {
   };
   return (
     <form onSubmit={(e) => registerHandler(e)}>
-    <Renderer/>
+      <Renderer />
       <RegistrationStatusModal
         openModal={openModal}
         response={response}
@@ -367,68 +330,12 @@ export default function Form() {
                   />
                 </div>
                 {/* Search your address */}
-                <label className="block text-sm font-bold mb-2" htmlFor="area">
-                  Search and select your area
-                </label>
-                {/* OK button in address search */}
-                <div className="flex items-center sticky z-30">
-                  <div className="flex rounded ml-1">
-                    <input
-                      type="text"
-                      id="area"
-                      className="py-2 w-[210px] outline-blue-200 border-2 rounded"
-                      placeholder="Where you provide your service"
-                      onChange={(e) => {
-                        fetchRes(e);
-                        inputHandler(e.currentTarget.value);
-                      }}
-                      value={input}
-                      autoComplete="off"
-                      required
-                      disabled={loadingVar == "Register" ? false : true}
-                    />
-                    <button
-                      className="flex items-center justify-center px-4  text-white bg-[#6271a5] rounded-sm"
-                      onClick={(e) => okHandler(e)}
-                    >
-                      OK
-                    </button>
-                  </div>
-                </div>
-                {/* Search recommandations for similar places */}
-                <div className="flex  flex-col ml-8 overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll">
-                  {suggestions?.map((res, index) => (
-                    <div
-                      className="mt-[13px] font-medium cursor-pointer"
-                      onClick={(e) => {
-                        inputHandler(e.currentTarget.innerText, res);
-                      }}
-                      key={index}
-                    >
-                      {res.text}
-                      <span className="ml-3 text-sm text-gray-500 mt-1.5">
-                        {res.place_name.split(",").slice(1).toString()}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex items-center justify-end mt-8">
-                  <button
-                    className="
-                       bg-[#5370cf]
-                     hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-md"
-                    type="submit"
-                    disabled={loadingVar == "Register" ? false : true}
-                  >
-                    {loadingVar}
-                  </button>
-                </div>
+                <PlacesSearchBar/>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <CopyrightFooter />
     </form>
   );
 }

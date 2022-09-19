@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { Debounce } from "./Debounce";
 
-function PlacesSearchBar({ redirectAddress }) {
+function PlacesSearchBar({ redirectAddress, toggle }) {
   const [suggestions, setSuggestions] = useState([]);
   const [input, setInput] = useState("");
   const [areaInfo, setAreaInfo] = useState({
@@ -27,14 +27,17 @@ function PlacesSearchBar({ redirectAddress }) {
   const inputHandler = (e) => {
     setInput(e);
   };
-
+  const okHandler = (e) => {
+    e.preventDefault();
+    setSuggestions([]);
+  };
   return (
     <>
-      <div className="mt-1 sticky z-30">
+      <div className="mt-1 sticky W">
         <div className="flex rounded ml-1">
           <input
             type="text"
-            className="py-2 w-full outline-none"
+            className="py-2 w-full border-2 border-blue-100 outline-none"
             placeholder="Search your area to find workers"
             onChange={(e) => {
               fetchPlacesSuggestions(e.target.value);
@@ -45,11 +48,13 @@ function PlacesSearchBar({ redirectAddress }) {
 
           <button
             className="flex items-center justify-center px-4  text-white bg-[#5370cf] rounded-sm"
-            onClick={areaInfo.lat ? () => click() : null}
+            onClick={
+              areaInfo.lat & toggle ? () => toggle() : (e) => okHandler(e)
+            }
           >
             <Link
               href={
-                areaInfo.lat
+                areaInfo.lat && toggle
                   ? {
                       pathname: redirectAddress,
                       query: {
@@ -58,7 +63,7 @@ function PlacesSearchBar({ redirectAddress }) {
                         lng: areaInfo.lng,
                       },
                     }
-                  : "/"
+                  : ""
               }
             >
               OK
@@ -66,7 +71,7 @@ function PlacesSearchBar({ redirectAddress }) {
           </button>
         </div>
       </div>
-      <div className="flex flex-col ml-8 h-[300px] overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll">
+      <div className="flex flex-col ml-8 overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll">
         {suggestions?.map((res, index) => (
           <div
             className="mt-[13px] font-medium cursor-pointer"
