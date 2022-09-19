@@ -6,10 +6,10 @@ import BackDrop from "../Static_components/Backdrop";
 import { debouce } from "../Utils/Debounce.jsx";
 import PlacesSearchBar from "../Utils/PlacesSearchBar";
 
-export default function SelectAreaModal({ showModal, click }) {
+export default function SelectAreaModal({  toggle }) {
   return (
     <>
-        <PlacesSearchBar />
+        <PlacesSearchBar toggle = {toggle} redirectAddress = {"/"}/>
     </>
   );
 }
