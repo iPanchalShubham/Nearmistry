@@ -8,13 +8,15 @@ import Head from "next/head";
 import BusinessCard from "../Components/UI/BusinessCard";
 
 export default function ResultItems({ data }) {
+  // C
+  const occupation = `${data.data[0].occupation}`;
+  const pageTitle = `Get ${occupation} for contruction, renovation, maintainance etc.
+  in karnal,haryana`;
+
   return (
     <div>
       <Head>
-        <title>
-          Get {data.data[0].occupation} for contruction, renovation, maintainance etc.
-          in karnal,haryana
-        </title>
+        <title>{pageTitle}</title>
         <meta
           name="description"
           content="Find construction related shops or hire Blue-Collar (& Covid-19 safe) professionals instantly near you for FREE."

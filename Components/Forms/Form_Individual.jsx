@@ -1,12 +1,10 @@
 // Form for individual's registration
 import React from "react";
 import { useState } from "react";
-import RegistrationStatusModal from "../Modals/registrationStatusModal";
+import RegistrationStatusModal from "../Modals/RegistrationStatusModal";
 import Loading from "../Static_components/loading";
-import Renderer from "../Modals/Renderer/Renderer";
 import PlacesSearchBar from "../Utils/PlacesSearchBar";
 export default function Form() {
-
   /*FORM DATA */
   const [userInfo, setUserInfo] = useState({
     fName: "",
@@ -23,12 +21,13 @@ export default function Form() {
     },
     tags: "",
   });
+
   const [loadingVar, setLoadingVar] = useState("Register");
   // Modal controllers var
   const [openModal, setOpenModal] = useState(false);
   const [response, setResponse] = useState("");
-  //*** FUNCTION FETCHING REPONSE FROM MAPBOX API. ***
 
+  // Image uploader method
   const imageHandler = async (event) => {
     setLoadingVar("Processing...");
     event.preventDefault();
@@ -51,7 +50,7 @@ export default function Form() {
             if (response.ok) {
               return response.json();
             }
-            modalHandler(response.status);
+            regModalHandler(response.status);
           })
           .then((r) => {
             setUserInfo((prevState) => ({
@@ -91,19 +90,20 @@ export default function Form() {
       })
       .catch((e) => console.log(e));
   };
-  // Modal handler
-  const modalHandler = (statusCode) => {
+  //Registration  Modal handler
+  const regModalHandler = (statusCode) => {
     setOpenModal(!openModal);
     setResponse(statusCode);
   };
   return (
     <form onSubmit={(e) => registerHandler(e)}>
-      <Renderer />
+      {/* Registration status modal */}
       <RegistrationStatusModal
         openModal={openModal}
         response={response}
-        clickModal={modalHandler}
+        clickModal={regModalHandler}
       />
+      {/* Loader image */}
       <Loading
         openmodal={
           (loadingVar == "Processing...") & (openModal == false) ? true : false
@@ -159,7 +159,7 @@ export default function Form() {
                 </div>
 
                 <div className="flex mb-4">
-                  {/* Phone number */}
+                  {/* PHONE NUMBER  */}
                   <div className="w-[75%] mr-1">
                     <label
                       className="block text-sm font-bold mb-2"
@@ -330,7 +330,21 @@ export default function Form() {
                   />
                 </div>
                 {/* Search your address */}
-                <PlacesSearchBar/>
+                <label className="block text-sm font-bold mb-2" htmlFor="area">
+                  Search and select your area
+                </label>
+                <PlacesSearchBar />
+                <div className="flex items-center justify-end mt-8">
+                  <button
+                    className="
+                       bg-[#5370cf]
+                     hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-md"
+                    type="submit"
+                    disabled={loadingVar == "Register" ? false : true}
+                  >
+                    {loadingVar}
+                  </button>
+                </div>
               </div>
             </div>
           </div>

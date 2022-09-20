@@ -3,8 +3,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { DotsHorizontalIcon } from "@heroicons/react/outline";
 import { PhoneIcon } from "@heroicons/react/solid";
-import Modal from "../Modals/modal";
-
+import ImageShowcaseModal from "../Modals/ImageShowcaseModal";
+import PropsType from "prop-types";
 function IndiCard({
   fName,
   lName,
@@ -15,11 +15,14 @@ function IndiCard({
   tags,
 }) {
   const [showModal, setShowModal] = useState(false);
+  const ImageShowcaseToggler = () => {
+    setShowModal((prevState) => !prevState);
+  };
   return (
     <div>
-      <Modal
+      <ImageShowcaseModal
         showModal={showModal}
-        click={() => setShowModal(!showModal)}
+        toggle={() => ImageShowcaseToggler()}
         imgUrlArray={fullImgUrl || imgUrlArray}
       />
       <div className="flex shadow-md m-4 rounded-md bg-white max-w-[360px] max-h-[215px]">
@@ -40,7 +43,6 @@ function IndiCard({
             xmlns="http://www.w3.org/2000/svg"
             className="absolute top-[190px] left-[1px] h-3 w-3 p-0"
             viewBox="0 0 20 20"
-            
           >
             <path
               fillRule="evenodd"
@@ -62,7 +64,6 @@ function IndiCard({
                   #{tag}
                 </h2>
               ))}
-            
             </div>
 
             <button className="block mx-auto text-black active:bg-gray-200 active:px-2 active:scale-110 transition duration-100">
@@ -85,5 +86,20 @@ function IndiCard({
     </div>
   );
 }
-
+/*fName,
+  lName,
+  age,
+  phoneNumber,
+  fullImgUrl,
+  imgUrlArray,
+  tags,*/
+IndiCard.propstype = {
+  fName: PropsType.string,
+  lName: PropsType.string,
+  age: PropsType.string,
+  phoneNumber: PropsType.string,
+  fullImgUrl: PropsType.array,
+  imgUrlArray: PropsType.array,
+  tags: PropsType.array,
+};
 export default IndiCard;

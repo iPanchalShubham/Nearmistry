@@ -3,8 +3,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { DotsHorizontalIcon } from "@heroicons/react/outline";
 import { PhoneIcon } from "@heroicons/react/solid";
-import Modal from "../Modals/modal";
-
+import ImageShowcaseModal from "../Modals/ImageShowcaseModal";
+import PropsType from "prop-types"
 function BusinessCard({
   bName,
   bAge,
@@ -16,12 +16,12 @@ function BusinessCard({
 }) {
   const [showModal, setShowModal] = useState(false);
   const modalHandler = () => {
-    console.log('lskjfldkjlfjsldjfljsdljfl')
-    setShowModal(prevState => !prevState)
+    console.log("lskjfldkjlfjsldjfljsdljfl");
+    setShowModal((prevState) => !prevState);
   };
   return (
     <div>
-      <Modal
+      <ImageShowcaseModal
         showModal={showModal}
         click={modalHandler}
         selectedFile={imgUrlArray || null}
@@ -90,5 +90,20 @@ function BusinessCard({
     </div>
   );
 }
-
+/*bName,
+  bAge,
+  phoneNumber,
+  imgUrlArray,
+  ownerImg,
+  tags,
+  address,*/
+  BusinessCard.propsType = {
+    bName:PropsType.string,
+  bAge:PropsType.string,
+  phoneNumber:PropsType.string,
+  imgUrlArray:PropsType.array,
+  ownerImg:PropsType.string,
+  tags:PropsType.array,
+  address:PropsType.string,
+  }
 export default BusinessCard;

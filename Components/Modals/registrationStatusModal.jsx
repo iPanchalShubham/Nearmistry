@@ -2,14 +2,15 @@
 import React from "react";
 import Router from "next/router";
 import BackDrop from "../Static_components/Backdrop";
-function registrationStatusModal({ response, openModal }) {
+import PropsType from "prop-types";
+function RegistrationStatusModal({ response, openModal, toggle }) {
   console.log(response);
   return (
     <>
       {openModal ? (
         <div>
-          <BackDrop/>
-          <div className="justify-center items-center flex overflow-hidden fixed inset-0 outline-none focus:outline-none max-h-72 my-auto mx-auto  border max-w-[340px] shadow-lg rounded-md bg-white z-50">
+          <BackDrop />
+          <div className="justify-center items-center flex overflow-hidden fixed inset-0 outline-none max-h-72 my-auto mx-auto  max-w-[340px] shadow-lg rounded-md bg-white z-50">
             <div className="mt-3 text-center">
               {response == 201 ? (
                 <div className="mx-auto flex items-center justify-center h-14 w-14 rounded-full bg-green-100">
@@ -63,8 +64,11 @@ function registrationStatusModal({ response, openModal }) {
                   id="ok-btn"
                   className={`px-4 py-2 ${
                     response == 201 ? "bg-green-500" : "bg-red-400"
-                  } text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300`}
-                  onClick={() => Router.reload()}
+                  } text-white text-base font-medium rounded-md w-full shadow-sm  focus:outline-none focus:ring-2 focus:ring-green-300`}
+                  onClick={() => {
+                    Router.reload();
+                    toggle();
+                  }}
                 >
                   OK
                 </button>
@@ -76,5 +80,10 @@ function registrationStatusModal({ response, openModal }) {
     </>
   );
 }
-
-export default registrationStatusModal;
+// response, openModal, toggle
+RegistrationStatusModal.PropsType = {
+  response: PropsType.number,
+  openModal: PropsType.bool,
+  toggle: PropsType.func,
+};
+export default RegistrationStatusModal;

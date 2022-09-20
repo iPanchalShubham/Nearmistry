@@ -4,7 +4,7 @@ import Image from "next/image";
 import individual from "../../public/individual.png";
 import business from "../../public/business.png";
 import Link from "next/link";
-export default function Modal({ toggle, showModal }) {
+export default function Modal() {
   return (
         <>
               {/* Content */}

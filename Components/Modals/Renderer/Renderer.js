@@ -1,6 +1,6 @@
 import React from "react";
 import BackDrop from "../../Static_components/Backdrop";
-
+import PropsType from "prop-types";
 function Renderer({ Heading, Content, toggle, showModal }) {
   return (
     <>
@@ -43,5 +43,10 @@ function Renderer({ Heading, Content, toggle, showModal }) {
     </>
   );
 }
-
+// Content, toggle, showModal 
+Renderer.propsType = {
+  Heading: PropsType.string,
+  toggle:PropsType.func,
+  showModal:PropsType.bool
+};
 export default Renderer;
