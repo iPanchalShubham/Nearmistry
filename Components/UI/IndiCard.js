@@ -86,13 +86,7 @@ function IndiCard({
     </div>
   );
 }
-/*fName,
-  lName,
-  age,
-  phoneNumber,
-  fullImgUrl,
-  imgUrlArray,
-  tags,*/
+
 IndiCard.propstype = {
   fName: PropsType.string,
   lName: PropsType.string,
