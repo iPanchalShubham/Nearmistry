@@ -17,18 +17,22 @@ import welding_shops from "../public/welding_shops.png";
 import paint_shops from "../public/paint_shops.png";
 import Next_arrow from "../public/Next_arrow.png";
 import building_materials_shop from "../public/building-materials_shop.png";
-import Link from "next/link";
 import banner from "../public/nearmistry_banner.jpg";
 import ElectricalShop from "../public/Electric_shop.png";
+import CategoryComponent from "./UI/CategoryComponent";
+import Jobs from "./UI/Jobs";
 function HomePage() {
   return (
     <div>
-      <div className="mx-auto relative w-[100%] lg: pb-[55%] maskBanner z-[-1] mb-[-80px] md:mb-[-200px] lg:mb-[-300px] xl:mb-[-420px] ">
+      <div className="mx-auto relative w-[100%] pb-[55%] maskBanner z-[-1] mb-[-90px] md:mb-[-200px] lg:mb-[-300px] xl:mb-[-420px]">
         <Image
           src={banner}
           layout="fill"
           placeholder="blur"
           alt="How to find on Nearmistry"
+          quality={100}
+          
+          priority
         />
       </div>
       <section className="flex justify-center relative mb-3 ">
@@ -41,258 +45,125 @@ function HomePage() {
             </div>
           </div>
           <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3 items-center">
-            <Link href="/Raj Mistry/1" passHref>
-              <button className="categoryCards">
-                <div className="relative h-9 w-9 lg:h-12 lg:w-12">
-                  <Image
-                    src={rajMistryImg}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Raj Mistry"}
-                  />
-                </div>
-                <p className="font-medium text-center">Raj Mistry</p>
-              </button>
-            </Link>
-            <Link href="Tile Granite worker/1" passHref>
-              <button className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={tileWorkerImg}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Tile Granite worker"}
-                  />
-                </div>
-                <p className="font-medium text-center">Tile Granite worker</p>
-              </button>
-            </Link>
-            <Link href="/Painter/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={painterImg}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Painter"}
-                  />
-                </div>
-                <p className="font-medium text-center">Painter</p>
-              </div>
-            </Link>
-            <Link href="/Carpenter/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={carpenterImg}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Carpenter"}
-                  />
-                </div>
-                <p className="font-medium text-center">Carpenter</p>
-              </div>
-            </Link>
-            <Link href="/Welder/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={welderImg}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Welder"}
-                  />
-                </div>
-                <p className="font-medium text-center">Welder</p>
-              </div>
-            </Link>
-            <Link href="/Electrician/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={electricianImg}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Electrician"}
-                  />
-                </div>
-                <p className="font-medium text-center">Electrician</p>
-              </div>
-            </Link>
-            <Link href="/Plumber/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={plumberImg}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Plumbers"}
-                  />
-                </div>
-                <p className="font-medium text-center">Plumber</p>
-              </div>
-            </Link>
-            <Link href="/Maid/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={maidImg}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Maids"}
-                  />
-                </div>
-                <p className="font-medium text-center">Maid</p>
-              </div>
-            </Link>
-            <Link href="/Labour/1" passHref>
-              <button className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={helperImg}
-                    layout="fill"
-                    objectFit="contain"
-                    placeholder="blur"
-                    alt={"Get Labour"}
-                  />
-                  {/*Icons made by <a href="https://www.flaticon.com/authors/skyclick" title="Skyclick">Skyclick</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>*/}
-                </div>
-                <p className="font-medium text-center">Labour</p>
-              </button>
-            </Link>
+            <CategoryComponent
+              categoryImg={rajMistryImg}
+              categoryName={"Raj Mistry"}
+            />
+
+            <CategoryComponent
+              categoryImg={tileWorkerImg}
+              categoryName={"Tile Granite worker"}
+            />
+
+            <CategoryComponent
+              categoryImg={painterImg}
+              categoryName={"Painter"}
+            />
+
+            <CategoryComponent
+              categoryImg={carpenterImg}
+              categoryName={"Carpenter"}
+            />
+
+            <CategoryComponent
+              categoryImg={welderImg}
+              categoryName={"Welder"}
+            />
+
+            <CategoryComponent
+              categoryImg={electricianImg}
+              categoryName={"Electrician"}
+            />
+
+            <CategoryComponent
+              categoryImg={plumberImg}
+              categoryName={"Plumber"}
+            />
+
+            <CategoryComponent categoryImg={maidImg} categoryName={"Maid"} />
+
+            <CategoryComponent
+              categoryImg={helperImg}
+              categoryName={"Labour"}
+            />
           </div>
 
+          {/* Construction material shops */}
           <div>
-            <div className="mt-7 justify-center flex items-center bg-yellow-200 rounded-t-xl shadow py-1">
+            <div className="mt-20 justify-center flex items-center bg-yellow-200 rounded-t-xl shadow py-1">
               <p className="lg:font-medium lg:text-xl font-bold">
                 Find best contruction shops near you
               </p>
             </div>
           </div>
           <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3  items-center">
-            <Link href="/Building material/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={building_materials_shop}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get best Building material"}
-                  />
-                </div>
-                <p className="font-medium text-center">Building material </p>
-              </div>
-            </Link>
-            <Link href="/Contractors/1" passHref>
-              <button className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={contractor}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Thekedaar"}
-                  />
-                </div>
-                <p className="font-medium text-center">
-                  Contractor (Thekedaar)
-                </p>
-              </button>
-            </Link>
-            <Link href="Tile Granite/1" passHref>
-              <button className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={tile_shops}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Tile Granite shops"}
-                  />
-                </div>
-                <p className="font-medium text-center">Tile granite shops</p>
-              </button>
-            </Link>
-            <Link href="/Paints/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={paint_shops}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Painter"}
-                  />
-                </div>
-                <p className="font-medium text-center">Paint shops</p>
-              </div>
-            </Link>
-            <Link href="/Wood works/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-14 lg:w-14">
-                  <Image
-                    src={furniture_shops}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Furniture shops"}
-                  />
-                </div>
-                <p className="font-medium text-center">Wood works</p>
-              </div>
-            </Link>
-            <Link href="/Welding/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={welding_shops}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Welder"}
-                  />
-                </div>
-                <p className="font-medium text-center">Welding shops</p>
-              </div>
-            </Link>
-            <Link href="/Sanitary/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                  <Image
-                    src={plumbing_shops}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Electrician"}
-                  />
-                </div>
-                <p className="font-medium text-center">Plumbing & Sanitary </p>
-              </div>
-            </Link>
-            <Link href="/Electrical/1" passHref>
-              <div className="categoryCards">
-                <div className="relative h-10 w-10 lg:h-14 lg:w-14">
-                  <Image
-                    src={ElectricalShop}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get Electrician"}
-                  />
-                </div>
-                <p className="font-medium text-center">Electrical Stores </p>
-              </div>
-            </Link>
-            <Link href="/Suggestion/" passHref>
-              <div className="categoryCards">
-                <div className="relative h-6 w-6 ">
-                  <Image
-                    src={Next_arrow}
-                    layout="fill"
-                    placeholder="blur"
-                    alt={"Get best Building material"}
-                  />
-                </div>
-              </div>
-            </Link>
+            <CategoryComponent
+              categoryImg={building_materials_shop}
+              categoryName={"Building material"}
+            />
+
+            <CategoryComponent
+              categoryImg={contractor}
+              categoryName={"Contractors"}
+            />
+
+            <CategoryComponent
+              categoryImg={tile_shops}
+              categoryName={"Tile Granite"}
+            />
+
+            <CategoryComponent
+              categoryImg={paint_shops}
+              categoryName={"Paints"}
+            />
+
+            <CategoryComponent
+              categoryImg={furniture_shops}
+              categoryName={"Wood works"}
+            />
+
+            <CategoryComponent
+              categoryImg={welding_shops}
+              categoryName={"Welding"}
+            />
+
+            <CategoryComponent
+              categoryImg={plumbing_shops}
+              categoryName={"Sanitary"}
+            />
+
+            <CategoryComponent
+              categoryImg={ElectricalShop}
+              categoryName={"ElectricalShop"}
+            />
+
+            <CategoryComponent
+              categoryImg={Next_arrow}
+              categoryName={"more..."}
+            />
           </div>
+          <div>
+            <div className="mt-28 justify-center flex items-center bg-yellow-200 rounded-t-xl shadow py-1">
+              <p className="lg:font-medium lg:text-xl font-bold">
+              Find work in your area
+              </p>
+            </div>
+          </div>
+      <section className="mx-5">
+
+        <Jobs/>
+        <Jobs/>
+        <Jobs/>
+        <Jobs/>
+
+      </section>
         </div>
       </section>
     </div>
   );
 }
 
+{
+  /*Icons made by <a href="https://www.flaticon.com/authors/skyclick" title="Skyclick">Skyclick</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>*/
+}
 export default HomePage;

@@ -1,3 +1,4 @@
+// Component for pagination
 import React from 'react'
 import ReactPaginate from 'react-paginate';
 import { useRouter } from 'next/dist/client/router';

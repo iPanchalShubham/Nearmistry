@@ -1,17 +1,18 @@
+// Card ui for individuals
 import Image from "next/image";
 import React, { useState } from "react";
 import { DotsHorizontalIcon } from "@heroicons/react/outline";
 import { PhoneIcon } from "@heroicons/react/solid";
-import Modal from "./Modals/modal";
+import Modal from "../Modals/modal";
 
-function BusinessCard({
-  bName,
-  bAge,
+function IndiCard({
+  fName,
+  lName,
+  age,
   phoneNumber,
+  fullImgUrl,
   imgUrlArray,
-  ownerImg,
   tags,
-  address
 }) {
   const [showModal, setShowModal] = useState(false);
   return (
@@ -19,13 +20,12 @@ function BusinessCard({
       <Modal
         showModal={showModal}
         click={() => setShowModal(!showModal)}
-        selectedFile={imgUrlArray || null}
-        imgUrlArray={imgUrlArray || null}
+        imgUrlArray={fullImgUrl || imgUrlArray}
       />
       <div className="flex shadow-md m-4 rounded-md bg-white max-w-[360px] max-h-[215px]">
         <div className="relative h-[13rem]  min-w-[155px] m-1 lg:m-1">
           <Image
-            src={ownerImg || imgUrlArray[0]}
+            src={imgUrlArray[0] || null}
             layout="responsive"
             objectFit="cover"
             width={160}
@@ -34,13 +34,13 @@ function BusinessCard({
             placeholder="blur"
             blurDataURL="LF7d,x_3xuRj~q_3xuRj_3?bt7Rj"
             onClick={() => setShowModal(!showModal)}
-            alt={bName}
+            alt={fName || lName}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="absolute top-[190px] left-[1px] h-3 w-3 p-0"
             viewBox="0 0 20 20"
-            // fill=""
+            
           >
             <path
               fillRule="evenodd"
@@ -49,32 +49,32 @@ function BusinessCard({
             />
           </svg>
         </div>
-        <div className="mt-1 items-center">
-          <div className="">
-            <h1 className="text-[1.2rem] lg:text-lg whitespace-nowrap overflow-hidden s-phones:w-[165px] n-phones:w-48  text-ellipsis">
-              {bName}
+        <div className="lg:mt-6 mt-2 items-center">
+          <div>
+            <h1 className="text-[1.2rem] lg:text-xl">
+              {fName ? fName[0]?.toUpperCase() + fName?.slice(1) : ""}{" "}
+              {lName ? lName[0]?.toUpperCase() + lName?.slice(1) : ""}
             </h1>
-            <div className="text-xs font-medium text-gray-600 mt-1 whitespace-nowrap overflow-hidden s-phones:w-[165px] n-phones:w-48  text-ellipsis">
-              {address}
-            </div>
             <div className="mt-2 h-20 text-ellipsis overflow-y-auto  lg:scrollbar-hide">
-              <h2 className="tag">#{bAge} years</h2>
+              <h2 className="tag">#{age} years</h2>
               {tags?.split(",")?.map((tag, index) => (
                 <h2 className="tag" key={index}>
-                  #{tag.trim()}
+                  #{tag}
                 </h2>
               ))}
+            
             </div>
+
             <button className="block mx-auto text-black active:bg-gray-200 active:px-2 active:scale-110 transition duration-100">
               <DotsHorizontalIcon className="h-6" />
             </button>
           </div>
-          <div>
+          <div className="flex">
             <a
               style={{ textDecoration: "none" }}
               href={`tel:${phoneNumber}`}
-              className="flex mt-2 border-[1px] border-[#3f51b5] text-[#3f51b5]
-          rounded-[3px] active:scale-90 transition duration-150 items-center justify-center "
+              className="flex justify-center mt-2 border-[1px] border-[#3f51b5] text-[#3f51b5]
+          rounded-[3px] active:scale-90 transition duration-150 items-center px-2"
             >
               <PhoneIcon className="h-5" />
               Call Now
@@ -86,4 +86,4 @@ function BusinessCard({
   );
 }
 
-export default BusinessCard;
+export default IndiCard;

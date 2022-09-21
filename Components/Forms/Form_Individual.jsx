@@ -1,12 +1,11 @@
+// Form for individual's registration
 import React from "react";
 import { useState } from "react";
-import axios from "axios";
-import CopyrightFooter from "../Static_components/CopyrightFooter";
-import FormsResponseModal from "../Modals/FormsResponseModal";
+import RegistrationStatusModal from "../Modals/registrationStatusModal";
 import Loading from "../Static_components/loading";
+import Renderer from "../Modals/Renderer/Renderer";
+import PlacesSearchBar from "../Utils/PlacesSearchBar";
 export default function Form() {
-  const [suggestions, setSuggestions] = useState([]);
-  const [input, setInput] = useState("");
 
   /*FORM DATA */
   const [userInfo, setUserInfo] = useState({
@@ -22,7 +21,7 @@ export default function Form() {
       type: "Point",
       coordinates: [],
     },
-    tags:""
+    tags: "",
   });
   const [loadingVar, setLoadingVar] = useState("Register");
   // Modal controllers var
@@ -30,50 +29,15 @@ export default function Form() {
   const [response, setResponse] = useState("");
   //*** FUNCTION FETCHING REPONSE FROM MAPBOX API. ***
 
-  const fetchRes = async (e) => {
-    try {
-      const res = await axios
-        .get(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${e?.target.value}.json?country=in&limit=7&types=place%2Cpostcode%2Caddress%2Clocality%2Cneighborhood%2Cdistrict&autocomplete=true&fuzzyMatch=true&routing=true&worldview=in&access_token=${process.env.API_TOKEN}
-          `
-        )
-        .then((res) => res.data.features);
-      setSuggestions(res);
-    } catch (e) {
-      console.log(e.message);
-    }
-  };
-  // *** FUNCTION HANDLING THE CLICK ON SUGGESTIONS ***
-  const inputHandler = (e, res) => {
-    setInput(e);
-    if (res) {
-      setUserInfo((prevState) => ({
-        ...prevState,
-        areaName: res?.text,
-        location: {
-          ...prevState.location,
-          coordinates: res?.geometry.coordinates,
-        },
-      }));
-    }
-  };
-
-  const okHandler = (e) => {
-    e.preventDefault();
-    setSuggestions([]);
-  };
-
   const imageHandler = async (event) => {
     setLoadingVar("Processing...");
     event.preventDefault();
     const files = [...event.currentTarget.files];
-    console.log(files);
     const promises = [];
     files.forEach(async (element, i) => {
       const formData = new FormData();
       formData.append("file", element);
       formData.append("public_id", userInfo.phoneNumber + i);
-      console.log(i);
       formData.append("upload_preset", "Shubh*Hustler");
       promises.push(
         fetch(
@@ -88,7 +52,6 @@ export default function Form() {
               return response.json();
             }
             modalHandler(response.status);
-            console.log(response);
           })
           .then((r) => {
             setUserInfo((prevState) => ({
@@ -110,7 +73,6 @@ export default function Form() {
     console.log(userInfo.imgUrlArray);
 
     const userInfoNew = JSON.stringify(userInfo);
-    console.log(userInfoNew);
     setLoadingVar("Processing...");
     const data2 = await fetch(
       "https://labrecruit.herokuapp.com/volunteerSection/newUser",
@@ -129,13 +91,15 @@ export default function Form() {
       })
       .catch((e) => console.log(e));
   };
+  // Modal handler
   const modalHandler = (statusCode) => {
     setOpenModal(!openModal);
     setResponse(statusCode);
   };
   return (
     <form onSubmit={(e) => registerHandler(e)}>
-      <FormsResponseModal
+      <Renderer />
+      <RegistrationStatusModal
         openModal={openModal}
         response={response}
         clickModal={modalHandler}
@@ -152,8 +116,10 @@ export default function Form() {
               <div className="py-4 text-black items-center text-2xl border-grey-lighter flex justify-center font-medium space-x-2">
                 Registration
               </div>
+
               <div className="py-4 px-8">
                 <div className="flex mb-4">
+                  {/* First name */}
                   <div className="w-1/2 mr-1">
                     <label
                       className="block text-sm font-bold mb-2"
@@ -171,6 +137,7 @@ export default function Form() {
                       }
                     />
                   </div>
+                  {/* Last name */}
                   <div className="w-1/2 ml-1">
                     <label
                       className="block text-sm font-bold mb-2"
@@ -190,7 +157,9 @@ export default function Form() {
                     />
                   </div>
                 </div>
+
                 <div className="flex mb-4">
+                  {/* Phone number */}
                   <div className="w-[75%] mr-1">
                     <label
                       className="block text-sm font-bold mb-2"
@@ -213,6 +182,7 @@ export default function Form() {
                       }
                     />
                   </div>
+                  {/* Age */}
                   <div className="w-[25%] ml-1">
                     <label
                       className="block text-sm font-bold mb-2"
@@ -234,6 +204,8 @@ export default function Form() {
                     />
                   </div>
                 </div>
+
+                {/* Genders */}
                 <div className="mb-4 space-x-6 flex justify-center font-medium">
                   <div className="space-x-2">
                     {" "}
@@ -275,6 +247,7 @@ export default function Form() {
                     <label htmlFor="Other">Other</label>
                   </div>
                 </div>
+                {/* Occupations */}
                 <div className="mb-4">
                   <div>
                     <label
@@ -320,23 +293,24 @@ export default function Form() {
                       Write your services, for ex- Steel Door, Main Gate, Wire
                       fitting...
                     </label>
-                    <textarea  className=" w-[100%] border-2 rounded"
+                    <textarea
+                      className=" w-[100%] border-2 rounded"
                       placeholder="Steel Doors, Plumbing, Paints, Plumbing, Sanitary..."
                       type="text"
-                        id="Tags area"
-                        onChange={(e) => {
-                          setUserInfo({
-                            ...userInfo,
-                            tags: e.target.value,
-                          });
-                          console.log(userInfo.tags);
-                        }}
-                          autoComplete="off"
-                          required
-                        />
-                    
+                      id="Tags area"
+                      onChange={(e) => {
+                        setUserInfo({
+                          ...userInfo,
+                          tags: e.target.value,
+                        });
+                        console.log(userInfo.tags);
+                      }}
+                      autoComplete="off"
+                      required
+                    />
                   </div>
                 </div>
+                {/* Upload image */}
                 <div className="mb-4">
                   {" "}
                   <label
@@ -355,67 +329,13 @@ export default function Form() {
                     onChange={(e) => imageHandler(e)}
                   />
                 </div>
-                <label className="block text-sm font-bold mb-2" htmlFor="area">
-                  Search and select your area
-                </label>
-                <div className="flex items-center sticky z-30">
-                  <div className="flex rounded ml-1">
-                    <input
-                      type="text"
-                      id="area"
-                      className="py-2 w-[210px] outline-blue-200 border-2 rounded"
-                      placeholder="Where you provide your service"
-                      onChange={(e) => {
-                        fetchRes(e);
-                        inputHandler(e.currentTarget.value);
-                      }}
-                      value={input}
-                      autoComplete="off"
-                      required
-                      disabled={loadingVar == "Register" ? false : true}
-                    />
-                    <button
-                      className="flex items-center justify-center px-4  text-white bg-[#6271a5] rounded-sm"
-                      onClick={(e) => okHandler(e)}
-                    >
-                      OK
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex  flex-col ml-8 overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll">
-                  {suggestions?.map((res, index) => (
-                    <div
-                      className="mt-[13px] font-medium cursor-pointer"
-                      onClick={(e) => {
-                        inputHandler(e.currentTarget.innerText, res);
-                      }}
-                      key={index}
-                    >
-                      {res.text}
-                      <span className="ml-3 text-sm text-gray-500 mt-1.5">
-                        {res.place_name.split(",").slice(1).toString()}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex items-center justify-end mt-8">
-                  <button
-                    className="
-                       bg-[#5370cf]
-                     hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-md"
-                    type="submit"
-                    disabled={loadingVar == "Register" ? false : true}
-                  >
-                    {loadingVar}
-                  </button>
-                </div>
+                {/* Search your address */}
+                <PlacesSearchBar/>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <CopyrightFooter />
     </form>
   );
 }

@@ -3,9 +3,10 @@ import { MenuIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import { LocationMarkerIcon } from "@heroicons/react/solid";
 import SelectAreaModal from "../Modals/SelectAreaModal";
-import Menu from "../Menu";
+import Menu from "./Menu";
 import { useRef } from "react";
-import RegChoice from "../Modals/Reg_choice_modal.jsx";
+import RegChoice from "../Modals/RegChoiceModal.jsx";
+import Renderer from "../Modals/Renderer/Renderer";
 function Header() {
   const router = useRouter();
   const [showSidebar, setShowSidebar] = useState(false);
@@ -16,7 +17,7 @@ function Header() {
   const MenuHandler = () => {
     setShowSidebar(!showSidebar);
   };
-  const clickHandler = () => {
+  const placeSelectionModalHandler = () => {
     setShowModal(!showModal);
   };
   const choiceModalHandler = () => {
@@ -44,7 +45,7 @@ function Header() {
         </div>
         <button
           className="text-[10px]  lg:text-[15px] uppercase font-semibold cursor-pointer border-2 px-1 bg-gray-50 rounded-md flex items-center text-[#5370cf] py-0.5"
-          onClick={() => clickHandler()}
+          onClick={() => placeSelectionModalHandler()}
         >
           <div className="h-4 w-4 lg:h-6 lg:w-5 text-red-500">
             <LocationMarkerIcon />
@@ -53,12 +54,17 @@ function Header() {
             ? area.current.slice(0, 11) + "..."
             : area.current}
         </button>
-        <SelectAreaModal
-          showModal={showModal}
-          click={() => clickHandler()}
-          location={area.current}
+      </div>
+      <div className="flex justify-center items-center">
+        <Renderer showModal={choiceModal} toggle={choiceModalHandler} Heading = {()=><>CHOOSE REGISTRATION TYPE</>}
+          Content = {()=><RegChoice/>}
         />
-        <RegChoice showModal={choiceModal} click={choiceModalHandler} />
+        <Renderer
+          showModal={showModal}
+          toggle={() => placeSelectionModalHandler()}
+          Heading = {()=><>Where do you want to find Workers.</>}
+          Content = {()=><SelectAreaModal  toggle={() => placeSelectionModalHandler()}/>}
+        />
       </div>
     </>
   );
