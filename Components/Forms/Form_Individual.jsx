@@ -1,7 +1,7 @@
 // Form for individual's registration
 import React from "react";
 import { useState } from "react";
-import RegistrationStatusModal from "../Modals/registrationStatusModal";
+import RegistrationStatusModal from "../Modals/registrationStatusModal.jsx";
 import Loading from "../Static_components/loading";
 import Renderer from "../Modals/Renderer/Renderer";
 import PlacesSearchBar from "../Utils/PlacesSearchBar";
