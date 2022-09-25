@@ -27,7 +27,7 @@ function Jobs() {
                 <a
                   style={{ textDecoration: "none" }}
                   // href={`tel:${}`}
-                  className="flex justify-center n-phones:mt-0 sm:mt-2 border-[1px] border-[#3f51b5] text-[#3f51b5]
+                  className="flex justify-center n-phones:mt-0 sm:mt-2 border-[1px] border-blue-600 text-blue-600
           rounded-[3px] active:scale-90 transition duration-150 items-center s-phones:px-1 sm:px-2 s-phones:text-xs n-phones:text-sm sm:text-base"
                 >
                   <PhoneIcon className="h-5" />
@@ -38,7 +38,7 @@ function Jobs() {
                 <a
                   style={{ textDecoration: "none" }}
                   // href={`tel:${}`}
-                  className="flex justify-center mt-2  text-[#3f51b5]
+                  className="flex justify-center mt-2   text-blue-600
           rounded-[3px] active:scale-90 transition duration-150 items-center px-2"
                 >
                   <svg

@@ -9,7 +9,7 @@ function Renderer({ Heading, Content, toggle, showModal }) {
           <section className="z-50 fixed translate-y-[100%]">
             <main className="bg-gray-50 max-w-md rounded">
               {/* Heading */}
-              <header className="flex justify-center bg-[#58a0f9] text-white text-lg rounded-t px-2 py-1 uppercase">
+              <header className="flex justify-center bg-blue-500 text-white text-lg rounded-t px-2 py-1 uppercase">
                 <p>{Heading()}</p>
               </header>
 

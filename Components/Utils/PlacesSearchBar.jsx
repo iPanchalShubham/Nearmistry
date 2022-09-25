@@ -33,7 +33,7 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
   };
   return (
     <>
-      <div className="mt-1 sticky W">
+      <div className="mt-1 sticky">
         <div className="flex rounded ml-1">
           <input
             type="text"
@@ -47,9 +47,9 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
           />
 
           <button
-            className="flex items-center justify-center px-4  text-white bg-[#5370cf] rounded-sm"
+            className="flex items-center justify-center px-4  text-white bg-blue-500 rounded-sm"
             onClick={
-              areaInfo.lat & toggle ? () => toggle() : (e) => okHandler(e)
+              areaInfo.lat && toggle ? (e) => {toggle();okHandler(e);} : (e) => okHandler(e)
             }
           >
             <Link
@@ -71,10 +71,10 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
           </button>
         </div>
       </div>
-      <div className="flex flex-col ml-8 overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll">
+      <div className="flex flex-col ml-8 overflow-y-auto lg:overflow-y-hidden lg:hover:overflow-y-scroll h-32">
         {suggestions?.map((res, index) => (
           <div
-            className="mt-[13px] font-medium cursor-pointer"
+            className="mt-[12px] font-medium cursor-pointer"
             onClick={(e) => {
               console.log(res.geometry.coordinates);
               inputHandler(e.currentTarget.innerText);
