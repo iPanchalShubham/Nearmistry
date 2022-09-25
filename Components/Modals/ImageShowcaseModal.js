@@ -1,18 +1,19 @@
 import React from "react";
 import ItemsImages from "../Static_components/ItemsImages";
 import BackDrop from "../Static_components/Backdrop";
-export default function Modal({ click, showModal, imgUrlArray }) {
+import PropTypes from "prop-types";
+function ImageShowcaseModal({ toggle, showModal, imgUrlArray }) {
   return (
     <>
       {showModal ? (
         <>
-          <BackDrop click={() => click()} />
+          <BackDrop toggle={() => toggle()} />
           <div className="flex justify-center items-center  fixed inset-0 z-50 ">
             <div className="lg:w-[500px] w-full">
               {/*content*/}
               <div className="border-0 rounded-sm  flex flex-col bg-gray-100 outline-none focus:outline-none">
                 {/*header*/}
-                <div onClick={click} className="flex justify-between">
+                <div onClick={() => toggle()} className="flex justify-between">
                   <div className="text-lg font-medium ml-2">Images</div>
                   <div className="mr-2 text-xl cursor-pointer ">x</div>
                 </div>
@@ -34,3 +35,11 @@ export default function Modal({ click, showModal, imgUrlArray }) {
     </>
   );
 }
+
+ImageShowcaseModal.propTypes = {
+  toggle: PropTypes.func,
+  imgUrlArray: PropTypes.array,
+  showModal: PropTypes.bool,
+};
+
+export default ImageShowcaseModal;

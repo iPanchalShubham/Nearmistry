@@ -7,6 +7,7 @@ import Menu from "./Menu";
 import { useRef } from "react";
 import RegChoice from "../Modals/RegChoiceModal.jsx";
 import Renderer from "../Modals/Renderer/Renderer";
+
 function Header() {
   const router = useRouter();
   const [showSidebar, setShowSidebar] = useState(false);
@@ -56,14 +57,19 @@ function Header() {
         </button>
       </div>
       <div className="flex justify-center items-center">
-        <Renderer showModal={choiceModal} toggle={choiceModalHandler} Heading = {()=><>CHOOSE REGISTRATION TYPE</>}
-          Content = {()=><RegChoice/>}
+        <Renderer
+          showModal={choiceModal}
+          toggle={choiceModalHandler}
+          Heading={() => <>CHOOSE REGISTRATION TYPE</>}
+          Content={() => <RegChoice />}
         />
         <Renderer
           showModal={showModal}
           toggle={() => placeSelectionModalHandler()}
-          Heading = {()=><>Where do you want to find Workers.</>}
-          Content = {()=><SelectAreaModal  toggle={() => placeSelectionModalHandler()}/>}
+          Heading={() => <>Where do you want to find Workers.</>}
+          Content={() => (
+            <SelectAreaModal toggle={() => placeSelectionModalHandler()} />
+          )}
         />
       </div>
     </>

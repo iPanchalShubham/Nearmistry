@@ -1,14 +1,13 @@
-// Menu component
+// SIDEBAR IN HEADER
 import Link from "next/link";
 import { useRouter } from "next/router";
 import BackDrop from "./Backdrop";
+import PropsType from "prop-types";
 const Menu = ({ MenuHandler, showSidebar, regButtonClick }) => {
   const router = useRouter();
   return (
     <>
-      {showSidebar ? (
-        <BackDrop toggle={MenuHandler}/>
-      ) : null}
+      {showSidebar ? <BackDrop toggle={MenuHandler} /> : null}
       <div
         className={`top-0 left-0 bg-white p-10 pr-15 lg:pr-20 fixed h-full z-40 ease-in duration-150 ${
           showSidebar ? "translate-x-0" : "translate-x-[-100%]"
@@ -23,7 +22,15 @@ const Menu = ({ MenuHandler, showSidebar, regButtonClick }) => {
             <Link href={"/404.js"}>Become a Volunteer</Link>{" "}
           </div>
           <div>
-            <div onClick={() => {regButtonClick(); MenuHandler()}} className = "cursor-pointer">Registration</div>
+            <div
+              onClick={() => {
+                regButtonClick();
+                MenuHandler();
+              }}
+              className="cursor-pointer"
+            >
+              Registration
+            </div>
           </div>
           <div>
             <Link href={"/404.js"}>Contact us</Link>{" "}
@@ -39,5 +46,10 @@ const Menu = ({ MenuHandler, showSidebar, regButtonClick }) => {
     </>
   );
 };
-
+// MenuHandler, showSidebar, regButtonClick
+Menu.propsType = {
+  MenuHandler: PropsType.func,
+  regButtonClick: PropsType.func,
+  showSidebar: PropsType.bool,
+};
 export default Menu;

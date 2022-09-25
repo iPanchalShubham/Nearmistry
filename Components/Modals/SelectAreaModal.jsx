@@ -1,15 +1,16 @@
 // Modal for address or area search
-import React, { useState } from "react";
-import axios from "axios";
-import Link from "next/link";
-import BackDrop from "../Static_components/Backdrop";
-import { debouce } from "../Utils/Debounce.jsx";
+import React from "react";
 import PlacesSearchBar from "../Utils/PlacesSearchBar";
-
-export default function SelectAreaModal({  toggle }) {
+import PropsType from "prop-types";
+function SelectAreaModal({ toggle }) {
   return (
     <>
-        <PlacesSearchBar toggle = {toggle} redirectAddress = {"/"}/>
+      <PlacesSearchBar toggle={toggle} redirectAddress={"/"} />
     </>
   );
 }
+SelectAreaModal.propsType = {
+  toggle: PropsType.func,
+};
+
+export default SelectAreaModal;

@@ -2,7 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
 import { Debounce } from "./Debounce";
-
+import PropsType from "prop-types";
 function PlacesSearchBar({ redirectAddress, toggle }) {
   const [suggestions, setSuggestions] = useState([]);
   const [input, setInput] = useState("");
@@ -97,5 +97,9 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
     </>
   );
 }
-
+//  redirectAddress, toggle
+PlacesSearchBar.propsType = {
+  redirectAddress:PropsType.string,
+  toggle:PropsType.func
+};
 export default PlacesSearchBar;
