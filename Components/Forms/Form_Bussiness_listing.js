@@ -1,7 +1,8 @@
 // Forms to register for businesses
 import React from "react";
 import { useState } from "react";
-import RegistrationStatusModal from "../Modals/RegistrationStatusModal";
+import RegistrationStatusModal from "../Modals/registrationStatusModal.jsx";
+
 import Loading from "../Static_components/loading";
 import PlacesSearchBar from "../Utils/PlacesSearchBar";
 export default function Form() {
