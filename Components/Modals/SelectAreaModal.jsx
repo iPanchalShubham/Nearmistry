@@ -2,10 +2,10 @@
 import React from "react";
 import PlacesSearchBar from "../Utils/PlacesSearchBar";
 import PropsType from "prop-types";
-function SelectAreaModal({ toggle }) {
+function SelectAreaModal({ toggle,showModal }) {
   return (
     <>
-      <PlacesSearchBar toggle={toggle} redirectAddress={"/"} />
+      <PlacesSearchBar toggle={toggle} redirectAddress={"/"} showModal = {showModal}/>
     </>
   );
 }

@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import BackDrop from "./Backdrop";
 import PropsType from "prop-types";
 const Menu = ({ MenuHandler, showSidebar, regButtonClick }) => {
-  const router = useRouter();
   return (
     <>
       {showSidebar ? <BackDrop toggle={MenuHandler} /> : null}
