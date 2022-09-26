@@ -17,7 +17,7 @@ import welding_shops from "../public/welding_shops.png";
 import paint_shops from "../public/paint_shops.png";
 import Next_arrow from "../public/Next_arrow.png";
 import building_materials_shop from "../public/building-materials_shop.png";
-import banner from "../public/nearmistry_banner.jpg";
+import banner from "../public/Nearmistry_banner2.svg";
 import ElectricalShop from "../public/Electric_shop.png";
 import CategoryComponent from "./UI/CategoryComponent";
 import Jobs from "./UI/Jobs";
@@ -26,11 +26,12 @@ function HomePage() {
   const router = useRouter();
   return (
     <div>
-      <div className="mx-auto relative w-[100%] pb-[55%] maskBanner z-[-1] mb-[-90px] md:mb-[-200px] lg:mb-[-300px] xl:mb-[-420px]">
+      <div className=" max-w-full relative  pb-[57%] maskBanner z-[-1] mb-[-90px] md:mb-[-200px] lg:mb-[-200px] xl:mb-[-420px]">
         <Image
           src={banner}
           layout="fill"
           placeholder="blur"
+          blurDataURL="LF7d,x_3xuRj~q_3xuRj_3?bt7Rj"
           alt="How to find on Nearmistry"
           quality={100}
           priority

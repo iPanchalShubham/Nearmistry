@@ -32,14 +32,14 @@ function Header() {
         MenuHandler={MenuHandler}
         showSidebar={showSidebar}
       />
-      <div className="pr-1 sticky top-0 z-50 grid grid-flow-col justify-between pl-3 lg:pr-4 py-2 bg-blue-500 text-white shadow-md items-center">
+      <div className="pr-1 sticky top-0 z-50 grid grid-flow-col justify-between pl-3 lg:pr-4 py-2 bg-blue-600 text-white shadow-md items-center mb-[-10px]">
         <MenuIcon
           className="h-7 w-7 cursor-pointer"
           onClick={() => MenuHandler()}
         />
 
         <div
-          className="text-2xl lg:text-3xl font-[400] cursor-pointer"
+          className="text-2xl lg:text-3xl font-medium cursor-pointer italic font"
           onClick={() => router.push("/")}
         >
           Nearmistry
