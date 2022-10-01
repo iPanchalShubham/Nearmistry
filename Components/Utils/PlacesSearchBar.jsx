@@ -1,7 +1,7 @@
 import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
-import { Debounce } from "./Debounce";
+import { useDebounce } from "./CustomHooks/Debounce";
 import PropsType from "prop-types";
 function PlacesSearchBar({ redirectAddress, toggle }) {
   const [suggestions, setSuggestions] = useState([]);
@@ -11,7 +11,7 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
     lat: "",
     lng: "",
   });
-  const fetchPlacesSuggestions = Debounce(async (place) => {
+  const fetchPlacesSuggestions = useDebounce(async (place) => {
     try {
       const res = await axios
         .get(
@@ -49,7 +49,12 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
           <button
             className="flex items-center justify-center px-4  text-white bg-blue-500 rounded-sm"
             onClick={
-              areaInfo.lat && toggle ? (e) => {toggle();okHandler(e);} : (e) => okHandler(e)
+              areaInfo.lat && toggle
+                ? (e) => {
+                    toggle();
+                    okHandler(e);
+                  }
+                : (e) => okHandler(e)
             }
           >
             <Link
@@ -99,7 +104,7 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
 }
 //  redirectAddress, toggle
 PlacesSearchBar.propsType = {
-  redirectAddress:PropsType.string,
-  toggle:PropsType.func
+  redirectAddress: PropsType.string,
+  toggle: PropsType.func,
 };
 export default PlacesSearchBar;

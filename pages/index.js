@@ -1,13 +1,21 @@
 import Head from "next/head";
 import Footer from "../Components/Static_components/Footer";
 import Header from "../Components/Static_components/Header";
-import HomePage from "../Components/HomePage";
+import HomePage from "../Components/Home/main/HomePage";
+import Banner from "../Components/Home/Banner";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
+const DynamicBanner = dynamic(() => import("../Components/Home/Banner"), {
+  suspense: true,
+});
 export default function Home() {
   return (
     <section>
       <Head>
-        <title>Nearmistry - Instantly hire Blue-Collar professionals near you.</title>
+        <title>
+          Nearmistry - Instantly hire Blue-Collar professionals near you.
+        </title>
         <meta
           name="description"
           content="Find construction related shops or hire Blue-Collar (& Covid-19 safe) professionals instantly near you for FREE."
@@ -24,11 +32,15 @@ export default function Home() {
           name="og:description"
           content="Get construction related shops or hire Blue-Collar (& Covid-19 safe) professionals instantly near you for FREE."
         />
-        <link rel="shortcut icon" href="/favicon.ico"/>
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <main>
         <Header />
         <section className="min-h-screen">
+          <Suspense fallback={<div>Loading...</div>}>
+            <DynamicBanner />
+          </Suspense>
+          {/* <Banner/> */}
           <HomePage />
         </section>
 

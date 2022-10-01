@@ -32,27 +32,55 @@ function Header() {
         MenuHandler={MenuHandler}
         showSidebar={showSidebar}
       />
-      <div className="pr-1 sticky top-0 z-50 grid grid-flow-col justify-between pl-3 lg:pr-4 py-2 bg-blue-600 text-white shadow-md items-center mb-[-10px]">
+      <div className="pr-1 sticky top-0 z-50 grid grid-flow-col justify-between pl-3 lg:pr-4 md:py-4 py-2 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600  text-white shadow-md items-center mb-[-10px]">
         <MenuIcon
-          className="h-7 w-7 cursor-pointer"
+          className="h-7 w-7 cursor-pointer lg:hidden"
           onClick={() => MenuHandler()}
         />
 
         <div
-          className="text-2xl lg:text-3xl font-medium cursor-pointer italic font"
+          className="text-2xl lg:text-3xl font-medium cursor-pointer italic font ml-5"
           onClick={() => router.push("/")}
         >
           Nearmistry
         </div>
-        <button
-          className="text-[10px]  lg:text-[15px] uppercase font-semibold cursor-pointer border-2 px-1 bg-gray-50 rounded-md flex items-center text-blue-600 py-0.5 text-ellipsis whitespace-nowrap"
-          onClick={() => placeSelectionModalHandler()}
-        >
-          <div className="h-4 w-4 lg:h-6 lg:w-5 text-red-500">
-            <LocationMarkerIcon />
+        <div className="flex items-center space-x-3">
+          <div className="hidden justify-between items-center w-full lg:flex lg:w-auto space-x-2">
+            <button className="">Why us?</button>
+            <p>|</p>
+
+            <button className="">Become a volunteer</button>
           </div>
-         { area.current}
-        </button>
+
+          <button
+            type="button"
+            className="flex items-center font-medium bg-gradient-to-r border-gray-200 border-2 md:px-1 py-1 shadow-md rounded-md text-xs md:text-base"
+          >
+            <p className="ml-2">Post Work</p>
+            <svg
+              className="ml-1 w-4 h-4 mr-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+          </button>
+          {/* 
+          <button
+            className="text-[10px]  lg:text-[15px] uppercase font-semibold cursor-pointer border-2 px-1 bg-gray-50 rounded-md flex text-blue-600 py-0.5 text-ellipsis whitespace-nowrap "
+            onClick={() => placeSelectionModalHandler()}
+          >
+            <div className="h-4 w-4 lg:h-6 lg:w-5 text-red-500">
+              <LocationMarkerIcon />
+            </div>
+            {area.current}
+          </button> */}
+        </div>
       </div>
       <div className="flex justify-center items-center">
         <Renderer

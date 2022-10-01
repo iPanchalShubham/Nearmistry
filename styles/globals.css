@@ -6,7 +6,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 .maskBanner{
-  mask-image: linear-gradient(to bottom ,rgba(0,0,0,1),rgba(0,0,0,0.5));
+  mask-image: linear-gradient(to bottom ,rgba(0,0,0,1),rgba(0,0,0,0.6));
 }
 a {
   color: inherit;
