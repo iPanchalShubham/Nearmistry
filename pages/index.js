@@ -1,12 +1,12 @@
 import Head from "next/head";
-import Footer from "../Components/Static_components/Footer";
-import Header from "../Components/Static_components/Header";
-import HomePage from "../Components/Home/main/HomePage";
-import Banner from "../Components/Home/Banner";
+import Footer from "components/Static_components/Footer";
+import Header from "components/Static_components/Header";
+import HomePage from "components/Home/main/HomePage";
+import Banner from "components/Home/Banner";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
-const DynamicBanner = dynamic(() => import("../Components/Home/Banner"), {
+const DynamicBanner = dynamic(() => import("../components/Home/Banner"), {
   suspense: true,
 });
 export default function Home() {

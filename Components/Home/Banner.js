@@ -1,5 +1,5 @@
 import Image from "next/image";
-import banner from "../../public/Nearmistry_banner2.svg";
+import banner from "@/public/Nearmistry_banner2.svg";
 function Banner() {
   return (
     <div className="max-w-full relative  pb-[57%] maskBanner z-[-1] s-phones:mb-[-90px] n-phones:mb-[-100px] mb-[-90px] sm:mb-[-170px] md:mb-[-210px] lg:mb-[-300px] xl:mb-[-350px]">

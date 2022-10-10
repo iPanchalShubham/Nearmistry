@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Image from "next/image";
-import mistrisGroup from "../../public/mistrisGroup.jpg";
+import mistrisGroup from "@/public/mistrisGroup.jpg";
 import CopyrightFooter from "./CopyrightFooter.js";
 function About() {
   return (

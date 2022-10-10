@@ -16,7 +16,6 @@ function BusinessCard({
 }) {
   const [showModal, setShowModal] = useState(false);
   const modalHandler = () => {
-    console.log("lskjfldkjlfjsldjfljsdljfl");
     setShowModal((prevState) => !prevState);
   };
   return (
@@ -45,7 +44,6 @@ function BusinessCard({
             xmlns="http://www.w3.org/2000/svg"
             className="absolute top-[190px] left-[1px] h-3 w-3 p-0"
             viewBox="0 0 20 20"
-            // fill=""
           >
             <path
               fillRule="evenodd"

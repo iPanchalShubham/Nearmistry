@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import spinner_gif from "../../public/Spinner-0.5s-185px.gif";
+import spinner_gif from "@/public/Spinner-0.5s-185px.gif";
 import PropsType from "prop-types";
 function loading({ openmodal }) {
   return (

@@ -1,13 +1,13 @@
 import React from "react";
-import helperImg from "../../public/concrete-finisher.png";
-import rajMistryImg from "../../public/rajmistri.png";
-import tileWorkerImg from "../../public/tileWorker.png";
-import painterImg from "../../public/painter.png";
-import carpenterImg from "../../public/carpenter.png";
-import welderImg from "../../public/welder.png";
-import electricianImg from "../../public/electrician.png";
-import plumberImg from "../../public/plumber.png";
-import maidImg from "../../public/maid.png";
+import helperImg from "@/public/concrete-finisher.png";
+import rajMistryImg from "@/public/rajmistri.png";
+import tileWorkerImg from "@/public/tileWorker.png";
+import painterImg from "@/public/painter.png";
+import carpenterImg from "@/public/carpenter.png";
+import welderImg from "@/public/welder.png";
+import electricianImg from "@/public/electrician.png";
+import plumberImg from "@/public/plumber.png";
+import maidImg from "@/public/maid.png";
 import CategoryComponent from "../UI/CategoryComponent";
 function Professionals() {
   return (

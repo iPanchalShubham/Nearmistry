@@ -1,5 +1,4 @@
 import Professionals from "../Professionals";
-import Businesses from "../Businesses";
 import JobsList from "../JobsList";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";

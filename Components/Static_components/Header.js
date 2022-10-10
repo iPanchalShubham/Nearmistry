@@ -7,6 +7,7 @@ import Menu from "./Menu";
 import { useRef } from "react";
 import RegChoice from "../Modals/RegChoiceModal.jsx";
 import Renderer from "../Modals/Renderer/Renderer";
+import PlacesSearchBar from "../Utils/PlacesSearchBar";
 
 function Header() {
   const router = useRouter();
@@ -37,40 +38,43 @@ function Header() {
           className="h-7 w-7 cursor-pointer lg:hidden"
           onClick={() => MenuHandler()}
         />
-
-        <div
-          className="text-2xl lg:text-3xl font-medium cursor-pointer italic font ml-5"
-          onClick={() => router.push("/")}
-        >
-          Nearmistry
-        </div>
-        <div className="flex items-center space-x-3">
-          <div className="hidden justify-between items-center w-full lg:flex lg:w-auto space-x-2">
-            <button className="">Why us?</button>
-            <p>|</p>
-
-            <button className="">Become a volunteer</button>
-          </div>
-
-          <button
-            type="button"
-            className="flex items-center font-medium bg-gradient-to-r border-gray-200 border-2 md:px-1 py-1 shadow-md rounded-md text-xs md:text-base"
+        
+          <div
+            className="text-2xl lg:text-3xl font-medium cursor-pointer italic ml-10"
+            onClick={() => router.push("/")}
           >
-            <p className="ml-2">Post Work</p>
-            <svg
-              className="ml-1 w-4 h-4 mr-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
+            Nearmistry
+          </div>
+          <div>
+            <PlacesSearchBar />
+          </div>
+          <div className="flex items-center space-x-3">
+            <div className="hidden justify-between items-center w-full lg:flex lg:w-auto space-x-2">
+              <button className="">Why us?</button>
+              <p>|</p>
+
+              <button className="">Become a volunteer</button>
+            </div>
+
+            <button
+              type="button"
+              className="flex items-center font-medium bg-gradient-to-r border-gray-200 border-2 md:px-1 py-1 shadow-md rounded-md text-xs md:text-base"
             >
-              <path
-                fillRule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </button>
-          {/* 
+              <p className="ml-2">Post Work</p>
+              <svg
+                className="ml-1 w-4 h-4 mr-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </button>
+            {/* 
           <button
             className="text-[10px]  lg:text-[15px] uppercase font-semibold cursor-pointer border-2 px-1 bg-gray-50 rounded-md flex text-blue-600 py-0.5 text-ellipsis whitespace-nowrap "
             onClick={() => placeSelectionModalHandler()}
@@ -80,7 +84,7 @@ function Header() {
             </div>
             {area.current}
           </button> */}
-        </div>
+          </div>
       </div>
       <div className="flex justify-center items-center">
         <Renderer
