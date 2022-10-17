@@ -182,6 +182,7 @@ export default function Form() {
                       type="text"
                       required
                       placeholder="Bussiness name"
+                      value={businessInfo.bName}
                       onChange={(e) =>
                         setBusinessInfo({
                           ...businessInfo,
@@ -208,6 +209,7 @@ export default function Form() {
                       maxLength={10}
                       required
                       placeholder="Phone Number"
+                      value={businessInfo.phoneNumber}
                       onChange={(e) =>
                         setBusinessInfo({
                           ...businessInfo,
@@ -230,6 +232,7 @@ export default function Form() {
                       id="established_in"
                       type="number"
                       required
+                      value={businessInfo.bAge}
                       placeholder="Years"
                       onChange={(e) =>
                         setBusinessInfo({
@@ -302,6 +305,7 @@ export default function Form() {
                     type="text"
                     required
                     placeholder="Example: Shop no. 32,Main durga road,karnal"
+                    value={businessInfo.address}
                     onChange={(e) =>
                       setBusinessInfo({
                         ...businessInfo,
@@ -326,6 +330,7 @@ export default function Form() {
                         id="Tags area"
                         className="py-2 w-full border-2 rounded mb-2"
                         placeholder="Steel Doors, Plumbing, Paints"
+                      value={businessInfo.tags}
                         onChange={(e) => {
                           setBusinessInfo({
                             ...businessInfo,

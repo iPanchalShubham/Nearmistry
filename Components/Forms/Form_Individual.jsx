@@ -132,6 +132,7 @@ export default function Form() {
                       id="first_name"
                       type="text"
                       placeholder="first name"
+                      value={userInfo.fName}
                       onChange={(e) =>
                         setUserInfo({ ...userInfo, fName: e.target.value })
                       }
@@ -150,6 +151,7 @@ export default function Form() {
                       id="last_name"
                       type="text"
                       placeholder="last name"
+                      value={userInfo.lName}
                       required
                       onChange={(e) =>
                         setUserInfo({ ...userInfo, lName: e.target.value })
@@ -174,6 +176,7 @@ export default function Form() {
                       maxLength={10}
                       required
                       placeholder="Phone Number"
+                      value={userInfo.phoneNumber}
                       onChange={(e) =>
                         setUserInfo({
                           ...userInfo,
@@ -198,6 +201,7 @@ export default function Form() {
                       max="60"
                       required
                       placeholder="Age"
+                      value={userInfo.age}
                       onChange={(e) =>
                         setUserInfo({ ...userInfo, age: e.target.value })
                       }
@@ -298,6 +302,7 @@ export default function Form() {
                       placeholder="Steel Doors, Plumbing, Paints, Plumbing, Sanitary..."
                       type="text"
                       id="Tags area"
+                      value={userInfo.tags}
                       onChange={(e) => {
                         setUserInfo({
                           ...userInfo,
