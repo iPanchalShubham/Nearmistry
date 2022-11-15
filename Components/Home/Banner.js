@@ -1,5 +1,5 @@
 import Image from "next/image";
-import banner from "@/public/Nearmistry_banner2.svg";
+import banner from "../../public/Nearmistry_banner2.svg";
 import PlacesSearchBar from "components/Utils/PlacesSearchBar";
 function Banner() {
   return (
@@ -15,7 +15,7 @@ function Banner() {
           objectFit="cover"
         />
       </div>
-      <div className="sm:block md:hidden max-w-xs  absolute z-[30] left-0 right-0 mx-auto  ">
+      <div className="sm:block md:hidden max-w-xs  absolute z-[20] left-0 right-0 mx-auto  ">
         <PlacesSearchBar />
       </div>
     </>

@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "components/Static_components/Header.js";
-import ItemCard from "components/UI/IndiCard.js";
-import Footer from "components/Static_components/Footer.jsx";
-import Pagination from "components/Lib/Pagination";
-import BusinessCard from "components/UI/BusinessCard";
+import Header from "../components/Static_components/Header.js";
+import ItemCard from "../components/UI/IndiCard.js";
+import Footer from "../components/Static_components/Footer.jsx";
+import Pagination from "../components/Lib/Pagination";
+import BusinessCard from "../components/UI/BusinessCard";
 import axios from "axios";
 import Head from "next/head";
 

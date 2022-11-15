@@ -1,13 +1,13 @@
 import React from "react";
-import furniture_shops from "@/public/furniture_shops.png";
-import contractor from "@/public/contractor.png";
-import tile_shops from "@/public/tile_shops.png";
-import plumbing_shops from "@/public/sanitary_shop.png";
-import welding_shops from "@/public/welding_shops.png";
-import paint_shops from "@/public/paint_shops.png";
-import Next_arrow from "@/public/Next_arrow.png";
-import building_materials_shop from "@/public/building-materials_shop.png";
-import ElectricalShop from "@/public/Electric_shop.png";
+import furniture_shops from "../../public/furniture_shops.png";
+import contractor from "../../public/contractor.png";
+import tile_shops from "../../public/tile_shops.png";
+import plumbing_shops from "../../public/sanitary_shop.png";
+import welding_shops from "../../public/welding_shops.png";
+import paint_shops from "../../public/paint_shops.png";
+import Next_arrow from "../../public/Next_arrow.png";
+import building_materials_shop from "../../public/building-materials_shop.png";
+import ElectricalShop from "../../public/Electric_shop.png";
 import CategoryComponent from "../UI/CategoryComponent";
 function Businesses() {
   return (

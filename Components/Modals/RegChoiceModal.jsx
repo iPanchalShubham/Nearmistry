@@ -1,8 +1,8 @@
 // Registration choice modal
 import React from "react";
 import Image from "next/image";
-import individual from "@/public/individual.png";
-import business from "@/public/business.png";
+import individual from "../../public/individual.png";
+import business from "../../public/business.png";
 import Link from "next/link";
 export default function Modal() {
   return (
