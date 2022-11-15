@@ -45,7 +45,7 @@ function Header() {
           >
             Nearmistry
           </div>
-          <div>
+          <div className="hidden md:block">
             <PlacesSearchBar />
           </div>
           <div className="flex items-center space-x-3">

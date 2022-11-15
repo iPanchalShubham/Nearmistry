@@ -2,7 +2,6 @@ import Head from "next/head";
 import Footer from "components/Static_components/Footer";
 import Header from "components/Static_components/Header";
 import HomePage from "components/Home/main/HomePage";
-import Banner from "components/Home/Banner";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 

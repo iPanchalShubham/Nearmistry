@@ -2,7 +2,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@/Forms/*":["components/Forms/*"],
+            "@/Forms/*":["./components/Forms/*"],
             "@/public/*":["./public/*"]
         }
     }

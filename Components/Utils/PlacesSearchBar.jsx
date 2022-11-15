@@ -29,7 +29,7 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
   };
   return (
     <>
-      <div className="">
+      <div className="z-50 ">
         <div className="xl:w-96">
           <div className="input-group relative flex  items-stretch w-full">
             <input
@@ -38,7 +38,6 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
               className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal  border border-solid border-gray-300 rounded text-gray-600 focus:border-blue-600 focus:outline-none flex-grow outline-none pl-5 placeholder-gray-400"
               placeholder="Enter your location"
               aria-label="Search"
-              aria-describedby="button-addon2"
               onChange={(e) => {
                 fetchPlacesSuggestions(e.target.value);
                 inputHandler(e.currentTarget.value);
