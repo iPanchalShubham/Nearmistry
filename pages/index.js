@@ -4,7 +4,7 @@ import Header from "components/Static_components/Header";
 import HomePage from "components/Home/main/HomePage";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-
+// Splittin banner apart to reduce bundle size
 const DynamicBanner = dynamic(() => import("../components/Home/Banner"), {
   suspense: true,
 });
