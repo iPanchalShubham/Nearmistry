@@ -2,9 +2,7 @@ import Professionals from "../Professionals";
 import JobsList from "../JobsList";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-const DynamicBusinessSection = dynamic(() => import("../Businesses"), {
-  suspense: true,
-});
+import Businesses from "../Businesses";
 function HomePage() {
   return (
     <div>
@@ -12,9 +10,7 @@ function HomePage() {
         <div className="shadow-lg bg-white rounded-t-xl self-center md:w-[93%] w-[98%]  pb-10">
           <Professionals />
           {/* Construction material shops categories */}
-          <Suspense fallback = {<div>Loading...</div>}>
-            <DynamicBusinessSection />
-          </Suspense>
+          <Businesses/>
           <JobsList />
         </div>
       </section>

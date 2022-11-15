@@ -1,6 +1,6 @@
 import Image from "next/image";
 import banner from "../../public/Nearmistry_banner2.svg";
-import PlacesSearchBar from "components/Utils/PlacesSearchBar";
+import PlacesSearchBar from "../../Components/Utils/PlacesSearchBar";
 function Banner() {
   return (
     <>

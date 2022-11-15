@@ -1,6 +1,6 @@
 import React from "react";
-import Form from "../../components/Forms/Form_Bussiness_listing";
-import Header from "../../components/Static_components/Header";
+import Form from "../../Components/Forms/Form_Bussiness_listing";
+import Header from "../../Components/Static_components/Header";
 function registration() {
   return (
     <div>

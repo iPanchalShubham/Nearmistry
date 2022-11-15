@@ -18,7 +18,7 @@ function Businesses() {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 max-w-7xl mx-auto space-x-4 sm:grid-cols-3  items-center">
+      <div className="grid grid-cols-3 max-w-7xl mx-auto space-y-10 sm:grid-cols-3  items-center">
         <CategoryComponent
           categoryImg={building_materials_shop}
           categoryName={"Building material"}

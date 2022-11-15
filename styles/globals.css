@@ -17,10 +17,10 @@ a {
   box-sizing: border-box;
 }
 @tailwind base;
-@tailwind components;
+@tailwind Components;
 @tailwind utilities;
 
-@layer components{
+@layer Components{
   .categoryCards{
   @apply flex flex-col items-center mt-10 cursor-pointer
   }

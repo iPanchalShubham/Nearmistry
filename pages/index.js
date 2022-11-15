@@ -1,13 +1,10 @@
 import Head from "next/head";
-import Footer from "../components/Static_components/Footer";
-import Header from "../components/Static_components/Header";
-import HomePage from "../components/Home/main/HomePage";
-import dynamic from "next/dynamic";
+import Footer from "../Components/Static_components/Footer";
+import Header from "../Components/Static_components/Header";
+import HomePage from "../Components/Home/main/HomePage";
+import Banner from "../Components/Home/Banner";
 import { Suspense } from "react";
-// Splittin banner apart to reduce bundle size
-const DynamicBanner = dynamic(() => import("../components/Home/Banner"), {
-  suspense: true,
-});
+
 export default function Home() {
   return (
     <section>
@@ -36,9 +33,7 @@ export default function Home() {
       <main>
         <Header />
         <section className="min-h-screen">
-          <Suspense fallback={<div>Loading...</div>}>
-            <DynamicBanner />
-          </Suspense>
+          <Banner />
           {/* <Banner/> */}
           <HomePage />
         </section>

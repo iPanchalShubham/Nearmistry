@@ -1,4 +1,4 @@
-import About from "../components/Static_components/About.jsx";
+import About from "../Components/Static_components/About.jsx";
 import Head from "next/head";
 
 export default function aboutPage(){
