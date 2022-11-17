@@ -15,7 +15,7 @@ function Banner() {
           objectFit="cover"
         />
       </div>
-      <div className="sm:block md:hidden max-w-xs  absolute z-[20] left-0 right-0 mx-auto  ">
+      <div className=" max-w-xs  absolute z-[20] left-0 right-0 mx-auto  ">
         <PlacesSearchBar />
       </div>
     </>
