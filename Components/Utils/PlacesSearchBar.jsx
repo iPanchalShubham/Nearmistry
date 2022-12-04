@@ -36,7 +36,7 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
             <input
               type="search"
               spellCheck={false}
-              className="form-control relative  flex-auto min-w-0 block w-full px-4 py-2 text-base font-normal  border border-solid border-gray-300  text-gray-400 focus:text-gray-800 focus:border-blue-600 focus:outline-none flex-grow outline-none pl-5 placeholder-gray-400 rounded-full shadow"
+              className="form-control relative  flex-auto min-w-0 block w-full px-4 py-2 text-base font-normal  border border-solid border-gray-300  text-gray-400 focus:text-gray-800 focus:border-blue-600 focus:outline-none flex-grow outline-none pl-5 placeholder-gray-400 rounded-l-full shadow"
               placeholder="Enter your location"
               aria-label="Search"
               onChange={(e) => {
@@ -46,7 +46,7 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
               value={input}
             />
             <button
-              className="absolute inset-y-0 right-0 rounded-l-lg rounded-r-full px-4  bg-blue-600 text-white font-medium text-xs leading-tight uppercase  hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center"
+              className="rounded-l-lg rounded-r-full px-4 py-[13.5px] bg-blue-600 text-white font-medium text-xs leading-tight uppercase  hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center "
               type="button"
               id="button-addon2"
               onClick={
@@ -76,7 +76,7 @@ function PlacesSearchBar({ redirectAddress, toggle }) {
                 <p className="uppercase font-bold">Ok</p>
               </Link>
             </button>
-            <LocationMarkerIcon className="ml-1 h-4 w-4 text-red-500 absolute z-[31] top-2" />
+            <LocationMarkerIcon className="ml-1 h-3.5 w-4.5 text-red-500 absolute z-[31] top-3.5" />
           </div>
         </div>
       </div>
